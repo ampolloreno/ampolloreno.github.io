@@ -4,6 +4,9 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: math_default
 ---
+This site is currently under construction, not too much to see.
+
+
 Look! Math renders!
 
 $$
