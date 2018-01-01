@@ -1,0 +1,42 @@
+\begin{thebibliography}{1}
+
+\bibitem{APS2017}
+Anthony Polloreno, Nicholas Rubin, Robert Smith, and William Zeng.
+\newblock Random quantum circuits with varying topologies and gate sets.
+\newblock APS March Meeting, 2017.
+
+\bibitem{SQUINT2017}
+Anthony Polloreno, Nicholas Rubin, Robert Smith, and William Zeng.
+\newblock Random quantum circuits with varying topologies and gate sets.
+\newblock Southwest Quantum Information and Technology (SQUINT), 2017.
+
+\bibitem{1706.06570}
+M.~Reagor, C.~B. Osborn, N.~Tezak, A.~Staley, G.~Prawiroatmodjo, M.~Scheer,
+  N.~Alidoust, E.~A. Sete, N.~Didier, M.~P. da~Silva, E.~Acala, J.~Angeles,
+  A.~Bestwick, M.~Block, B.~Bloom, A.~Bradley, C.~Bui, S.~Caldwell,
+  L.~Capelluto, R.~Chilcott, J.~Cordova, G.~Crossman, M.~Curtis, S.~Deshpande,
+  T.~El Bouayadi, D.~Girshovich, S.~Hong, A.~Hudson, P.~Karalekas, K.~Kuang,
+  M.~Lenihan, R.~Manenti, T.~Manning, J.~Marshall, Y.~Mohan, W.~O'Brien,
+  J.~Otterbach, A.~Papageorge, J.~P. Paquette, M.~Pelstring, A.~Polloreno,
+  V.~Rawat, C.~A. Ryan, R.~Renzas, N.~Rubin, D.~Russell, M.~Rust,
+  D.~Scarabelli, M.~Selvanayagam, R.~Sinclair, R.~Smith, M.~Suska, T.~W. To,
+  M.~Vahidpour, N.~Vodrahalli, T.~Whyland, K.~Yadav, W.~Zeng, and C.~T.
+  Rigetti.
+\newblock Demonstration of universal parametric entangling gates on a
+  multi-qubit lattice, 2017.
+
+\bibitem{1706.06562}
+S.~Caldwell, N.~Didier, C.~A. Ryan, E.~A. Sete, A.~Hudson, P.~Karalekas,
+  R.~Manenti, M.~Reagor, M.~P. da~Silva, R.~Sinclair, E.~Acala, N.~Alidoust,
+  J.~Angeles, A.~Bestwick, M.~Block, B.~Bloom, A.~Bradley, C.~Bui,
+  L.~Capelluto, R.~Chilcott, J.~Cordova, G.~Crossman, M.~Curtis, S.~Deshpande,
+  T.~El Bouayadi, D.~Girshovich, S.~Hong, K.~Kuang, M.~Lenihan, T.~Manning,
+  J.~Marshall, Y.~Mohan, W.~O'Brien, C.~Osborn, J.~Otterbach, A.~Papageorge,
+  J.~P. Paquette, M.~Pelstring, A.~Polloreno, G.~Prawiroatmodjo, V.~Rawat,
+  R.~Renzas, N.~Rubin, D.~Russell, M.~Rust, D.~Scarabelli, M.~Scheer,
+  M.~Selvanayagam, R.~Smith, A.~Staley, M.~Suska, N.~Tezak, T.~W. To,
+  M.~Vahidpour, N.~Vodrahalli, T.~Whyland, K.~Yadav, W.~Zeng, and C.~Rigetti.
+\newblock Parametrically-activated entangling gates using transmon qubits,
+  2017.
+
+\end{thebibliography}

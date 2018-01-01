@@ -1,0 +1,130 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{bibentry}
+\usepackage[absolute]{textpos}
+\usepackage{multirow}
+\usepackage{marvosym}
+%A Few Useful Packages
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{dcolumn}
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\usepackage{setspace} 
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fullpage} 
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+\usepackage{tabularx}
+
+
+%Setup hyperref package, and colours for links
+% THERE IS A KNOWN CLASH WITH BIBENTRY DO NOT USE
+%\usepackage{hyperref}
+%\definecolor{linkcolour}{rgb}{0,0,0}
+%\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\font\fb=''[cmr10]'' %for use with \LaTeX command
+\defaultfontfeatures{Mapping=tex-text}
+
+%%%
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+\usepackage[absolute]{textpos}
+\usepackage{marvosym}
+\usepackage[abspath]{currfile}
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+\usepackage[margin = .8in]{geometry}
+
+\begin{document}
+\newcommand*{\fontin}[2]{{\setmainfont{Fontin}#1{#2}}}
+\nobibliography{ref}
+\bibliographystyle{unsrt}
+\pagestyle{empty} % non-numbered pages
+
+
+
+%--------------------TITLE-------------
+%\par{\centering
+	%	{\Huge Anthony Michael Polloreno
+%	}\bigskip\par}
+
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\begin{tabular}{l}
+
+{\Huge Anthony Polloreno}\\\end{tabular} \hfill
+\begin{tabular}{lr}
+    \fontin{\textsc}{email:}     & anthony.polloreno@gmail.com
+    %\href{mailto:anthony.polloreno@gmail.com}{anthony.polloreno@gmail.com}
+\end{tabular}
+
+\section{Work Experience}
+\begin{tabularx}{\textwidth}{l|X}
+\fontin{\textsc}{June 2016 - Present} & Junior Quantum Engineer at \fontin{\textsc}{Rigetti Quantum Computing} \\ & 
+\footnotesize{Working on a wide variety of primarily software related tasks. These include simulating quantum circuits, assisting with quantum tomography (state, process, gate set), readout signal processing, implementing examples of quantum algorithms, and developing control software.}\\\multicolumn{2}{c}{} \\
+
+ \fontin{\textsc}{June-Aug 2014} & Undergraduate Student Instructor for CS70 at \fontin{\textsc}{U.C. Berkeley} \\&\footnotesize{Worked as an undergraduate student instructor under James Cook for the summer offering of a course in discrete mathematics and probability in the Computer Science department. Taught a discussion section of about 10 students twice a week, held office hours, wrote homework and exam problems, and ran review sessions.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{Jan-May 2014} & Reader for  CS61A at \fontin{\textsc}{U.C. Berkeley}\\&\footnotesize{Graded homework, tests, and projects and held office hours for the introductory Computer Science course, taught by Paul Hilfinger.}
+\end{tabularx}
+
+\section{Research Experience}
+
+\begin{tabularx}{\textwidth}{l|X}
+ \fontin{\textsc}{June 2015 - Jan 2016} & Student Intern at \fontin{\textsc}{Sandia National Laboratories} \\&\emph{Quantum Computation, Control and Error Correction}\\&\footnotesize{Did research with Kevin Young on quantum optimal control using gradient based methods (GRAPE) with noisy controls using Python. Currently work to publish results.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{July 2013 - July 2015} & Student Assistant at \fontin{\textsc}{Lawrence Berkeley National Laboratory} \\&\emph{Beamline Optics, Reflection Zone Plates}\\&\footnotesize{Worked with Dmitriy Voronov to develop elliptical grating patterns called reflection zone plates which allow for more efficient beamline signal transmission in the Advanced Light Source. Used Python to generate patterns for the gratings as .cif files for use by electron beam and laser lithograpy machines.}\\\multicolumn{2}{c}{} \\
+ \fontin{\textsc}{Jan-May 2013\ \ } & Undergraduate Research Apprenticeship at \fontin{\textsc}{U.C. Berkeley}\\&\emph{Animal Flight Laboratory, Hummingbird Flight}\\&\footnotesize{Worked with graduate student Marc Badger to investigate how hummingbirds navigate natural vegetation. Learned about avian flight as well as animal handling, and was introduced to basic experimentation techniques, Arduino usage, and Mathematica.}\\
+\end{tabularx}
+
+\section{Education}
+\begin{tabular}{l|ll}	
+  \fontin{\textsc}{Aug 2012 - May 2016} & B.A., \fontin{\textsc}{Computer Science}, \fontin{\textsc}{Physics}, and \fontin{\textsc}{Pure Mathematics} \\ &University of California, Berkeley & GPA: 3.762 \\
+\end{tabular}
+
+\section{Technical Coursework}
+\begin{tabularx}{\textwidth}{l|ll}
+Mathematics & Real/Complex Analysis (104/185)& Topology (202A)\\ & Linear Algebra (110) & Abstract Algebra (113/250A)  \\
+& Set Theory (135) & Functional Analysis (202B)\\
+\multicolumn{2}{c}{}
+\\
+Physics & Electricity and Magnetism (110A) & Quantum Mechanics (137A/137B/221A) \\& Classical Mechanics (105) & Advanced Laboratory (111A/111B) 
+\\ & Thermodynamics and Statistical Physics (112) & \\
+\multicolumn{2}{c}{}
+\\
+Computer Science & Algorithms (170) & Computability and Complexity (172) \\ & Combinatorics and Discrete Probability (174) & Quantum Computing (191C/294)\\
+& Machine Learning (189) & \\
+\end{tabularx}
+\\
+\hspace*{0pt}\hfill{\footnotesize{(1xx: upper division, 2xx: graduate})}
+
+\section{Scholarships/Awards}
+\begin{tabular}{rl}
+ \fontin{\textsc}{Dec 2014} & Pomerantz Physics Scholarship\\
+ 
+\fontin{\textsc}{Aug 2012} & U.C. Berkeley Regents' and Chancellor's Scholarship\end{tabular}
+
+%\section{Programming Languages \hfill Languages}
+
+%\begin{tabular*}{\textwidth}{l|l@{\extracolsep{\fill}}r@{}}
+%Proficient & Python, {\fontfamily{lmodern}\selectfont \LaTeX } & English\\
+%Intermediate & Scheme & Japanese\\
+%Elementary & Mathematica, Matlab & Chinese, Spanish\\
+%\end{tabular*}
+
+\section{Talks/Posters}
+\begin{enumerate}
+\item \bibentry{APS2017}
+\item \bibentry{SQUINT2017}
+\end{enumerate}
+\section{Publications}
+\begin{enumerate}
+\item \bibentry{1706.06570}
+\item \bibentry{1706.06562}
+\end{enumerate}
+
+\end{document}

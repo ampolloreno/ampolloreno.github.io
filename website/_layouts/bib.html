@@ -1,0 +1,13 @@
+---
+---
+{%if entry.link %}
+<a href={% raw %}"{% endraw %}
+        {{entry.link}}
+        {% raw %}"{% endraw %}>{{ reference }}</a>
+{% else %}
+{{reference}}
+{% endif %}
+
+{% if entry.abstract %}
+<p>{{ entry.abstract }}</p>
+{% endif %}
