@@ -2,7 +2,7 @@ import arxiv
 OLD_BIB = "bibliography.bib.old"
 BIB = "bibliography.bib"
 ARXIV = 'arxiv.txt'
-bibtex = """@article{{{}
+bibtex = """@article{{{},
     title  = {{{}}},
     author = {{{}}},
     link   = {{{}}},
