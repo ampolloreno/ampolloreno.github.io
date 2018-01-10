@@ -21,11 +21,12 @@ with open(ARXIV, 'r') as filehandler:
         if status == '.':
             status = ""
         query = arxiv.query(doi)
-        link = query[0]['links'][2]['href']
+        link = query[0]['links'][-1]['href']
         authors = query[0]['authors']
         title = query[0]['title'].replace("\n ", "")
         new_bib += "\n"
-        description = str(arxiv.query(doi)[0]['published_parsed'].tm_year) + '_' + authors[0]
+        description = str(arxiv.query(doi)[0]['published_parsed'].tm_year) + '_' + authors[0].replace(' ', '')
         new_bib += bibtex.format(description, title, " & ".join(authors), link, field, status)
+
 with open(BIB, 'w') as filehandler:
      filehandler.write(new_bib)

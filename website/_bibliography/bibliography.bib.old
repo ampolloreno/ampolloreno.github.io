@@ -2,13 +2,6 @@
 ---
 References
 ==========
-@article{granade_qinfer,
-  title     = {Qinfer: Statistical inference software for quantum applications},
-  link      = {https://arxiv.org/pdf/1610.00336.pdf},
-  author    = {Christopher Granade and Christopher Ferrie and Ian Hincks and Steven Casagrande and Thomas Alexander and Jonathan Gross and Michal Kononenko and Yuval Sanders},
-  field     = {quantum_control}
-}
-
 @article{biamonte_qml,
   title     = {Quantum Machine Learning},
   link      = {https://arxiv.org/pdf/1611.09347.pdf},
