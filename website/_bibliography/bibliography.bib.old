@@ -2,66 +2,11 @@
 ---
 References
 ==========
-@article{biamonte_qml,
-  title     = {Quantum Machine Learning},
-  link      = {https://arxiv.org/pdf/1611.09347.pdf},
-  author    = {Jacob Biamonte and Peter Wittek and Nicola Pancotti and Patrick Rebentrost and Nathan Wiebe and Seth Lloyd},
-  field     = {quantum_computing}
-}
-
-@article{reiher_elucidating,
-  title     = {Elucidating Reaction Mechanisms on Quantum Computers},
-  link      = {https://arxiv.org/pdf/1605.03590.pdf},
-  author    = {Markus Reiher and Nathan Wiebe and Krysta M. Svore and Dave Wecker and Matthias Troyer},
-  field     = {quantum_algorithms}
-}
-
-@article{boixo_complexgraphical,
-  title     = {Simulation of low-depth quantum circuits as complex undirected graphical models},
-  link      = {https://arxiv.org/pdf/1712.05384.pdf},
-  author    = {Sergio  Boixo and Vadim  N.  Smelyanskiy and  Hartmut  Neven},
-  field     = {quantum_algorithms}
-}
-
-@article{boixo_fouriersampling,
-  title     = {Fourier analysis of sampling from noisy chaotic quantum circuits.},
-  author    = {Sergio  Boixo and Vadim  N.  Smelyanskiy and  Hartmut  Neven},
-  field     = {quantum_algorithms},
-  link      = {https://arxiv.org/pdf/1708.01875.pdf}
-}
-
-@article{jiang_correlatedfermions,
-  title     = {Quantum algorithms to simulate many-body physics of correlated fermions},
-  author    = {Zhang Jiang and Kevin J. Sung and Kostyantyn Kechedzhi and Vadim N. Smelyanskiy and Sergio Boixo},
-  field     = {quantum_algorithms},
-  link      = {https://arxiv.org/pdf/1711.05395.pdf}
-}
- 
-@article{boixo_supremacy,
-  link      = {https://arxiv.org/pdf/1608.00263.pdf},
-  title     = {Characterizing Quantum Supremacy in Near-Term Devices},
-  author    = {Sergio Boixo and Sergei V. Isakov and Vadim N. Smelyanskiy and Ryan Babbush and Nan Ding and Zhang Jiang and Michael J. Bremner and John M. Martinis and Hartmut Neven},
-  field     = {quantum_computing}
-}
 
 @article{aaronson_boson,
   link      = {https://www.scottaaronson.com/papers/optics.pdf},
   title     = {The Computational Complexity of Linear Optics},
   author    = {Scott Aaronson and Alex Arkhipov},
-  field     = {quantum_computing}
-}
-
-@article{farhi_qaoa,
-  link      = {https://arxiv.org/pdf/1411.4028.pdf},
-  title     = {A Quantum Approximate Optimization Algorithm},
-  author    = {Edward Farhi and Jeffrey Goldstone},
-  field     = {quantum_algorithms}
-}
-
-@article{abrams_nonlinear,
-  link      = {https://arxiv.org/pdf/quant-ph/9801041.pdf},
-  title     = {Nonlinear quantum mechanics implies polynomial-time solution for NP-complete and #P problems},
-  author    = {Daniel S. Abrams and Seth LLoyd},
   field     = {quantum_computing}
 }
 
@@ -79,13 +24,6 @@ References
   author    = {Richard P. Feynman}
 }
 
-@article(durr_minfinding,
-  link      = {https://arxiv.org/pdf/quant-ph/9607014.pdf},
-  title     = {A quantum algorithm for finding the minimum},
-  field     = {quantum_algorithms},
-  author    = {Christoph D ̈urr and Peter Høyer}
-}
-
 @article{gorini_dynamicalsubgroups,
   link      = {http://aip.scitation.org/doi/abs/10.1063/1.522979},
   title     = {Completely Positive Dynamical Semigroups of N-level Systems},
@@ -100,6 +38,7 @@ References
   author    = {W. K. Wooters and W. H. Zurek},
   prog      = {done}
 }
+
 @article{berry_phase,
   link      = {https://michaelberryphysics.files.wordpress.com/2013/07/berry120.pdf},
   author    = {M. V. Berry, F.R.S.},
@@ -136,13 +75,6 @@ References
   field     = {quantum_computing}
 }
 
-@article{mckay_threeqrb,
-  title     = {Three Qubit Randomized Benchmarking},
-  link      = {https://arxiv.org/pdf/1712.06550.pdf},
-  author    = {David McKay and Sarah Sheldon and John A. Smolin and Jerry M. Chow and Jay M. Gambetta},
-  field     = {quantum_computing}
-}
-
 @book{aaronson_qcsd,
   title     = {Quantum Computing Since Democritus},
   author    = {Scott Aaronson},
@@ -150,39 +82,6 @@ References
   link      = {https://www.scottaaronson.com/democritus/},
   prog      = {done},
   field     = {quantum_computing}
-}
-
-@article{caneva_crab,
-  title     = {Chopped Random Basis Quantum Optimization},
-  link      = {https://arxiv.org/pdf/1103.0855.pdf},
-  author    = {Tommaso Caneva and Tommaso Calarco and Simone Montangero},
-  year      = {2011},
-  link      = {https://arxiv.org/pdf/1103.0855.pdf},
-  field     = {quantum_control}
-}
-
-@article{machnes_goat,
-  title     = {Gradient Optimization of Analytic Controls:  The Route to High Accuracy Quantum Optimal Control},
-  author    = {Shai Machnes and David J. Tannor and Frank K. Wilhelm and Elie Assémat},
-  year      = {2015},
-  link      = {https://arxiv.org/pdf/1507.04261.pdf},
-  field     = {quantum_control}
-}
-
-@article{kimmel_rpe,
-  title     = {Robust Calibration of a Universal Single-Qubit Gate-Set via Robust Phase Estimation},
-  author    = {Shelby Kimmel and Guang Hao Low and Theodore J. Yoder},
-  year      = {2015},
-  link      = {https://arxiv.org/pdf/1502.02677.pdf},
-  field     = {quantum_control}
-}
-
-@article{ferrie_acronym,
-  title     = {Robust and Efficient in situ Quantum Control},
-  author    = {Christopher Ferrie and Osama Moussa},
-  year      = {2015},
-  link      = {https://arxiv.org/pdf/1409.3172.pdf},
-  field     = {quantum_control}
 }
 
 @article{khaneja_grape,
@@ -228,6 +127,7 @@ References
   year      = {1925},
   field     = {mathematics}
 }
+
 @article{pauli_1940,
   title     = {The Connection Between Spin and Statistics},
   author    = {Wolfgang Pauli},
@@ -235,6 +135,7 @@ References
   link      = {http://hermes.ffn.ub.es/luisnavarro/nuevo_maletin/Pauli_spin_statistics_1940.pdf},
   field     = {physics}
 }
+
 @article{artin_1947,
   title     = {Theory of Braids},
   author    = {Emil Artin},
@@ -259,12 +160,4 @@ References
   link    = {https://arxiv.org/pdf/quant-ph/0208112.pdf},
   field   = {quantum_algorithms},
   prog    = {done}
-}
-
-@article{motzoi_drag,
-  title  = {Simple Pulses for Elimination of Leakage in Weakly Nonlinear Qubits},
-  author = {Felix Motzoi and Jay Gambetta and Patrick Rebentrost and Frank Wilhelm},
-  year   = {2009},
-  link   = {https://arxiv.org/pdf/0901.0534.pdf},
-  field  = {quantum_control}
 }
