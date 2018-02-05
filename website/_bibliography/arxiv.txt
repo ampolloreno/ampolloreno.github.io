@@ -1,6 +1,6 @@
 0708.0831 physics .
 1610.00336 quantum_control .
-1611.09347 quantum_computing .
+1611.09347 quantum_machine_learning .
 1605.03590 quantum_algorithms .
 1712.05384 quantum_algorithms .
 1708.01875 quantum_algorithms .
@@ -14,3 +14,4 @@
 1502.02677 quantum_control .
 1409.3172 quantum_control .
 0901.0534 quantum_control .
+1712.05304 quantum_machine_learning .

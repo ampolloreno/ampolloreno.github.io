@@ -17,3 +17,5 @@ title: Reading List
 ## Physics
 {% bibliography --query @*[field=physics] %}
 
+## Quantum Machine Learning
+{% bibliography --query @*[field=quantum_machine_learning] %}
