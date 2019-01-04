@@ -39,4 +39,24 @@ S.~Caldwell, N.~Didier, C.~A. Ryan, E.~A. Sete, A.~Hudson, P.~Karalekas,
 \newblock Parametrically-activated entangling gates using transmon qubits,
   2017.
 
+\bibitem{1806.08321}
+C.~M. Wilson, J.~S. Otterbach, N.~Tezak, R.~S. Smith, A.~Polloreno, G.~E.
+  Crooks, and M.~P. da~Silva.
+\newblock Quantum kitchen sinks: An algorithm for machine learning on near-term
+  quantum computers, 2019.
+\newblock Update with Experimental Results In Progress.
+
+\bibitem{under_review}
+A.~Polloreno and K.~Young.
+\newblock Robust decorrelation of errors in quantum gates by random gate
+  synthesis, 2019.
+\newblock Under Review by Sandia National Laboratories.
+
+\bibitem{2q}
+S.~Hong, A.~T. Papageorge, P.~Sivarajah, G.~Crossman, N.~Didier, A.~Polloreno,
+  E.~Sete, M.~P. da~Silva, and Blake~R. Johnson.
+\newblock Demonstration of a high-fidelity parametrically-activated entangling
+  gate on a multi-qubit architecture, 2019.
+\newblock Currently in Progress.
+
 \end{thebibliography}
