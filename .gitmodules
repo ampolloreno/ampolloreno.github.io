@@ -1,0 +1,3 @@
+[submodule "gitbib"]
+	path = gitbib
+	url = https://github.com/mpharrigan/gitbib.git

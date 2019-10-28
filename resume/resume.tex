@@ -39,7 +39,7 @@
 \setlength{\TPVertModule}{\TPHorizModule}
 \textblockorigin{2mm}{0.65\paperheight}
 \setlength{\parindent}{0pt}
-\usepackage[margin = .8in, top=1.5in]{geometry}
+\usepackage[margin = 1in, top=1.5in]{geometry}
 
 \begin{document}
 \newcommand*{\fontin}[2]{{\setmainfont{Fontin}#1{#2}}}
@@ -60,25 +60,9 @@
 
 {\Huge Anthony Polloreno}\\\end{tabular} \hfill
 \begin{tabular}{lr}
-    \fontin{\textsc}{email:}     & anthony.polloreno@gmail.com
+    \fontin{\textsc}{email:}     & ampolloreno@gmail.com
     %\href{mailto:anthony.polloreno@gmail.com}{anthony.polloreno@gmail.com}
 \end{tabular}
-
-\section{Work Experience}
-\begin{tabularx}{\textwidth}{l|X}
-\fontin{\textsc}{April 2019- August 2019} & Quantum Engineer at \fontin{\textsc}{Rigetti Quantum Computing} \\ &
-\footnotesize{Calibrating and characterizing near-term superconducting quantum computers. Developing and testing more efficient routines for device bring-up, in particular using phase estimation routines to cheaply estimate DRAG parameters. Continuing to implement characterization routines like DirectRB. Simulation work done to validate routines done in Julia.}\\\multicolumn{2}{c}{} \\
-
-\fontin{\textsc}{September 2018 - April 2019} & Software Engineer at \fontin{\textsc}{Rigetti Quantum Computing} \\ &
-\footnotesize{Developing control software for bring-up, characterization, and calibration of the quantum computer. Primary responsibilities include maintaining and developing the software suite for experimental work through implementing new algorithms and APIs for easily accessing and using calibrated pulses and pulse sequences.}\\\multicolumn{2}{c}{} \\
-
-\fontin{\textsc}{June 2016 - September 2018} & Junior Quantum Engineer at \fontin{\textsc}{Rigetti Quantum Computing} \\ &
-\footnotesize{Full stack software engineering. Developed instrument drivers for vector network analyzers, and spectrum analyzers, implemented C++ drivers for matched filtering of RF signals, and was a primary developer and reviewer of the  control software to run experiments and implement quantum programs, in Python. Developed internal tools for serving data from a PostgreSql database using SQLAlchemy. Front end developed using HTML and Jinja in Python. Built functionality in Rigetti's quantum compiler, speeding up measurements in the simulator and implementing group theoretic routines for benchmarking and simulating quantum circuits, in Lisp. Wrote customer facing code to access the quantum computer (pyQuil and Grove), including implementing standard algorithms (e.g. Grover's Algorithm).}\\\multicolumn{2}{c}{} \\
-
-
-\fontin{\textsc}{June-Aug 2014} & Undergraduate Student Instructor for CS70 at \fontin{\textsc}{U.C. Berkeley} \\&\footnotesize{Worked as an undergraduate student instructor under James Cook for the summer offering of a course in discrete mathematics and probability in the Computer Science department. Taught a discussion section of 10 students twice a week, held office hours, wrote homework and exam problems, and ran review sessions.}\\\multicolumn{2}{c}{} \\
-\fontin{\textsc}{Jan-May 2014} & Reader for  CS61A at \fontin{\textsc}{U.C. Berkeley}\\&\footnotesize{Graded homework, tests, and projects and held office hours for the introductory Computer Science course, taught by Paul Hilfinger.}
-\end{tabularx}
 
 \section{Research Experience}
 
@@ -86,9 +70,24 @@
 \fontin{\textsc}{September 2018 - October 2018} & Visiting Researcher at \fontin{\textsc}{UT Austin} \\&\emph{Random Quantum Circuits}\\&\footnotesize{Researching properties of random quantum circuits with Scott Aaronson. In particular, trying to prove that the probabilities for measuring different computational basis vectors following a random circuit are Porter-Thomas distributed.}\\\multicolumn{2}{c}{} \\
 
 \fontin{\textsc}{June 2015 - Jan 2016} & Student Intern at \fontin{\textsc}{Sandia National Laboratories} \\&\emph{Quantum Computation, Control and Error Correction}\\&\footnotesize{Did research with Kevin Young on using quantum optimal control to average away coherent noise using gradient-based methods (GRAPE) and optimization. Currently working to publish results.}\\\multicolumn{2}{c}{} \\
-\fontin{\textsc}{July 2013 - July 2015} & Student Assistant at \fontin{\textsc}{Lawrence Berkeley National Laboratory} \\&\emph{Beamline Optics, Reflection Zone Plates}\\&\footnotesize{Worked with Dmitriy Voronov to develop elliptical grating patterns called reflection zone plates which allow for more efficient beamline signal transmission in the Advanced Light Source. Used Python to generate patterns for the gratings as .cif files for use by electron beam and laser lithograpy machines.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{July 2013 - July 2015} & Student Assistant at \fontin{\textsc}{Lawrence Berkeley National Laboratory} \\&\emph{Beamline Optics, Reflection Zone Plates}\\&\footnotesize{Worked with Dmitriy Voronov to develop elliptical grating patterns called reflection zone plates which allow for more efficient beamline signal transmission in the Advanced Light Source. Used Python to generate patterns for the gratings as .cif files for use by electron beam and laser lithography machines.}\\\multicolumn{2}{c}{} \\
  \fontin{\textsc}{Jan-May 2013\ \ } & Undergraduate Research Apprenticeship at \fontin{\textsc}{U.C. Berkeley}\\&\emph{Animal Flight Laboratory, Hummingbird Flight}\\&\footnotesize{Worked with graduate student Marc Badger to investigate how hummingbirds navigate natural vegetation. Learned about avian flight as well as animal handling, and was introduced to basic experimentation techniques, Arduino usage, and Mathematica.}\\
 \end{tabularx}
+
+\section{Work Experience}
+\begin{tabularx}{\textwidth}{l|X}
+\fontin{\textsc}{June 2016- August 2019} & Quantum Engineer at \fontin{\textsc}{Rigetti Quantum Computing} \\ &
+\footnotesize{Calibrating and characterizing near-term superconducting quantum computers ($\leq 32$ qubits). Developing and testing more efficient routines for device bring-up, simulation work done to validate routines done in Julia. Maintained and developed the software suite for experimental work, including APIs for easily accessing and using calibrated pulses and pulse sequences. Developed instrument drivers for vector network analyzers, and spectrum analyzers, implemented C++ drivers for matched filtering of RF signals, and was a primary developer and reviewer of the  control software to run experiments and implement quantum programs, in Python. Built functionality in Rigetti's quantum compiler, speeding up measurements in the simulator and implementing group theoretic routines for benchmarking and simulating quantum circuits, in Lisp. Wrote customer facing code to access the quantum computer (pyQuil and Grove), including implementing standard algorithms (e.g. Grover's Algorithm).}\\\multicolumn{2}{c}{} \\
+\end{tabularx}
+
+\section{Teaching Experience}
+\begin{tabularx}{\textwidth}{l|X}
+\fontin{\textsc}{August 2019 - Present} & Teaching Assistant for Physics 1110 and 1115 at \fontin{\textsc}{C.U. Boulder} \\&\footnotesize{Taught three sections of introductory general physics. Taught tutorial sections introducing students to ideas in kinematics and dynamics and graded homework. Course taught by Daniel Bolton, Cindy Regal, and Shijie Zhong.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{August 2019 - Present} & Grader for Physics 4410 at \fontin{\textsc}{C.U. Boulder} \\&\footnotesize{Graded homework and quizzes for upper division, second-semester quantum mechanics with Andreas Becker.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{June-Aug 2014} & Undergraduate Student Instructor for CS70 at \fontin{\textsc}{U.C. Berkeley} \\&\footnotesize{Worked as an undergraduate student instructor under James Cook for the summer offering of a course in discrete mathematics and probability in the Computer Science department. Taught a discussion section of 10 students twice a week, held office hours, wrote homework and exam problems, and ran review sessions.}\\\multicolumn{2}{c}{} \\
+\fontin{\textsc}{Jan-May 2014} & Reader for  CS61A at \fontin{\textsc}{U.C. Berkeley}\\&\footnotesize{Graded homework, tests, and projects and held office hours for the introductory Computer Science course, taught by Paul Hilfinger.}
+\end{tabularx}
+
 
 \section{Education}
 \begin{tabular}{l|ll}
@@ -96,28 +95,34 @@
   \fontin{\textsc}{Aug 2012 - May 2016} & B.A., \fontin{\textsc}{Computer Science}, \fontin{\textsc}{Physics}, and \fontin{\textsc}{Pure Mathematics} \\ &University of California, Berkeley & GPA: 3.762 \\
 \end{tabular}
 
+\section{Awards and Scholarships}
+\begin{tabularx}{\textwidth}{l|X}
+\fontin{\textsc}{Dec 2014} & Pomerantz Physics Scholarship \\ 
 
+\fontin{\textsc}{Aug 2012} & U.C. Berkeley Regents’ and Chancellor’s Scholarship
+\end{tabularx}
 
 \section{Languages and Frameworks}
-\textbf{Languages}: Python, Common Lisp, SQL, \LaTeX, [Quil$\rangle$ 
+\textbf{Languages}: Python, Julia, Common Lisp, SQL, \LaTeX, [Quil$\rangle$ 
 
-\textbf{Frameworks}: MPI, Docker, Postgres, AWS, Atlassian
+\textbf{Frameworks \& Tools}: MPI, Docker, Postgres, AWS, Atlassian
 
-\section{Relevant Coursework}
-\begin{tabularx}{\textwidth}{l|ll}
-Mathematics & Real/Complex Analysis (104/185)& Topology (202A)\\ & Linear Algebra (110) & Abstract Algebra (113/250A)  \\
-& Set Theory (135) & Functional Analysis (202B)\\
-\multicolumn{2}{c}{}
-\\
-Physics & Electricity and Magnetism (110A) & Quantum Mechanics (137A/137B/221A) \\& Classical Mechanics (105) & Advanced Laboratory (111A/111B)
-\\ & Thermodynamics and Statistical Physics (112) & \\
-\multicolumn{2}{c}{}
-\\
-Computer Science & Algorithms (170) & Computability and Complexity (172) \\ & Combinatorics and Discrete Probability (174) & Quantum Computing (191C/294)\\
-& Machine Learning (189) & \\
-\end{tabularx}
-\\
-\hspace*{0pt}\hfill{\footnotesize{(1xx: upper division, 2xx: graduate})}
+%
+%\section{Relevant Coursework}
+%\begin{tabularx}{\textwidth}{l|ll}
+%Mathematics & Real/Complex Analysis (104/185)& %Topology (202A)\\ & Linear Algebra (110) & Abstract %Algebra (113/250A)  \\
+%& Set Theory (135) & Functional Analysis (202B)\\
+%\multicolumn{2}{c}{}
+%\\
+%Physics & Electricity and Magnetism (110A) & Quantum %Mechanics (137A/137B/221A) \\& Classical Mechanics %(105) & Advanced Laboratory (111A/111B)
+%\\ & Thermodynamics and Statistical Physics (112) & \\
+%\multicolumn{2}{c}{}
+%\\
+%Computer Science & Algorithms (170) & Computability %and Complexity (172) \\ & Combinatorics and Discrete %Probability (174) & Quantum Computing (191C/294)\\
+%& Machine Learning (189) & \\
+%\end{tabularx}
+%\\
+%\hspace*{0pt}\hfill{\footnotesize{(1xx: upper %division, 2xx: graduate})}
 
 
 \section{Talks/Posters}
