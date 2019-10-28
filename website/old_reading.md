@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  Reading List
+title:  Old Reading List
 ---
 ## Quantum Computing
 {% bibliography --query @*[field=quantum_computing] %}

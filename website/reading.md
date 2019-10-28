@@ -1,5 +1,5 @@
 ---
 layout: default
-redirect_to: "ampolloreno.github.io/gitbib/index.html"
-title:  Reading List
+redirect_to: "gitbib/index.html"
+title:  New Reading List
 ---
