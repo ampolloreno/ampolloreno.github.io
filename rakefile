@@ -13,6 +13,7 @@ desc "Commit _site/"
 task :commit do
   puts "\n## Building site."
   Dir.chdir "website"
+  system("cp _gitbib/example/gitbib/index.html .")
   status = system("bundle exec jekyll build")
   Dir.chdir ".."
   puts status ? "Success" : "Failed"
