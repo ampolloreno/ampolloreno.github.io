@@ -1,19 +1,12 @@
-2015-mdtraj:
-  doi: 10.1016/j.bpj.2015.08.015
-  tags: [molecular-dynamics, analysis, python]
-  description: |+
-    MDTraj loads every trajectory format! It computes
-    RMSD pretty fast using [2009-theobald-rmsd].
-
-    The authors justify their work by noting that
-    [2013-milliseconds-folding=2] claims analysis
-    is becoming the bottleneck for MD.
-
-2009-theobald-rmsd:
-  doi: 10.1002/jcc.21439
-  tags: [molecular-dynamics, analysis, algorithm]
-  description: "Fast method for computing RMSD!"
-
-2013-milliseconds-folding:
-  doi: 10.1016/j.sbi.2012.11.002
-  tags: [molecular-dynamics, perspective]
+Saffman-Quantum information with Rydberg atoms_10.1103|RevModPhys.82.2313:
+	tags: rydberg
+	doi: 10.1103/RevModPhys.82.2313
+Lukin-Dipole Blockade and Quantum Information Processing in Mesoscopic Atomic Ensembles_10.1103|PhysRevLett.87.037901:
+	tags: rydberg
+	doi: 10.1103/PhysRevLett.87.037901
+Holmlid-Rydberg matter—a long-lived excited state of matter:
+	tags: rydberg
+	
+Gallagher-Rydberg atoms:
+	tags: rydberg
+	

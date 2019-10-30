@@ -13,6 +13,13 @@ desc "Commit _site/"
 task :commit do
   puts "\n## Building site."
   Dir.chdir "website"
+  Dir.chdir "_papers"
+  system("python make_refs.py")
+  Dir.chdir ".."
+  
+  Dir.chdir "_gitbib/example"
+  system("gitbib .")
+  Dir.chdir "../.."
   system("cp _gitbib/example/gitbib/all.html reading.html")
   status = system("bundle exec jekyll build")
   Dir.chdir ".."

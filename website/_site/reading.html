@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <title>all - Gitbib</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
     <style>
@@ -23,6 +25,125 @@
         margin-bottom: 0.5rem;
       }
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script>
+        // 0 - all implicitly enabled
+        // 1 - enabled
+        // 2 - hidden
+        var tags = {
+        'algorithm': 0,
+        'analysis': 0,
+        'molecular-dynamics': 0,
+        'perspective': 0,
+        'python': 0,
+        };
+        var all_tags = true;
+
+        function tag_toggle(name) {
+            if (all_tags) {
+                for (var i in tags) {
+                    tag_disable(i);
+                    tags[i] = 2;
+                }
+                all_tags = false;
+            }
+
+            if (tags[name] === 1) {
+                tag_disable(name);
+                tags[name] = 2;
+            } else if (tags[name] === 2) {
+                tag_enable(name);
+                tags[name] = 1;
+            }
+        }
+
+        function tag_enable(name) {
+            
+                if (name === 'algorithm'){
+                    
+                      $('#n2009-theobald-rmsd').show();
+                    
+                    $('#algorithm').removeClass('tag-default').addClass('tag-primary')
+                }
+            
+                if (name === 'analysis'){
+                    
+                      $('#n2009-theobald-rmsd').show();
+                    
+                      $('#n2015-mdtraj').show();
+                    
+                    $('#analysis').removeClass('tag-default').addClass('tag-primary')
+                }
+            
+                if (name === 'molecular-dynamics'){
+                    
+                      $('#n2009-theobald-rmsd').show();
+                    
+                      $('#n2013-milliseconds-folding').show();
+                    
+                      $('#n2015-mdtraj').show();
+                    
+                    $('#molecular-dynamics').removeClass('tag-default').addClass('tag-primary')
+                }
+            
+                if (name === 'perspective'){
+                    
+                      $('#n2013-milliseconds-folding').show();
+                    
+                    $('#perspective').removeClass('tag-default').addClass('tag-primary')
+                }
+            
+                if (name === 'python'){
+                    
+                      $('#n2015-mdtraj').show();
+                    
+                    $('#python').removeClass('tag-default').addClass('tag-primary')
+                }
+            
+        }
+
+        function tag_disable(name) {
+            
+            if (name === 'algorithm'){
+                
+                $('#n2009-theobald-rmsd').hide();
+                $('#algorithm').removeClass('tag-primary').addClass('tag-default')
+            }
+            
+            if (name === 'analysis'){
+                
+                $('#n2009-theobald-rmsd').hide();
+                
+                $('#n2015-mdtraj').hide();
+                $('#analysis').removeClass('tag-primary').addClass('tag-default')
+            }
+            
+            if (name === 'molecular-dynamics'){
+                
+                $('#n2009-theobald-rmsd').hide();
+                
+                $('#n2013-milliseconds-folding').hide();
+                
+                $('#n2015-mdtraj').hide();
+                $('#molecular-dynamics').removeClass('tag-primary').addClass('tag-default')
+            }
+            
+            if (name === 'perspective'){
+                
+                $('#n2013-milliseconds-folding').hide();
+                $('#perspective').removeClass('tag-primary').addClass('tag-default')
+            }
+            
+            if (name === 'python'){
+                
+                $('#n2015-mdtraj').hide();
+                $('#python').removeClass('tag-primary').addClass('tag-default')
+            }
+            
+        }
+    </script>
+
   </head>
   <body data-spy="scroll" data-target="#navlist">
     <div class="container">
@@ -34,17 +155,18 @@
             </a> |
             All tags:
             
-            <span class="tag tag-default">algorithm</span>
+            <span class="tag tag-default" onclick="tag_toggle('algorithm')" id="algorithm">algorithm</span>
             
-            <span class="tag tag-default">analysis</span>
+            <span class="tag tag-default" onclick="tag_toggle('analysis')" id="analysis">analysis</span>
             
-            <span class="tag tag-default">molecular-dynamics</span>
+            <span class="tag tag-default" onclick="tag_toggle('molecular-dynamics')" id="molecular-dynamics">molecular-dynamics</span>
             
-            <span class="tag tag-default">perspective</span>
+            <span class="tag tag-default" onclick="tag_toggle('perspective')" id="perspective">perspective</span>
             
-            <span class="tag tag-default">python</span>
+            <span class="tag tag-default" onclick="tag_toggle('python')" id="python">python</span>
             
             </h5>
+            
             
             
             <div class="card">
@@ -60,11 +182,13 @@
                   
                 </p>
                 <p class="card-text">
-                  <em>Biophysical Journal</em>.
+                  <em>Biophysical Journal (Biophys. J.)</em>.
                   109, 
                   8, 
                   1528-1532. 
+                  
                   <a href="https://dx.doi.org/10.1016/j.bpj.2015.08.015">doi:10.1016/j.bpj.2015.08.015</a>
+                  
                   
                 </p>
                 
@@ -75,6 +199,8 @@ RMSD pretty fast using <a href="#n2009-theobald-rmsd">2009-theobald-rmsd</a>.</p
 <a href="#n2013-milliseconds-folding">2013-milliseconds-folding (ref. 2)</a> claims analysis
 is becoming the bottleneck for MD.</p>
 <p class="card-text"></p>
+                
+
                 
 
                 
@@ -128,13 +254,17 @@ is becoming the bottleneck for MD.</p>
                   
                 </p>
                 <p class="card-text">
-                  <em>Current Opinion in Structural Biology</em>.
+                  <em>Current Opinion in Structural Biology (Curr. Opin. Struct. Biol.)</em>.
                   23, 
                   1, 
                   58-65. 
+                  
                   <a href="https://dx.doi.org/10.1016/j.sbi.2012.11.002">doi:10.1016/j.sbi.2012.11.002</a>
                   
+                  
                 </p>
+                
+
                 
 
                 
@@ -165,16 +295,20 @@ is becoming the bottleneck for MD.</p>
                   
                 </p>
                 <p class="card-text">
-                  <em>Journal of Computational Chemistry</em>.
+                  <em>Journal of Computational Chemistry (J. Comput. Chem.)</em>.
                   
                   
                   n/a-n/a. 
+                  
                   <a href="https://dx.doi.org/10.1002/jcc.21439">doi:10.1002/jcc.21439</a>
+                  
                   
                 </p>
                 
                 <h6 class="m-b-0"><strong style="color: #444">Description</strong></h6>
                 <p class="card-text">Fast method for computing RMSD!</p>
+                
+
                 
 
                 
@@ -192,6 +326,8 @@ is becoming the bottleneck for MD.</p>
                 
               </div>
             </div>
+            
+            <hr style="margin: 2rem">
             
         </div>
         <div class="col-xs-12 col-lg-3">
