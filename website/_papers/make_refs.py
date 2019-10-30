@@ -25,7 +25,8 @@ for dir in dirs:
             ref = f'arxiv: {doiorarxiv}'
         else:
             ref = ''
-        lines = [f'{paper}:', f'tags: {category}', ref]
+        title = '_'.join(title_doiorarxiv.split('_')[:-1])
+        lines = [f'{title}:', f'tags: [{category}]', ref]
         blocks.append("\n  ".join(lines))
 
 with open('../_gitbib/example/refs.yaml', 'w') as handler:
