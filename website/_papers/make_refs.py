@@ -26,7 +26,7 @@ for dir in dirs:
         else:
             ref = ''
         lines = [f'{paper}:', f'tags: {category}', ref]
-        blocks.append("\n\t".join(lines))
+        blocks.append("\n  ".join(lines))
 
 with open('../_gitbib/example/refs.yaml', 'w') as handler:
     handler.write(('\n'.join(blocks)))
