@@ -21,17 +21,17 @@ Anthony Polloreno, Nicholas Rubin, Robert Smith, and William Zeng.
 \newblock Random quantum circuits with varying topologies and gate sets.
 \newblock APS March Meeting, 2017.
 
-\bibitem{under_review}
-A.~Polloreno and K.~Young.
-\newblock Robustly decorrelating errors with mixed quantum gates, 2019.
-\newblock Under Review by Sandia National Laboratories.
+\bibitem{2001.02779}
+Anthony~M. Polloreno and Kevin~C. Young.
+\newblock Robustly decorrelating errors with mixed quantum gates, 2020.
 
-\bibitem{1901.08035}
+\bibitem{Hong2020}
 Sabrina~S. Hong, Alexander~T. Papageorge, Prasahnt Sivarajah, Genya Crossman,
-  Nicolas Dider, Anthony~M. Polloreno, Eyob~A. Sete, Stefan~W. Turkowski,
+  Nicolas Didier, Anthony~M. Polloreno, Eyob~A. Sete, Stefan~W. Turkowski,
   Marcus~P. da~Silva, and Blake~R. Johnson.
-\newblock Demonstration of a parametrically-activated entangling gate protected
-  from flux noise, 2019.
+\newblock Demonstration of a parametrically activated entangling gate protected
+  from flux noise.
+\newblock {\em Physical Review A}, 101(1), January 2020.
 
 \bibitem{1806.08321}
 C.~M. Wilson, J.~S. Otterbach, N.~Tezak, R.~S. Smith, A.~M. Polloreno, Peter~J.
