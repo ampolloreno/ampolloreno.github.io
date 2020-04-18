@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{SQUINT2020}
 Anthony Polloreno and Kevin Young.
@@ -72,5 +72,12 @@ Matthew Reagor, Christopher~B. Osborn, Nikolas Tezak, Alexa Staley, Guenevere
 \newblock Demonstration of universal parametric entangling gates on a
   multi-qubit lattice.
 \newblock {\em Science Advances}, 4(2):eaao3603, February 2018.
+
+\bibitem{papageorgeOperatingQuantumProcessor2020}
+Alexander Papageorge, Benjamin~Jacob Bloom, Anthony Polloreno, Sabrina Sae~Byul
+  Hong, and Nasser Alidoust.
+\newblock Operating a quantum processor having a three-dimensional device
+  topology.
+\newblock Library Catalog: Google Patents.
 
 \end{thebibliography}
