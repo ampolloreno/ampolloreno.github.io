@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  18 APR 2020 18:23
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  19 APR 2020 00:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**resume/cv.tex
-(./resume/cv.tex
+**cv.tex
+(./cv.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -481,8 +481,7 @@ Package ifvtex Info: VTeX not detected.
 \Gm@layouthoffset=\dimen179
 \Gm@layoutvoffset=\dimen180
 \Gm@dimlist=\toks23
-)
-(resume//cv.aux)
+) (./cv.aux)
 \openout1 = `cv.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
@@ -599,7 +598,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(resume//cv.bbl)
+(./cv.bbl)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -634,60 +633,59 @@ LaTeX Info: Redefining \rmfamily on input line 65.
 LaTeX Font Warning: Font shape `TU/Fontin(0)/m/sc' undefined
 (Font)              using `TU/Fontin(0)/m/n' instead on input line 65.
 
-LaTeX Info: Redefining \rmfamily on input line 66.
+LaTeX Info: Redefining \rmfamily on input line 70.
+LaTeX Info: Redefining \rmfamily on input line 70.
 LaTeX Info: Redefining \rmfamily on input line 71.
 LaTeX Info: Redefining \rmfamily on input line 71.
-LaTeX Info: Redefining \rmfamily on input line 72.
-LaTeX Info: Redefining \rmfamily on input line 72.
-LaTeX Info: Redefining \rmfamily on input line 72.
-LaTeX Info: Redefining \rmfamily on input line 72.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 86.
-LaTeX Info: Redefining \rmfamily on input line 97.
-LaTeX Info: Redefining \rmfamily on input line 97.
-LaTeX Info: Redefining \rmfamily on input line 97.
-LaTeX Info: Redefining \rmfamily on input line 97.
-LaTeX Info: Redefining \rmfamily on input line 97.
+LaTeX Info: Redefining \rmfamily on input line 71.
+LaTeX Info: Redefining \rmfamily on input line 71.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 85.
+LaTeX Info: Redefining \rmfamily on input line 96.
+LaTeX Info: Redefining \rmfamily on input line 96.
+LaTeX Info: Redefining \rmfamily on input line 96.
+LaTeX Info: Redefining \rmfamily on input line 96.
+LaTeX Info: Redefining \rmfamily on input line 96.
 [1
 
 ]
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
-LaTeX Info: Redefining \rmfamily on input line 107.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
+LaTeX Info: Redefining \rmfamily on input line 106.
  [2]
-LaTeX Info: Redefining \rmfamily on input line 174.
-LaTeX Info: Redefining \rmfamily on input line 174.
-LaTeX Info: Redefining \rmfamily on input line 174.
-LaTeX Info: Redefining \rmfamily on input line 174.
- [3] (resume/cv.aux)
+LaTeX Info: Redefining \rmfamily on input line 173.
+LaTeX Info: Redefining \rmfamily on input line 173.
+LaTeX Info: Redefining \rmfamily on input line 173.
+LaTeX Info: Redefining \rmfamily on input line 173.
+ [3] (./cv.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 18622 strings out of 492916
- 366599 string characters out of 6133346
+ 18620 strings out of 492916
+ 366515 string characters out of 6133346
  447198 words of memory out of 5000000
  22520 multiletter control sequences out of 15000+600000
  534329 words of font info for 51 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 40i,9n,69p,1198b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,9n,69p,1191b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on resume/cv.pdf (3 pages).
+Output written on cv.pdf (3 pages).

@@ -2,40 +2,35 @@
 layout: post
 title:  "A Year in Review"
 date:   2020-4-17
-categories: jekyll update
+comments_id: 1
 ---
 As someone who has for a long time wanted to:
-A) become a better writer
-B) have engaging conversations
-C) start a blog **and**
-D) put something of substance on this webpage,
+* A) become a better writer
+* B) have engaging conversations
+* C) start a blog **and**
+* D) put something of substance on this webpage,
 
-it seems like now is the economically sensible time to write something. Quarantine has the click supply at an all time high. So here goes -
+it seems like now is the economically sensible time to write something. Quarantine has the click supply at an all time high. I'm hoping this blog will serve as a public-facing journal and a place for me to write notes about things I find interesting. Anyone who knows me knows I like talking, so my current model for this site is a bulletin board that I can invite all my friends to come look at. But in this first post, I'll focus on just getting things off the ground. So here goes:
 {% highlight python %}
 print("Hello, world!")
 {% endhighlight %}
 
-The earliest memory I have of 2019 available at simple recall was a day long [agile](https://en.wikipedia.org/wiki/Agile_software_development) workshop. If you don't know what agile is... prepare for *enlightenment*.
+I'll open with talking about my past year. The earliest memory I have of 2019 was a day long [agile](https://en.wikipedia.org/wiki/Agile_software_development) workshop at work.
 
-In fact, I was so *enlightened* that I booked a red-eye flight to Cancún to see Dead and Company with a couple of coworkers. This was mid-January - we'll say the year started here.
+This workshop was so *enlightening* that I booked a red-eye flight to Cancún to see Dead and Company with a couple of coworkers. This was mid-January, so we'll say the year started here. In what can only be described a demonstration of the depths of devotion, I saw Dead and company 13 times last year.
 
-I think I saw Dead and company 13 times last year. It took me the whole year to figure out why I like live music - but maybe that's because my whole reason is the years worth of live music I've seen.
+In fact, last year was a really big year for me as far as music goes - Dead and Company, Coachella, John Mayer, Outside Lands, Bon Iver, Rainbow Kitten Suprise, Mt. Joy and Hippocampus to name a few (that might be everything?).
 
-Some of my favorite shows? The Gorge Amphitheater was beautiful. Celebrating New Year's with my family at the Chase Center was a quintessentially *us* thing to do. The venue in Cancún is also really amazing - warm weather and wind are two things I love. And for anyone who isn't familiar with Dead and Company/The Grateful Dead - they are *the* jam band. Each rendition of a song is different, and quite often substantially so. In fact, it's common for concert-goers to try to guess what song is being played or led into, sometimes even minutes in.
+I'm also now officially becoming a scientist! I put my first preprint on the [arXiv](https://arxiv.org/abs/2001.02779). I presented at [March Meeting](http://meetings.aps.org/Meeting/MAR19/Session/X35.10) and [SQuInT](http://physics.unm.edu/SQuInT/2020/abstracts.php?person_id=1075). I've found two amazing advisors ([Graeme Smith](https://twitter.com/quantum_graeme?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor) and [Ana Maria Rey](https://jila.colorado.edu/arey/) to pursue a Ph.D. with.
 
-I am grateful for the opportunities presented to me to travel around and hear this music. Attending live music with friends is something I plan to keep doing. Part of the experience is the venue. Part of it is the trip. Part of it is the music. The songs stick with you in a way that I'm not convinced they otherwise would. You hear new music.
+2019 was a hard year. My relationship of nine years came to an end. I lost two grandparents. One of my closest friendships became untenable. 2019 was a year of change. I left my first job to pursue a Ph.D. I left California, my home of twenty five years, and moved to Colorado. 2019 was my most challenging year so far.
 
-Speaking of concerts, I also went to Outside Lands for the third time (Paul Simon was there!), and Coachella for the first time. I saw John Mayer at the Chase Center in San Francisco. 2019 was really the most live music I have ever attended.
+But 2019 has been an incredibly *productive* year. I learned a lot about myself, and that's the only way forward. Growth is really, really hard. But growth is really, really great.
 
-I'm also now officially becoming a scientist! I put my first preprint on the [arXiv](https://arxiv.org/abs/2001.02779). I presented at [March Meeting](http://meetings.aps.org/Meeting/MAR19/Session/X35.10) and [SQuInT](http://physics.unm.edu/SQuInT/2020/abstracts.php?person_id=1075). I've found two amazing advisors to pursue a Ph.D. with.
+I have been very fortunate to have amazing people in my life to support me. I wouldn't be where I am, as happy as I am, or as excited to *get on with the rest of my life* if it weren't for all of you. I love you all dearly.
 
-2019 was not an easy year. My relationship of nine years came to an end. I lost two grandparents and my relationship with one of my closest friends became untenable.
+An implementation detail - I've followed the instructions [here](https://aristath.github.io/blog/static-site-comments-using-github-issues-api) for producing a comments section on here. Normally for a comments section there needs to be something *listening* for your comments. I don't want to leave my computer running, and I don't want to pay for a server, so my temporary solution is that you can comment on issues on the github repo this is being hosted from. When you reload the webpage, the Javascript will politely ask github for the comments.
 
-2019 was a year of change. I left my first job to pursue a Ph.D. I left California, my home of twenty five years, and moved to Colorado.
+I love you all, I miss you all, and I'm really excited to make this site into something people actually want to look at.
 
-2019 was my most challenging year so far. I have been depressed and anxious, and not myself. But that doesn't make it bad year. I learned a lot -  I'm still learning a lot - and that's the only way forward.
-
-Growth is really, really hard. But growth is really, really great. Thanks to all my friends for growing with me, and thanks for spending your time reading this. I hope we can see each other again soon.
-
-Stay Healthy,
-Anthony
+-Anthony
