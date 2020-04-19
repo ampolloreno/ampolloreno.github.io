@@ -1,0 +1,83 @@
+\begin{thebibliography}{10}
+
+\bibitem{SQUINT2020}
+Anthony Polloreno and Kevin Young.
+\newblock Robustly decorrelating errors with mixed quantum gates.
+\newblock Southwest Quantum Information and Technology (SQuInT), 2020.
+
+\bibitem{APS2019}
+Anthony Polloreno.
+\newblock Robust decorrelation of errors in quantum gates by random gate
+  synthesis.
+\newblock {\em Bulletin of the American Physical Society}, 2019.
+
+\bibitem{SQUINT2017}
+Anthony Polloreno, Nicholas Rubin, Robert Smith, and William Zeng.
+\newblock Random quantum circuits with varying topologies and gate sets.
+\newblock Southwest Quantum Information and Technology (SQuInT), 2017.
+
+\bibitem{APS2017}
+Anthony Polloreno, Nicholas Rubin, Robert Smith, and William Zeng.
+\newblock Random quantum circuits with varying topologies and gate sets.
+\newblock APS March Meeting, 2017.
+
+\bibitem{2001.02779}
+Anthony~M. Polloreno and Kevin~C. Young.
+\newblock Robustly decorrelating errors with mixed quantum gates, 2020.
+
+\bibitem{Hong2020}
+Sabrina~S. Hong, Alexander~T. Papageorge, Prasahnt Sivarajah, Genya Crossman,
+  Nicolas Didier, Anthony~M. Polloreno, Eyob~A. Sete, Stefan~W. Turkowski,
+  Marcus~P. da~Silva, and Blake~R. Johnson.
+\newblock Demonstration of a parametrically activated entangling gate protected
+  from flux noise.
+\newblock {\em Physical Review A}, 101(1), January 2020.
+
+\bibitem{1806.08321}
+C.~M. Wilson, J.~S. Otterbach, N.~Tezak, R.~S. Smith, A.~M. Polloreno, Peter~J.
+  Karalekas, S.~Heidel, M.~Sohaib Alam, G.~E. Crooks, and M.~P. da~Silva.
+\newblock Quantum kitchen sinks: An algorithm for machine learning on near-term
+  quantum computers, 2018.
+
+\bibitem{Caldwell2018}
+S.~A. Caldwell, N.~Didier, C.~A. Ryan, E.~A. Sete, A.~Hudson, P.~Karalekas,
+  R.~Manenti, M.~P. da~Silva, R.~Sinclair, E.~Acala, N.~Alidoust, J.~Angeles,
+  A.~Bestwick, M.~Block, B.~Bloom, A.~Bradley, C.~Bui, L.~Capelluto,
+  R.~Chilcott, J.~Cordova, G.~Crossman, M.~Curtis, S.~Deshpande, T.~El
+  Bouayadi, D.~Girshovich, S.~Hong, K.~Kuang, M.~Lenihan, T.~Manning,
+  A.~Marchenkov, J.~Marshall, R.~Maydra, Y.~Mohan, W.~O'Brien, C.~Osborn,
+  J.~Otterbach, A.~Papageorge, J.-P. Paquette, M.~Pelstring, A.~Polloreno,
+  G.~Prawiroatmodjo, V.~Rawat, M.~Reagor, R.~Renzas, N.~Rubin, D.~Russell,
+  M.~Rust, D.~Scarabelli, M.~Scheer, M.~Selvanayagam, R.~Smith, A.~Staley,
+  M.~Suska, N.~Tezak, D.~C. Thompson, T.-W. To, M.~Vahidpour, N.~Vodrahalli,
+  T.~Whyland, K.~Yadav, W.~Zeng, and C.~Rigetti.
+\newblock Parametrically activated entangling gates using transmon qubits.
+\newblock {\em Physical Review Applied}, 10(3), September 2018.
+
+\bibitem{Reagor2018}
+Matthew Reagor, Christopher~B. Osborn, Nikolas Tezak, Alexa Staley, Guenevere
+  Prawiroatmodjo, Michael Scheer, Nasser Alidoust, Eyob~A. Sete, Nicolas
+  Didier, Marcus~P. da~Silva, Ezer Acala, Joel Angeles, Andrew Bestwick,
+  Maxwell Block, Benjamin Bloom, Adam Bradley, Catvu Bui, Shane Caldwell,
+  Lauren Capelluto, Rick Chilcott, Jeff Cordova, Genya Crossman, Michael
+  Curtis, Saniya Deshpande, Tristan~El Bouayadi, Daniel Girshovich, Sabrina
+  Hong, Alex Hudson, Peter Karalekas, Kat Kuang, Michael Lenihan, Riccardo
+  Manenti, Thomas Manning, Jayss Marshall, Yuvraj Mohan, William O'Brien,
+  Johannes Otterbach, Alexander Papageorge, Jean-Philip Paquette, Michael
+  Pelstring, Anthony Polloreno, Vijay Rawat, Colm~A. Ryan, Russ Renzas, Nick
+  Rubin, Damon Russel, Michael Rust, Diego Scarabelli, Michael Selvanayagam,
+  Rodney Sinclair, Robert Smith, Mark Suska, Ting-Wai To, Mehrnoosh Vahidpour,
+  Nagesh Vodrahalli, Tyler Whyland, Kamal Yadav, William Zeng, and Chad~T.
+  Rigetti.
+\newblock Demonstration of universal parametric entangling gates on a
+  multi-qubit lattice.
+\newblock {\em Science Advances}, 4(2):eaao3603, February 2018.
+
+\bibitem{papageorgeOperatingQuantumProcessor2020}
+Alexander Papageorge, Benjamin~Jacob Bloom, Anthony Polloreno, Sabrina Sae~Byul
+  Hong, and Nasser Alidoust.
+\newblock Operating a quantum processor having a three-dimensional device
+  topology.
+\newblock Library Catalog: Google Patents.
+
+\end{thebibliography}

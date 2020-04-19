@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  18 APR 2020 18:20
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019) (preloaded format=xelatex 2019.5.8)  18 APR 2020 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -599,7 +599,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-No file cv.bbl.
+(resume//cv.bbl)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 59.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -629,6 +629,7 @@ ext;"
 (fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 LaTeX Info: Redefining \rmfamily on input line 65.
+
 
 LaTeX Font Warning: Font shape `TU/Fontin(0)/m/sc' undefined
 (Font)              using `TU/Fontin(0)/m/n' instead on input line 65.
@@ -670,56 +671,21 @@ LaTeX Info: Redefining \rmfamily on input line 107.
 LaTeX Info: Redefining \rmfamily on input line 107.
 LaTeX Info: Redefining \rmfamily on input line 107.
 LaTeX Info: Redefining \rmfamily on input line 107.
-
-
-LaTeX Warning: Citation `SQUINT2020' undefined on input line 135.
-
-
-LaTeX Warning: Citation `APS2019' undefined on input line 136.
-
-
-LaTeX Warning: Citation `SQUINT2017' undefined on input line 137.
-
-
-LaTeX Warning: Citation `APS2017' undefined on input line 138.
-
-[2]
-
-LaTeX Warning: Citation `2001.02779' undefined on input line 154.
-
-
-LaTeX Warning: Citation `Hong2020' undefined on input line 155.
-
-
-LaTeX Warning: Citation `1806.08321' undefined on input line 156.
-
-
-LaTeX Warning: Citation `Caldwell2018' undefined on input line 157.
-
-
-LaTeX Warning: Citation `Reagor2018' undefined on input line 158.
-
-
-LaTeX Warning: Citation `papageorgeOperatingQuantumProcessor2020' undefined on 
-input line 163.
-
+ [2]
 LaTeX Info: Redefining \rmfamily on input line 174.
 LaTeX Info: Redefining \rmfamily on input line 174.
 LaTeX Info: Redefining \rmfamily on input line 174.
 LaTeX Info: Redefining \rmfamily on input line 174.
-[3] (resume/cv.aux)
+ [3] (resume/cv.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 18609 strings out of 492916
- 366423 string characters out of 6133346
- 447167 words of memory out of 5000000
- 22509 multiletter control sequences out of 15000+600000
+ 18622 strings out of 492916
+ 366599 string characters out of 6133346
+ 447198 words of memory out of 5000000
+ 22520 multiletter control sequences out of 15000+600000
  534329 words of font info for 51 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  40i,9n,69p,1198b,446s stack positions out of 5000i,500n,10000p,200000b,80000s
