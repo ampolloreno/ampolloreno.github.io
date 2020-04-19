@@ -1,8 +1,8 @@
 #This is taken from David Ensinger!
 #http://davidensinger.com/2013/07/automating-jekyll-deployment-to-github-pages-with-rake/ 
-resume_tex = "resume/resume.tex"
-resume_aux = "resume/resume.aux"
-resume_pdf = "resume/resume.pdf"
+resume_tex = "resume/cv.tex"
+resume_aux = "resume/cv.aux"
+resume_pdf = "resume/cv.pdf"
 resume_path = "resume/"
 output_flag = "-output-directory=" + resume_path + " "
 xelatex = "xelatex " + output_flag
