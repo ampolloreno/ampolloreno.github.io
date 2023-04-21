@@ -1,36 +1,82 @@
-<html>
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Anthony M. Polloreno</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
 
+        .header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .header p {
+            margin-top: 0;
+        }
+
+        .nav {
+            text-align: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+        }
+    </style>
 </head>
-
 <body>
-    <h1>Anthony M. Polloreno</h1>
-    <a href="cv.pdf">CV </a> |
-    <a href="papers.html">Papers </a> |
-    <a href="notes.html">Notes </a> |
-    <a href="recorded_talks.html"> Recorded Talks </a> |
-    <a href="https://www.linkedin.com/in/anthony-polloreno-17310b91/">Linkedin</a> |
-    <a href="https://github.com/ampolloreno">Github</a> |
-    <a href="https://scholar.google.com/citations?user=W2USduoAAAAJ&hl=en&oi=ao">Google Scholar</a>
 
-<img src="/portrait.jpg" align="right" />
-<p>Hello! My name is <strong>Anthony Polloreno</strong>. I am a quantum information scientist interested in quantum computation,
-    metrology, characterization and error correction. I am a member of the <a href="https://qisenet.uchicago.edu/projects-3/"> fourth QISENET cohort</a>
-    in collaboration with Sandia National Laboratories' <a href="https://qpl.sandia.gov/">QPL</a>, and my Ph.D. is supported by
-    a <a href="https://www.nasa.gov/directorates/spacetech/strg/nstrgo_2021/"> NASA Space Technology Graduate Research Fellowship</a>.
-    You can navigate to my CV for the full time history of my career, but said briefly: </p>
+    <div class="header">
+        <img src="portrait.jpg" alt="Your headshot">
+        <h1>Anthony Polloreno</h1>
+        <p>Information theory, Computer Science and Software Engineering</p>
+    </div>
 
-<ol>
+    <div class="nav">
+        <a href="index.html" target="_blank">Home</a> |
+        <a href="https://twitter.com/ampolloreno" target="_blank">Twitter</a> |
+        <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/ampolloreno" target="_blank">GitHub</a> |
+        <a href="papers.html" target="_blank">Papers</a> |
+        <a href="resume.pdf" target="_blank">CV</a>
+    </div>
+
+    <div class="content">
+        <p>
+            <ol>
     <li>
-        <p>I got my BA in mathematics, computer science and physics from <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">University of California, Berkeley</a>
-            (go bears!). At their intersection I found quantum computing, which has largely influenced my career trajectory since.
+        <p>I received my BA in mathematics, computer science and physics from <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">University of California, Berkeley</a>.
+            At their intersection I found quantum computing, which has largely influenced my career trajectory since.
     </li>
     <li>
         During my last summer of college I interned at <a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a>.
@@ -46,11 +92,14 @@
             attended several conferences, and got a glimpse of industry life.</p>
     </li>
     <li>
-        <p>I am now a Ph.D. candidate at the University of Colorado, Boulder ('sko buffs!), graduating in May 2023. Additionally, I am an intern with
-        <a href="https://qpl.sandia.gov/"> Sandia National Laboratories' Quantum Performance Lab</a>.</p>
+        <p>I received my Ph.D. from the University of Colorado, Boulder, where I was also an intern with
+        <a href="https://qpl.sandia.gov/"> Sandia National Laboratories' Quantum Performance Lab</a>. I was a member of
+            the <a href="https://qisenet.uchicago.edu/projects-3/"> fourth QISENET cohort</a>  and my Ph.D. was supported by
+    a <a href="https://www.nasa.gov/directorates/spacetech/strg/nstrgo_2021/"> NASA Space Technology Graduate Research Fellowship</a>.</p>
     </li>
 </ol>
+        </p>
+    </div>
 
 </body>
-
 </html>
