@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <title>My Personal Website</title>
+    <title>AMP</title>
     <style>
+
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+     body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
@@ -20,8 +27,8 @@
         }
 
         .header img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
         }
 
@@ -53,18 +60,100 @@
         .content {
             padding: 20px;
         }
-    </style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 30px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section .img1 {
+            width: 400px;
+            height: 350px;
+        }
+
+        .section .img2 {
+            width: 450px;
+            height: 200px;
+        }
+
+        .section .img3 {
+            width: 500px;
+            height: 300px;
+        }
+          .section div {
+            margin-left: 40px;
+            width: 70%;
+        }
+
+        .section:nth-child(odd) div {
+            margin-right: 40px;
+            margin-left: 0;
+        }
+
+        .section:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .intro {
+                display: flex;
+                /*align-items: center;*/
+                /*justify-content: center;*/
+                margin: 30px auto;
+                padding: 30px;
+                background-color: #333;
+                color: #fff;
+                border-radius: 5px;
+                width: 90%;
+                max-width: 1200px;
+                /*text-align: center;*/
+            }
+
+           .intro a {
+    color: #FFD700; /* Change the color of links */
+    text-decoration: none; /* Remove the underline */
+    padding: 0px; /* Add some space around the links */
+}
+
+.intro a:hover {
+    color: #fff; /* Change the color when hovered */
+    text-decoration: underline; /* Underline when hovered */
+}
+.intro a:first-child {
+    padding-left: 0;
+    padding-right: 0;
+}
+</style>
 </head>
 <body>
 
     <div class="header">
         <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno</h1>
-        <p>Information theory, computer science and software engineering</p>
+        <h1>Anthony Polloreno, Ph.D.</h1>
+        <h2>Research Engineer</h2>
+        <p>I am a mathematically-oriented research engineer with expertise in characterizing information processing
+            systems. I have significant experience with RNNs, statistical learning, time series analysis, dynamical systems,
+            statistics, randomization, probability theory, linear algebra, asymptotic analysis, perturbation theory, optimization
+            and numerical methods. My Ph.D. thesis focused on the characterization of quantum information processing
+            devices and can be found <a href="thesis.pdf">here</a>.</p>
     </div>
 
-    <div class="nav">
-        <a href="index.html">Home</a> |
+   <div class="nav">
+        <a href="chatgpt.html">Research</a> |
+        <a href="engineering.html"> Engineering </a> |
         <a href="https://twitter.com/ampolloreno">Twitter</a> |
         <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
         <a href="https://github.com/ampolloreno">GitHub</a> |

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMP</title>
     <style>
-        body {
+
+     body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             margin: 0;
@@ -19,8 +20,8 @@
         }
 
         .header img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
         }
 
@@ -52,18 +53,100 @@
         .content {
             padding: 20px;
         }
-    </style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 30px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section .img1 {
+            width: 400px;
+            height: 350px;
+        }
+
+        .section .img2 {
+            width: 450px;
+            height: 200px;
+        }
+
+        .section .img3 {
+            width: 500px;
+            height: 300px;
+        }
+          .section div {
+            margin-left: 40px;
+            width: 70%;
+        }
+
+        .section:nth-child(odd) div {
+            margin-right: 40px;
+            margin-left: 0;
+        }
+
+        .section:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .intro {
+                display: flex;
+                /*align-items: center;*/
+                /*justify-content: center;*/
+                margin: 30px auto;
+                padding: 30px;
+                background-color: #333;
+                color: #fff;
+                border-radius: 5px;
+                width: 90%;
+                max-width: 1200px;
+                /*text-align: center;*/
+            }
+
+           .intro a {
+    color: #FFD700; /* Change the color of links */
+    text-decoration: none; /* Remove the underline */
+    padding: 0px; /* Add some space around the links */
+}
+
+.intro a:hover {
+    color: #fff; /* Change the color when hovered */
+    text-decoration: underline; /* Underline when hovered */
+}
+.intro a:first-child {
+    padding-left: 0;
+    padding-right: 0;
+}
+</style>
 </head>
 <body>
 
     <div class="header">
         <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno</h1>
-        <p>Software engineer and research scientist</p>
+        <h1>Anthony Polloreno, Ph.D.</h1>
+        <h2>Research Engineer</h2>
+        <p>I am a mathematically-oriented research engineer with expertise in characterizing information processing
+            systems. I have significant experience with RNNs, statistical learning, time series analysis, dynamical systems,
+            statistics, randomization, probability theory, linear algebra, asymptotic analysis, perturbation theory, optimization
+            and numerical methods. My Ph.D. thesis focused on the characterization of quantum information processing
+            devices and can be found <a href="thesis.pdf">here</a>.</p>
     </div>
 
     <div class="nav">
-        <a href="index.html">Home</a> |
+        <a href="index.html">Research</a> |
+        <a href="engineering.html"> Engineering </a> |
         <a href="https://twitter.com/ampolloreno">Twitter</a> |
         <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
         <a href="https://github.com/ampolloreno">GitHub</a> |
@@ -71,39 +154,97 @@
         <a href="resume.pdf">Resume</a>
     </div>
 
-    <div class="content">
-        <p>
+    <div class="section">
+        <img class="img1"  src="machine_learning.jpg" alt="Machine Learning Image">
+        <div>
+            <h3>Machine Learning</h3>
             <ol>
-    <li>
-        <p>I received my BA in mathematics, computer science and physics from <a href="https://en.wikipedia.org/wiki/University_of_California,_Berkeley">University of California, Berkeley</a>.
-            At their intersection I found quantum computing, which has largely influenced my career trajectory since.
-    </li>
-    <li>
-        During my last summer of college I interned at <a href="https://en.wikipedia.org/wiki/Sandia_National_Laboratories">Sandia National Laboratories</a>.
-    </li>
-    <li>
-        <p>I worked at <a href="https://en.wikipedia.org/wiki/Rigetti_Computing">Rigetti Quantum Computing</a>
-            in Berkeley as a software engineer and experimental physicist. My time at Rigetti was good - I met amazing
-            people and contributed to <a href="https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=polloreno&terms-0-field=all&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2016&date-to_date=2020&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first"> papers</a>,
-            attended several conferences, and got a glimpse of industry life.</p>
-    </li>
-    <li>
-        <p>I received my Ph.D. from the University of Colorado, Boulder, where I was also an intern with
-        <a href="https://qpl.sandia.gov/"> Sandia National Laboratories' Quantum Performance Lab</a>. I was a member of
-            the <a href="https://qisenet.uchicago.edu/projects-3/"> fourth QISENET cohort</a>  and my Ph.D. was supported by
-    a <a href="https://www.nasa.gov/directorates/spacetech/strg/nstrgo_2021/"> NASA Space Technology Graduate Research Fellowship</a>.</p>
-    </li>
-        <li>
-            <p> I am currently a postdoctoral associate at the University of Colorado, Boulder doing interpretability research
-            for machine learning and artificial intelligence systems. My latest paper characterizes the limits placed on
-            reservoir computers by physicality and stochasticity. <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">Take a look</a>!</p>
-        </li>
-        <li>
-            <p> I'm looking for my next job. Send me an email!</p>
-        </li>
-</ol>
-
+                <li><a href="http://arxiv.org/abs/1806.08321v2" target="_blank">In quantum machine learning it is possible</a> to use a quantum circuit as a kernel,
+                    since in general a system of n qubits is represented by a 2^n dimensional Hilbert space, and the dynamics
+                    are given by the exponential of a Hamiltonian which is in general a non-linear map.
+                </li>
+                <li><a href="http://arxiv.org/abs/2302.10862v1" target="_blank">We discuss the impact of noise</a> on the effectiveness of reservoir computing.
+                    Reservoir computing is a non-linear recurrent neural<a href="http://arxiv.org/abs/2001.02779v2" target="_blank">Robustly decorrelating errors with mixed quantum gates</a> network proposed to overcome the gradient vanishing
+                    and exploding problems in deep learning. Using the Information Processing Capacity (IPC), a measure used
+                    to quantify the capacity of a system to learn a function, the authors show that noise strictly decreases
+                    the achievable IPC of a reservoir computer. Using an extended definition of IPC, the impact of the noise
+                    is quantified. The work has implications on improving the robustness of reservoir computing in the presence
+                    of noise.
+                </li>
+                <li>Motivated by physical constraints (polynomial depth and polynomial power), and assuming
+                    noisy analog computation, <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">I show that a reservoir computer is necessarily limited in utility.</a> One way to
+                    characterize this is that, when used as a binary classifier, the largest set that can be separated into two
+                    arbitrary labelings grows only polynomially with the system size (despite there being an exponential number
+                    of possible functions). We show, however, that this utility can be recovered in a probabilistic setting.
+                </li>
+            </ol>
+        </div>
     </div>
 
+    <div class="section">
+        <img class="img2" src="control_and_optimization.jpg" alt="Control and Optimization Image">
+        <div>
+            <h3>Control, Numerical Methods and Optimization</h3>
+            <ol>
+              <li>
+                  There are in general two kinds of errors - systematic errors and random errors. (In the case of quantum computing, these two errors are coherent and incoherent.)
+                  Generally, systematic errors are more pathological, since they tend to accumulate due to correlations, while random errors tend to cancel.
+                  <a href="http://arxiv.org/abs/2001.02779v2" target="_blank">In this work, we demonstrate</a> that
+                  it is possible to use convex optimization to design controls for a quantum computer with randomized errors from controls with systematic errors. Moreover, by formulating the problem
+                  as a convex optimization problem we show it is possible to modify the objective function to favor sparsity (fewer controls to randomize over) and error maps that are amenable to Monte Carlo
+                  simulation.
+              </li>
+              <li>
+                  Quantum computers, at the time of writing, suffer from a scaling problem. Ion traps are experimental
+                  devices which use electromagnetic fields to contain charged particles, and have been shown to
+                  be capable of holding hundreds of ions. <a href="http://arxiv.org/abs/2203.05196v2" target="_blank">We use analytical models together with numerical solvers</a> to evaluate
+                  the feasability of using deformable mirrors to address single ions.
+              </li>
+              <li>
+                  A primary research focus in quantum machine learning is the quantum approximate optimization algorithm,
+                  which uses a classical computer to optimize a parameterized quantum circuit. The state-of-the-art uses
+                  either surrogate methods, or takes advantage of concentration results for the optimal parameters. <a href="http://arxiv.org/abs/2205.06845v5" target="_blank">In
+                  this project</a> we were constrained by the number of samples we take, and so used both generative (simulated annealing)
+                  and genetic (evolution strategies) methods.
+              </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <img class="img3"  src="randomization_and_stats_analysis.jpg" alt="Randomization and Stats Analysis Image">
+        <div>
+            <h3>Randomization and Statistical Analysis</h3>
+            <ol>
+                <li><a href="http://arxiv.org/abs/2302.13853v1" target="_blank">A significant portion of my Ph.D. thesis</a> was spent proving and numerically verifying a characterization
+                    technique for quantum computers that is an extension of the randomized benchmarking in the above module.
+                </li>
+                <li>
+                    Finally, my <a href="thesis.pdf">thesis</a> discusses further extensions that uses these results to
+                    estimate the errors under a Markovian (memoryless) error model, using non-Hermitian perturbation
+                    theory.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <img src="asymptotic_characterization.jpg" alt="Asymptotic Characterization Image">
+        <div>
+            <h3>Asymptotic Characterization</h3>
+            <ol>
+                <li>Sensors are physical device which accumulate, over time, information about the presence of a signal.
+                    A fundamental task in sensing is the detection of an AC signal. <a href="http://arxiv.org/abs/2203.05520v2" target="_blank">We establish a no free lunch theorem</a>
+                    that demonstrates that performance at one frequency comes at the cost of performance at another
+                    frequency. We further demonstrate that entanglement can be used to exceed the classical limit.
+                </li>
+                <li>Reservoir computers are a kind of recurrent neural network, with a single trainable output layer.
+                    <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">I demonstrate that any physical, noisy analog reservoir computer will be limited</a> in its ability to
+                    learn a deterministic set of functions. We show, however, that this is because they are instead able
+                    to learn functions whose outputs are random variables.
+                </li>
+            </ol>
+        </div>
+    </div>
 </body>
 </html>

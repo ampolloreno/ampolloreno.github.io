@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMP</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .header p {
+            margin-top: 0;
+        }
+
+        .nav {
+            text-align: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 30px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .section .img1 {
+            width: 400px;
+            height: 350px;
+        }
+
+        .section .img2 {
+            width: 450px;
+            height: 200px;
+        }
+
+        .section .img3 {
+            width: 500px;
+            height: 300px;
+        }
+          .section div {
+            margin-left: 40px;
+            width: 70%;
+        }
+
+        .section:nth-child(odd) div {
+            margin-right: 40px;
+            margin-left: 0;
+        }
+
+        .section:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .intro {
+                display: flex;
+                /*align-items: center;*/
+                /*justify-content: center;*/
+                margin: 30px auto;
+                padding: 30px;
+                background-color: #333;
+                color: #fff;
+                border-radius: 5px;
+                width: 90%;
+                max-width: 1200px;
+                /*text-align: center;*/
+            }
+
+           .intro a {
+    color: #FFD700; /* Change the color of links */
+    text-decoration: none; /* Remove the underline */
+    padding: 0px; /* Add some space around the links */
+}
+
+.intro a:hover {
+    color: #fff; /* Change the color when hovered */
+    text-decoration: underline; /* Underline when hovered */
+}
+.intro a:first-child {
+    padding-left: 0;
+    padding-right: 0;
+}
+</style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="portrait.jpg" alt="Your headshot">
+        <h1>Anthony Polloreno, Ph.D.</h1>
+        <h2>Research Engineer</h2>
+        <p>I am a mathematically-oriented research engineer with expertise in characterizing information processing
+            systems. I have significant experience with RNNs, statistical learning, time series analysis, dynamical systems,
+            statistics, randomization, probability theory, linear algebra, asymptotic analysis, perturbation theory, optimization
+            and numerical methods. My Ph.D. thesis focused on the characterization of quantum information processing
+            devices and can be found <a href="thesis.pdf">here</a>.</p>
+    </div>
+
+   <div class="nav">
+        <a href="index.html">Research</a> |
+        <a href="engineering.html"> Engineering </a> |
+        <a href="https://twitter.com/ampolloreno">Twitter</a> |
+        <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
+        <a href="https://github.com/ampolloreno">GitHub</a> |
+        <a href="papers.html">Papers</a> |
+        <a href="resume.pdf">Resume</a>
+    </div>
+
+    <div class="intro">
+        <div>
+            <h3>Rigetti Computing</h3>
+            <p>
+            I worked as a full-stack software engineer building a quantum computer at <a href="https://en.wikipedia.org/wiki/Rigetti_Computing">Rigetti Computing</a>.
+            During this time, the company grew from ~10 to ~100. I was a primary maintainer and developer of the control library (~20000 LOC),
+            and delivered several key engineering goals:<br>
+            <ol>
+            <li> Instrumentation driver development for signal analyzer, VNA, microwave radio, AWG, switching matrix, etc. (Python, C++, instrumentation DSLs). </li>
+            <li> Database front end and backend development (Python, SQL, SQLAlchemy, Flask, Alembic, HTML).</li>
+            <li> Code reviewed core functionality for experimental syntax and semantics and managed version releases.</li>
+            <li> Developed distributed code for running distributed statistical analyses (Python, MPI, MPI4PY).</li>
+            <li> Developing a matched filters interface for optimal signal readout (Python, C++).</li>
+            <li> Developed the Clifford library for use on the experimental stack, as well as through pyquil. One product
+                of this was a reduced swap-representation that can be found <a href="https://github.com/quil-lang/quilc/blob/master/src/clifford/swap-representation.lisp">here</a>(Python, Lisp).</li>
+            <li> Developed simulation code for efficiently calibration the DRAG parameter in single qubit gates (Julia).</li>
+            <li> Managed translation of experimental suite into internal experimental DSL for pulse based experiments (Python).</li>
+            </ol>
+
+            This work resulted in these papers: <br>
+            <ol>
+                <li><a href="https://doi.org/10.1103/PhysRevApplied.10.034050">Parametrically Activated Entangling Gates Using Transmon Qubits</a>,</li>
+                <li><a href="https://doi.org/10.1126/sciadv.aao3603">Demonstration of Universal Parametric Entangling Gates on a Multi-Qubit Lattice</a>,</li>
+                <li><a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.101.012302">Demonstration of a Parametrically Activated Entangling Gate Protected from Flux Noise</a>.</li>
+            </ol>
+        </p>
+        </div>
+    </div>
+
+
+    <div class="intro">
+        <div>
+            <h3>Markovian Error Generators</h3>
+        <p> Code for symbolically deriving the lowest-order effect of Markovian error rates on a quantum gate set.
+        </p>
+        </div>
+    </div>
+
+     <div class="intro">
+        <div>
+            <h3>Penning Trap Simulation</h3>
+        <p> Code for simulating the dynamics of a 2D crystal of ions in a Penning trap over a cluster.
+        </p>
+        </div>
+    </div>
+
+  <div class="intro">
+        <div>
+            <h3>Convex Optimization for Optimal Control</h3>
+        <p> A small suite of numerical tools are available from my time at Sandia. I use the convex optimization library MPI4py
+            and simple gradient-based methods together with Gaussian quadrature to produce noise-robust optimal controls for a two level quantum system.
+        </p>
+        </div>
+    </div>
+</body>
+</html>
