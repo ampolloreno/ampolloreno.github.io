@@ -7,13 +7,6 @@
     <title>AMP</title>
     <style>
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
      body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -95,6 +88,10 @@
             width: 500px;
             height: 300px;
         }
+        .section .img4 {
+            width: 400px;
+            height: 200px;
+        }
           .section div {
             margin-left: 40px;
             width: 70%;
@@ -136,7 +133,77 @@
     padding-left: 0;
     padding-right: 0;
 }
+   /* CSS for Screen Width up to 600px (Mobile) */
+    @media only screen and (max-width: 600px) {
+
+        .header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .section {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .section .img1, .section .img2, .section .img3 {
+            width: 300px;
+            height: auto;
+        }
+
+        .section div {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .intro {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+    }
+
+   /* CSS for Screen Width up to 600px (Mobile) */
+    @media only screen and (max-width: 600px) {
+
+        .header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .section {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .section .img1, .section .img2, .section .img3 {
+            width: 300px;
+            height: auto;
+        }
+
+        .section div {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .intro {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+    }
+    .section .img1, .section .img2, .section .img3, .section .img4 {
+    width: 40%;
+    height: auto;
+}
 </style>
+
 </head>
 <body>
 
@@ -151,8 +218,9 @@
             devices and can be found <a href="thesis.pdf">here</a>.</p>
     </div>
 
-   <div class="nav">
-        <a href="index.html">Research</a> |
+    <div class="nav">
+        <a href="index.html">Home</a> |
+        <a href="research.html">Research</a> |
         <a href="engineering.html"> Engineering </a> |
         <a href="https://twitter.com/ampolloreno">Twitter</a> |
         <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
