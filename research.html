@@ -228,30 +228,25 @@
         <a href="papers.html">Papers</a> |
         <a href="resume.pdf">Resume</a>
     </div>
-
+<body>
     <div class="section">
         <img class="img1"  src="machine_learning.jpg" alt="Machine Learning Image">
         <div>
-            <h3>Machine Learning</h3>
+            <h3>Machine Learning Research</h3>
             <ol>
-                <li><a href="http://arxiv.org/abs/2302.10862v1" target="_blank">We discuss the impact of noise</a> on the effectiveness of reservoir computing.
-                    Reservoir computing is a non-linear recurrent neural network proposed to overcome the gradient vanishing
-                    and exploding problems in deep learning. Using the Information Processing Capacity (IPC), a measure used
-                    to quantify the capacity of a system to learn a function, the authors show that noise strictly decreases
-                    the achievable IPC of a reservoir computer. Using an extended definition of IPC, the impact of the noise
-                    is quantified. The work has implications on improving the robustness of reservoir computing in the presence
-                    of noise.
-                </li>
-                <li>Motivated by physical constraints (polynomial depth and polynomial power), and assuming
-                    noisy analog computation, <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">I show that a reservoir computer is necessarily limited in utility.</a> One way to
-                    characterize this is that, when used as a binary classifier, the largest set that can be separated into two
-                    arbitrary labelings grows only polynomially with the system size (despite there being an exponential number
-                    of possible functions). We show, however, that this utility can be recovered in a probabilistic setting.
-                </li>
-                <li><a href="http://arxiv.org/abs/1806.08321v2" target="_blank">In quantum machine learning it is possible</a> to use a quantum circuit as a kernel,
-                    since in general a system of n qubits is represented by a 2^n dimensional Hilbert space, and the dynamics
-                    are given by the exponential of a Hamiltonian which is in general a non-linear map.
-                </li>
+                <li>Studied the effects of noise on the performance of reservoir computing, a non-linear recurrent neural network. Presented findings on how noise influences the capacity of the system to learn a function. <a href="http://arxiv.org/abs/2302.10862v1" target="_blank">Find Details Here.</a></li>
+                <li>Explored the possibility of utilising a quantum circuit as a kernel in quantum machine learning. This probe into the dynamics of n qubits offers a non-linear mapping for better understanding quantum machine learning. <a href="http://arxiv.org/abs/1806.08321v2" target="_blank">Find Details Here.</a></li>
+            </ol>
+        </div>
+    </div>
+
+     <div class="section">
+        <img class="img4" src="asymptotic_characterization.jpg" alt="Asymptotic Characterization Image">
+        <div>
+            <h3>Asymptotic Characterization</h3>
+            <ol>
+                <li>Delineates a "no free lunch" theorem for sensor performance across various frequencies, with the help of entanglement. <a href="http://arxiv.org/abs/2203.05520v2" target="_blank">Find Details Here.</a></li>
+                <li>Demonstrated that physical, noisy analog reservoir computers have limited capabilities in computing deterministic functions, but indicated these can learn functions with outputs as random variables. <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">Find Details Here.</a></li>
             </ol>
         </div>
     </div>
@@ -261,27 +256,9 @@
         <div>
             <h3>Control, Numerical Methods and Optimization</h3>
             <ol>
-              <li>
-                  There are in general two kinds of errors - systematic errors and random errors. (In the case of quantum computing, these two errors are coherent and incoherent.)
-                  Generally, systematic errors are more pathological, since they tend to accumulate due to correlations, while random errors tend to cancel.
-                  <a href="http://arxiv.org/abs/2001.02779v2" target="_blank">In this work, we demonstrate</a> that
-                  it is possible to use convex optimization to design controls for a quantum computer with randomized errors from controls with systematic errors. Moreover, by formulating the problem
-                  as a convex optimization problem we show it is possible to modify the objective function to favor sparsity (fewer controls to randomize over) and error maps that are amenable to Monte Carlo
-                  simulation.
-              </li>
-              <li>
-                  Quantum computers, at the time of writing, suffer from a scaling problem. Ion traps are experimental
-                  devices which use electromagnetic fields to contain charged particles, and have been shown to
-                  be capable of holding hundreds of ions. <a href="http://arxiv.org/abs/2203.05196v2" target="_blank">We use analytical models together with numerical solvers</a> to evaluate
-                  the feasability of using deformable mirrors to address single ions.
-              </li>
-              <li>
-                  A primary research focus in quantum machine learning is the quantum approximate optimization algorithm,
-                  which uses a classical computer to optimize a parameterized quantum circuit. The state-of-the-art uses
-                  either surrogate methods, or takes advantage of concentration results for the optimal parameters. <a href="http://arxiv.org/abs/2205.06845v5" target="_blank">In
-                  this project</a> we were constrained by the number of samples we take, and so used both generative (simulated annealing)
-                  and genetic (evolution strategies) methods.
-              </li>
+              <li>Explored using convex optimization to design controls for a quantum computer with randomized errors, shifting from systematic errors. Demonstrated possibilities of using the objective function towards favoring sparsity and error maps conducive to Monte Carlo simulation. <a href="http://arxiv.org/abs/2001.02779v2" target="_blank">Find Details Here.</a></li>
+              <li>Analyzed the feasibility of deformable mirrors in addressing single ions using analytical models and numerical solvers. This adds to the understanding of quantum computers' scaling problem. <a href="http://arxiv.org/abs/2203.05196v2" target="_blank">Find Details Here.</a></li>
+              <li>Worked on optimizing a parameterized quantum circuit using a classical computer in the context of quantum machine learning. Devised strategies to make optimal use of the available sample space. <a href="http://arxiv.org/abs/2205.06845v5" target="_blank">Find Details Here.</a></li>
             </ol>
         </div>
     </div>
@@ -291,33 +268,8 @@
         <div>
             <h3>Randomization and Statistical Analysis</h3>
             <ol>
-                <li><a href="http://arxiv.org/abs/2302.13853v1" target="_blank">A significant portion of my Ph.D. thesis</a> was spent proving and numerically verifying a characterization
-                    technique for quantum computers that is an extension of the randomized benchmarking in the above module.
-                </li>
-                <li>
-                    Finally, my <a href="thesis.pdf">thesis</a> discusses further extensions that uses these results to
-                    estimate the errors under a Markovian (memoryless) error model, using non-Hermitian perturbation
-                    theory.
-                </li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="section">
-        <img class="img4" src="asymptotic_characterization.jpg" alt="Asymptotic Characterization Image">
-        <div>
-            <h3>Asymptotic Characterization</h3>
-            <ol>
-                <li>Sensors are physical devices which accumulate, over time, information about the presence of a signal.
-                    A fundamental task in sensing is the detection of an AC signal. <a href="http://arxiv.org/abs/2203.05520v2" target="_blank">We establish a no free lunch theorem</a>
-                    that demonstrates that performance at one frequency comes at the cost of performance at another
-                    frequency. We further demonstrate that entanglement can be used to exceed the classical limit.
-                </li>
-                <li>Reservoir computers are a kind of recurrent neural network, with a single trainable output layer.
-                    <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">I demonstrate that any physical, noisy analog reservoir computer will be limited</a> in its ability to
-                    learn a deterministic set of functions. We show, however, that this is because they are instead able
-                    to learn functions whose outputs are random variables.
-                </li>
+                <li>Developed a characterization technique for quantum computers, extending randomized benchmarking, which was a significant part of my Ph.D. thesis. <a href="http://arxiv.org/abs/2302.13853v1" target="_blank">Find Details Here.</a></li>
+                <li>Further extended these results to estimate errors under a Markovian error model using non-Hermitian perturbation theory. <a href="thesis.pdf">Find Details Here.</a></li>
             </ol>
         </div>
     </div>
