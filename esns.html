@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMP</title>
-    <style>
+    <title>AMP Blog Post</title>
+     <style>
 
      body {
             font-family: Arial, sans-serif;
@@ -75,8 +75,8 @@
         }
 
         .section .img1 {
-            width: 400px;
-            height: 350px;
+            width: 100px;
+            height: 150px;
         }
 
         .section .img2 {
@@ -89,8 +89,8 @@
             height: 300px;
         }
         .section .img4 {
-            width: 400px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
         }
           .section div {
             margin-left: 40px;
@@ -148,8 +148,8 @@
             width: 100%;
         }
 
-        .section .img1, .section .img2, .section .img3 {
-            width: 300px;
+        .section .img1, .section .img2, .section .img3, .section .img4 {
+            width: 100px;
             height: auto;
         }
 
@@ -182,7 +182,7 @@
         }
 
         .section .img1, .section .img2, .section .img3 {
-            width: 300px;
+            width: 100px;
             height: auto;
         }
 
@@ -203,7 +203,7 @@
     height: auto;
 }
 </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -228,5 +228,55 @@
         <a href="papers.html">Papers</a> |
         <a href="resume.pdf">Resume</a>
     </div>
+
+    <div class="content">
+
+        <article>
+             <h1>Reservoir Computing: Dealing with Noise in Dynamic Systems</h1>
+
+<p>In today's pulse of machine learning, we're diving deep into reservoir computing, a subset of recurrent neural network
+    systems that are extensively used for complex temporal processing tasks. The key question that we're wrestling with?
+    What happens when our computational reservoir is subject to noise and errors? For the uninitiated, think of reservoir
+    computing like a brain behind generative AI tasks - they predict future outcomes based on a history of inputs.
+    A classic example is how chatbots predict language patterns for human-like conversation based on previous inputs.</p>
+
+<p>Noise, is a natural part of machine computation. We find noise in observation data collected by sensors on self-driving cars,
+    due to rounding in computation and even in quantum mechanics due to fundamental uncertainty. What <a href="https://scirate.com/arxiv/2307.14474">I showed</a>
+    is that noise isn't just a mild irritant; it can drastically limit our computational system's capacity by exponentially
+    reducing the collection of functions it can access and process proficiently.</p>
+
+<p>In the following notebooks (and in the associated research paper), we'll unpack these findings further and shed light
+    on the inherent challenges of noise within reservoir computing systems. We believe that the lessons learned will
+    assist in improving computational precision and in unlocking the full potential of these systems for various ML applications!</p>
+
+            <section>
+                <h3>Background</h3>
+                <p>An introduction into echo state networks.</p>
+                <a href="background.html">View Notebook</a>
+            </section>
+
+            <section>
+                <h3>Parallel Execution</h3>
+                <p>Speeding up reservoir computer simulations.</p>
+                <a href="parallel_execution.html">View Notebook</a>
+            </section>
+
+            <section>
+                <h3>Power Sets</h3>
+                <p>Generating more signals for our reservoir to use.</p>
+                <a href="power_sets.html">View Notebook</a>
+            </section>
+
+            <section>
+                <h3>Noisy Scaling Laws</h3>
+                <p>Empirically observing the effects of noise on system size.</p>
+                <a href="noisy_scaling_laws.html">View Notebook</a>
+            </section>
+
+        </article>
+
+    </div>
+
+
 </body>
 </html>
