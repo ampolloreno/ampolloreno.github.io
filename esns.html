@@ -259,21 +259,35 @@ h1, h2, h4, h5, h6 {
         <img class="esnimg" src="eyecandy.jpg" alt="Meant to catch your attention.">
                 </div>
 
-<p>In this post, we're diving deep into reservoir computing, a subset of recurrent neural network
+<p> In this post, we're diving deep into reservoir computing, a subset of recurrent neural network
     systems that are used extensively for complex temporal processing tasks. The key question that we're wrestling with?
     What happens when our computational reservoir is subject to noise and errors? For the uninitiated, think of reservoir
     computing like a brain behind generative AI tasks - they predict future outcomes based on a history of inputs.
-    A classic example is how chatbots predict language patterns for human-like conversation based on previous inputs.</p>
+    A classic example is how chatbots predict language patterns for human-like conversation based on previous inputs.
+    The specific kind of reservoir computer we are going to consider are Echo State Networks (ESNs), which we introduce in
+    <a href="background.html"> the first notebook below</a>. They are a very simple network with a few tunable parameters:
+    the network sparsity, the bleedthrough between time steps, an encoding map, a decoding map, an internal transition map,
+    and the size of the reservoir. The interesting property of ESNs is that by randomly initializing the weights in the
+    encoding map and internal transition map, it is possible to learn to predict time series by simply training the decoding
+    map, which can be taken to be linear, and computable by the standard least squares estimator.
+</p>
 
-<p>
-    Noise is a natural part of machine computation. We find noise in observation data collected by sensors on self-driving cars,
-    due to rounding in floating-point computation and even in quantum mechanics due to fundamental uncertainty. Noise isn't just a mild irritant;
-    <a href="https://scirate.com/arxiv/2307.14474"> it can drastically limit our computational system's capacity by exponentially
+<p> In the second notebook, <a href="parallel_execution.html">we speed up the naive implementation of the reservoir</a>.
+    The goal of this post is to understand how noise affects the performance of reservoir computers as a function of their size. One possible
+    optimization we could do is to simulate multiple reservoirs at the same time, which would speed up the total evaluation time,
+    but doesn't increase the per-instance simulation time, which is convenient to decrease for exploratory work when tweaking
+    network parameters. We are going to take a different approach, where we introduce a batch dimension to split up the time dimension,
+    and decrease the per-instance simulation time.
+</p>
+<p> Using our optimized simulator, <a href="noisy_scaling_laws.html"> in the third notebook we scan over reservoir sizes
+    and noise values on a fixed learning task.</a> Noise is a natural part of machine computation. We find noise in
+    observation data collected by sensors on self-driving cars, due to rounding in floating-point computation and even
+    in quantum mechanics due to fundamental uncertainty. Noise isn't just a mild irritant; <a href="https://scirate.com/arxiv/2307.14474">
+        it can drastically limit our computational system's capacity by exponentially
         reducing the collection of functions it can access and process proficiently</a>.
     In the following notebooks we'll unpack these findings further and shed light on the inherent challenges of noise within reservoir
     computing systems.
 </p>
-
             <section>
                 <h3>Background</h3>
                 <p>An introduction into echo state networks (ESNs). We start with a short tutorial on training an ESN
@@ -283,7 +297,7 @@ h1, h2, h4, h5, h6 {
 
             <section>
                 <h3>Parallel Execution</h3>
-                <p>We include a brief discussion of how to speed up the simulation time. Sweep Speeding up reservoir computer simulations.</p>
+                <p>We include a brief discussion of how to speed up the simulation time.</p>
                 <a href="parallel_execution.html">View Notebook</a>
             </section>
 
