@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Limits to Reservoir Learning 4 - Noisy Scaling Laws</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Limits to Reservoir Learning 3 - Noisy Scaling Laws</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14580,7 +14580,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Noisy-Scaling-Laws">Noisy Scaling Laws<a class="anchor-link" href="#Noisy-Scaling-Laws">&#182;</a></h1><p>Now we are set to explore the effect of noise on learning with reservoir computers. We consider a very simple noise model - we add independent Gaussian noise to each entry of the data matrix. This is effectively observation error. We scan over different values of noise and reservoir size. These kinds of arguments are generally called scaling laws. What we are interested in is not the quantitative values, but rather the qualitative change in the functional form of the reservoir performance. We've written a performant simulator, which is included as a .py file.</p>
+<h1 id="Noisy-Scaling-Laws-(In-Progress!)">Noisy Scaling Laws (In Progress!)<a class="anchor-link" href="#Noisy-Scaling-Laws-(In-Progress!)">&#182;</a></h1><p>Now we are set to explore the effect of noise on learning with reservoir computers. We consider a very simple noise model - we add independent Gaussian noise to each entry of the data matrix. This is effectively a form of observation error. We scan over different values of noise and reservoir size. These kinds of arguments are generally called scaling laws.</p>
 
 </div>
 </div>
@@ -14590,7 +14590,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -14599,7 +14599,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pickle</span> <span class="k">as</span> <span class="nn">pkl</span>
 
-<span class="n">noise_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">noise_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># standard deviations for Gaussian observation noise.</span>
 
 <span class="n">keys</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">noise_values</span><span class="p">)</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>  <span class="c1"># Reservoir sizes</span>
@@ -14739,137 +14739,11 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="We-expect-there-the-be-an-exponential-reduction,-so-that-the-scaling-law-is-polynomial,-that-is-error-$%5Csim-a/n%5Eb-+-c$.-As-noise-goes-to-zero,-$b%5Crightarrow-%5Cinfty$,-and-$c%5Crightarrow-0$.-For-large-enough-noise,-$c-%5Crightarrow-.5$,-since-the-best-the-reservoir-can-do-is-randomly-guess.">We expect there the be an exponential reduction, so that the scaling law is polynomial, that is error $\sim a/n^b + c$. As noise goes to zero, $b\rightarrow \infty$, and $c\rightarrow 0$. For large enough noise, $c \rightarrow .5$, since the best the reservoir can do is randomly guess.<a class="anchor-link" href="#We-expect-there-the-be-an-exponential-reduction,-so-that-the-scaling-law-is-polynomial,-that-is-error-$%5Csim-a/n%5Eb-+-c$.-As-noise-goes-to-zero,-$b%5Crightarrow-%5Cinfty$,-and-$c%5Crightarrow-0$.-For-large-enough-noise,-$c-%5Crightarrow-.5$,-since-the-best-the-reservoir-can-do-is-randomly-guess.">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<p>What we are interested in is not the quantitative values, but rather the qualitative change in the functional form of the reservoir performance. We expect there the be an exponential reduction, so that the scaling law is polynomial, that is error $\sim a/n^b + c$. As noise goes to zero, $b\rightarrow \infty$, and $c\rightarrow 0$. For large enough noise, $c \rightarrow .5$, since the best the reservoir can do is randomly guess. And so we see an example of the exponential decrease in computational utility of a reservoir computer in the presence of noise. While the noiseless reservoir (orange/blue) exponentially increases performance with system size, the remaining reservoirs with noise decrease only inverse polynomially.</p>
 
-     </div>
 </div>
 </div>
 </div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
-<span class="c1"># import matplotlib.colors as colors</span>
-<span class="c1"># import numpy as np</span>
-<span class="c1"># import pickle as pkl</span>
-
-
-<span class="c1"># def get_best_per_size(data):</span>
-<span class="c1">#     sizes = np.unique(data[:, 1])</span>
-<span class="c1">#     best_values = {}</span>
-<span class="c1">#     for size in sizes:</span>
-<span class="c1">#         size_data = data[data[:, 1] == size]</span>
-<span class="c1">#         best_value = np.min(size_data[:, 0])</span>
-<span class="c1">#         best_values[size] = best_value</span>
-<span class="c1">#     return best_values</span>
-
-<span class="c1"># # list of all noise values, standard deviations of a zero mean Gaussian.</span>
-<span class="c1"># noise_values = [0.05, 0.04, 0.03, 0.02, 0.01, 0]</span>
-<span class="c1"># all_best_values = {}</span>
-
-<span class="c1"># # Load all data and find best values per size</span>
-<span class="c1"># power_set_str = 'False'</span>
-<span class="c1"># for noise in noise_values:</span>
-<span class="c1">#     file_name = f'results{power_set_str}{noise}.pkl'</span>
-<span class="c1">#     with open(file_name, 'rb') as f:</span>
-<span class="c1">#         nrmse = pkl.load(f)</span>
-<span class="c1">#     data = np.array(nrmse)</span>
-<span class="c1">#     all_best_values[(power_set_str, noise)] = get_best_per_size(data)</span>
-        
-<span class="c1"># keys = list(all_best_values[('False', noise_values[0])].keys())[:10]</span>
-
-<span class="c1"># # Get min and max error for color scale across both powerset true and false</span>
-<span class="c1"># min_error = min(min(all_best_values[(power_set_str, noise)].values()) for power_set_str in ['False'] for noise in noise_values)</span>
-<span class="c1"># max_error = max(max(all_best_values[(power_set_str, noise)].values()) for power_set_str in ['False'] for noise in noise_values)</span>
-
-<span class="c1"># # Define the normalizer</span>
-<span class="c1"># norm = colors.LogNorm(vmin=min_error, vmax=max_error)</span>
-
-<span class="c1"># power_set_str ='False'</span>
-<span class="c1"># plt.figure(figsize=(10, 6))</span>
-<span class="c1"># X = np.array(keys)  # Reservoir sizes</span>
-<span class="c1"># Y = np.array(noise_values)  # Noise values</span>
-<span class="c1"># Z = np.array([[all_best_values[(power_set_str, noise)][size] for size in keys] for noise in noise_values])  # Errors</span>
-<span class="c1"># plt.pcolormesh(X, Y, Z, norm=norm, shading='auto', cmap='viridis')</span>
-<span class="c1"># plt.title(f"{'Power set' if power_set_str == 'True' else 'No power set'} - Error")</span>
-<span class="c1"># plt.xlabel('Reservoir size')</span>
-<span class="c1"># plt.ylabel('Noise')</span>
-<span class="c1"># plt.colorbar(label='Error (Log scale)')</span>
-<span class="c1"># plt.show()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
