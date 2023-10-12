@@ -214,15 +214,52 @@ h1, h2, h4, h5, h6 {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 30px;
+        padding: 0px;
             margin: auto;
         }
 
         .image-background .esnimg {
-        max-width: 20%;
+        max-width: 50%;
         height: auto;
         }
 
+     /* Add styles for the .content paragraph */
+        .content p {
+            max-width: 800px;
+            margin: auto;
+            padding: 15px;
+            background-color: rgba(0,0,0,5%);
+            border-radius: 3px;
+        }
+
+        .content article {
+            max-width: 900px;
+            margin: auto;
+        }
+        /* Add this code */
+.content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.content p {
+    background-color: #f2f2f2; /* Pale gray */
+    padding: 15px;
+    border-radius: 5px;
+}
+.content .paragraph {
+  background-color: #f2f2f2; /* Pale gray */
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px; /* gives some space between paragraphs */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content .paragraph p {
+  margin: 0;
+}
 
 </style>
     <link rel="stylesheet" href="style.css">
@@ -258,7 +295,7 @@ h1, h2, h4, h5, h6 {
                 <div class="image-background">
         <img class="esnimg" src="eyecandy.jpg" alt="Meant to catch your attention.">
                 </div>
-
+    <div class="paragraph">
 <p> In this post, we're diving deep into reservoir computing, a subset of recurrent neural network
     systems that are used extensively for complex temporal processing tasks. The key question that we're wrestling with?
     What happens when our computational reservoir is subject to noise and errors? For the uninitiated, think of reservoir
@@ -271,7 +308,8 @@ h1, h2, h4, h5, h6 {
     encoding map and internal transition map, it is possible to learn to predict time series by simply training the decoding
     map, which can be taken to be linear, and computable by the standard least squares estimator.
 </p>
-
+    </div>
+    <div class="paragraph">
 <p> In the second notebook, <a href="parallel_execution.html">we speed up the naive implementation of the reservoir</a>.
     The goal of this post is to understand how noise affects the performance of reservoir computers as a function of their size. One possible
     optimization we could do is to simulate multiple reservoirs at the same time, which would speed up the total evaluation time,
@@ -279,6 +317,8 @@ h1, h2, h4, h5, h6 {
     network parameters. We are going to take a different approach, where we introduce a batch dimension to split up the time dimension,
     and decrease the per-instance simulation time.
 </p>
+    </div>
+                <div class="paragraph">
 <p> Using our optimized simulator, <a href="noisy_scaling_laws.html"> in the third notebook we scan over reservoir sizes
     and noise values on a fixed learning task.</a> Noise is a natural part of machine computation. We find noise in
     observation data collected by sensors on self-driving cars, due to rounding in floating-point computation and even
@@ -288,25 +328,25 @@ h1, h2, h4, h5, h6 {
     In the following notebooks we'll unpack these findings further and shed light on the inherent challenges of noise within reservoir
     computing systems.
 </p>
-            <section>
-                <h3>Background</h3>
-                <p>An introduction into echo state networks (ESNs). We start with a short tutorial on training an ESN
-                to perform the NARMA10 learning task.</p>
-                <a href="background.html">View Notebook</a>
-            </section>
+                </div>
+  <section style="text-align: center;">
+    <h3>Background</h3>
+    <p>An introduction into echo state networks (ESNs). We start with a short tutorial on training an
+        ESN to perform the NARMA10 learning task.</p>
+    <a href="background.html">View Notebook</a>
+</section>
 
-            <section>
-                <h3>Parallel Execution</h3>
-                <p>We include a brief discussion of how to speed up the simulation time.</p>
-                <a href="parallel_execution.html">View Notebook</a>
-            </section>
+<section style="text-align: center;">
+    <h3>Parallel Execution</h3>
+    <p>We include a brief discussion of how to speed up the simulation time.</p>
+    <a href="parallel_execution.html">View Notebook</a>
+</section>
 
-            <section>
-                <h3>Noisy Scaling Laws</h3>
-                <p>Empirically observing the effects of noise on system size.</p>
-                <a href="noisy_scaling_laws.html">View Notebook</a>
-            </section>
-
+<section style="text-align: center;">
+    <h3>Noisy Scaling Laws</h3>
+    <p>Empirically observing the effects of noise on system size.</p>
+    <a href="noisy_scaling_laws.html">View Notebook</a>
+</section>
         </article>
 
     </div>
