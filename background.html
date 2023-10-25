@@ -14652,7 +14652,9 @@ class="
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>(Image from "Long-Short Term Echo State Network for Time Series Prediction" by Kaihong Zheng et al.)</p>
-<p>Specifically, we will consider the following model:</p>
+<p>Specifically, denoting the neurons of the reservoir as $R$ we will consider a network with the following internal dynamics:</p>
+<p>$R(t) = (1-\alpha)R(t-1) + \alpha \tanh(U(t)W_{in} + R(t-1)W_{res} + \beta)$</p>
+<p>where $\alpha$ sets the bleedthrough between time steps, and $\beta$ is a bias term. In the cell below, we've included the bias by concatenation a $1$ with the input data.</p>
 
 </div>
 </div>
@@ -14718,7 +14720,10 @@ class="
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="NARMA10">NARMA10<a class="anchor-link" href="#NARMA10">&#182;</a></h1><p>NARMA is an acronym for Nonlinear AutoRegressive Moving Average. It’s commonly used to benchmark the performance of RNNs, especially ESNs. We'll use it in this notebook to showcase the performance of these networks. It defines a temporal data processing task where the data is drawn at random from $[0,1]$, and processed by a specific nonlinear, autoregressive function, defined as:</p>
+<h1 id="NARMA10">NARMA10<a class="anchor-link" href="#NARMA10">&#182;</a></h1><p>NARMA is an acronym for Nonlinear AutoRegressive Moving Average, and NARMA10 particular is defined by the following time series.</p>
+<p>$y(t) = .3y(t-1) + .05y(t-1)\sum_{i=1}^{10} y(t-i) + 1.5U(t-1)*U(t-10) + .1,$
+where $X(t)$ is a uniform random variable.</p>
+<p>It’s commonly used to benchmark the performance of RNNs, especially ESNs. To do this, the reservoir is run with inputs $U(t)$, and trained on $Y(t)$, up to some $T$. Using the analytic training solution in the next text cell, the reservoir is then used to predict the values of $Y(t)$ for $t&gt;T$. We'll use it in this notebook to showcase the performance of these networks. It defines a temporal data processing task where the data is drawn at random from $[0,1]$, and processed by a specific nonlinear, autoregressive function, defined as:</p>
 
 </div>
 </div>
@@ -14774,7 +14779,8 @@ $$
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_NARMA10</span><span class="p">(</span><span class="n">resSize</span><span class="p">,</span> <span class="n">inSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_cycles</span><span class="o">=</span><span class="mi">11000</span><span class="p">,</span> <span class="n">test_cycles</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">sparsity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>    
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_NARMA10</span><span class="p">(</span><span class="n">resSize</span><span class="p">,</span> <span class="n">inSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_cycles</span><span class="o">=</span><span class="mi">11000</span><span class="p">,</span> <span class="n">test_cycles</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">sparsity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">):</span>    
     <span class="n">Echo</span> <span class="o">=</span> <span class="n">ESN_init</span><span class="p">(</span><span class="n">inSize</span><span class="p">,</span> <span class="n">outSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">)</span>
     <span class="n">data_train</span><span class="p">,</span> <span class="n">Y_train</span> <span class="o">=</span> <span class="n">fetchData</span><span class="p">(</span><span class="n">train_cycles</span><span class="p">)</span>
     <span class="n">data_test</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">fetchData</span><span class="p">(</span><span class="n">test_cycles</span><span class="p">)</span>
@@ -14801,7 +14807,7 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Now we will just plot the estimate from the reservoir, given the input data, against the desired output in the test set. We seed our examples so that we can sensibly compare performance improvements when we're running single experiments. Additionally, in this notebook, we set the reservoir size, fairly arbitarily, to 5. With more nerons, we can expect better performance, but the effects we are interested in can be observed at this scale, which as the added benefit of being quick to compute.</p>
+<p>Now we will just plot the estimate from the reservoir, given the input data, against the desired output in the test set. We seed our examples so that we can sensibly compare performance improvements when we're running single experiments. Additionally, in this notebook, we set the reservoir size, fairly arbitarily, to 5. With more nerons, we can expect better performance, but the effects we are interested in can be observed at this scale, which has the added benefit of being quick to compute.</p>
 
 </div>
 </div>
@@ -14978,9 +14984,42 @@ class="
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Powerset-Signals">Powerset Signals<a class="anchor-link" href="#Powerset-Signals">&#182;</a></h1><p>Given some input signal, the learner is trying to make sense of the signal and process it in some way. In this work we consider the setting where we fix the network size, and instead consider engineering features. One reason we might do this is that making the network larger is either too expensive or slows down computation. I was motivated by quantum computation, where this is the case. Primarily, we are interested in understanding if the engineered features we consider can be useful.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Given $n$ neurons, a simple way to generate new features is to consider the pointwise products of the elements of the powerset. This multiplication produces linearly independent signals and is the simplest way I can think of for quickly creating a very large collection of signals. There are other ways of creating new functions from an existing collection, but one motivation for the power set is the following:</p>
-<p>Consider two-outcome functions $f_1(x),..., f_n(x) \in \{-1, 1\}$. Sums of these functions are contained in their linear span. What about products? $f_i^{2k}(x) = 1$, the constant function, and $f_i^{2k+1}(x)=f_i(x)$, so that include the powerset now contains all polynomials of these functions in its span. Hence, for any analytic function the outputs, we can truncate the Taylor series for an arbitrarily good approximation to the function that is contained in the power set. When we are considering binary logic, we can always map to this set, and hence this gives an extremely compelling set to consider. For our example, with the NARMA data set, we don't have this restriction, so this is mostly just an illustrative example.</p>
-<p>Let's try it!</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Consider two-outcome functions $f_1(x),..., f_n(x) \in \{0, 1\}$ (like the outcomes of circuits executing Boolean logic). Sums of these functions are contained in their linear span. What about products? For $k &gt; 0$, $f_i^{k}(x)=f_i(x)$, so that the powerset now contains all polynomials of these functions in its span. Generally speaking, short of exactly computing functions, computing approximations with Taylor approximations using sums of high degree polynomials is the best we can do.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>That being said, we are not in the binary setting, and there are many, many more functions we could construct. For this tutorial, we are interested in showing the effect of noise on any collection of functions we add, and so we will stick with the power set as an example.</p>
 
 </div>
 </div>
@@ -15011,7 +15050,9 @@ class="
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Add the powerset of signals.</span>
         <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">datamatrix</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
-        <span class="n">power_signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_points</span><span class="p">))</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)))[</span><span class="mi">1</span><span class="p">:]]</span>
+        <span class="n">power_signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_points</span><span class="p">))</span>
+                         <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+                             <span class="n">combinations</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)))[</span><span class="mi">1</span><span class="p">:]]</span>
         <span class="n">power_signals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">datamatrix</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">power_signals</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">power_signals</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
@@ -15041,13 +15082,15 @@ class="
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_NARMA10</span><span class="p">(</span><span class="n">resSize</span><span class="p">,</span> <span class="n">inSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_cycles</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span> <span class="n">test_cycles</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">sparsity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">powerset</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>    
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">test_NARMA10</span><span class="p">(</span><span class="n">resSize</span><span class="p">,</span> <span class="n">inSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">outSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">train_cycles</span><span class="o">=</span><span class="mi">9000</span><span class="p">,</span> <span class="n">test_cycles</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                 <span class="n">sparsity</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">powerset</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>    
     <span class="n">Echo</span> <span class="o">=</span> <span class="n">ESN_init</span><span class="p">(</span><span class="n">inSize</span><span class="p">,</span> <span class="n">outSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">)</span>
     <span class="n">data_train</span><span class="p">,</span> <span class="n">Y_train</span> <span class="o">=</span> <span class="n">fetchData</span><span class="p">(</span><span class="n">train_cycles</span><span class="p">)</span>
     <span class="n">data_test</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">fetchData</span><span class="p">(</span><span class="n">test_cycles</span><span class="p">)</span>
     <span class="n">train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">reservoir</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="o">*</span><span class="n">Echo</span><span class="p">,</span> <span class="n">powerset</span><span class="p">))</span>
     
-    <span class="c1"># We're going to add in ridge regression to avoid overfitting, and help with the ill-conditioned train matrix.</span>
+    <span class="c1"># We're going to add in ridge regression to avoid overfitting, and help with</span>
+    <span class="c1"># the ill-conditioned train matrix.</span>
     <span class="n">coeff</span> <span class="o">=</span> <span class="mf">1E-8</span>
     <span class="n">ridge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">ridge</span><span class="p">,</span> <span class="n">coeff</span><span class="p">)</span>   
@@ -15220,7 +15263,7 @@ class="
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">Yhat2</span><span class="o">-</span><span class="n">Y_test2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">.1</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'power set'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Histogram of squared errors per test point"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Histogram of squared errors per test point"</span><span class="p">);</span>
 </pre></div>
 
      </div>
@@ -15234,20 +15277,6 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>Text(0.5, 1.0, &#39;Histogram of squared errors per test point&#39;)</pre>
-</div>
-
-</div>
 
 <div class="jp-OutputArea-child">
 
