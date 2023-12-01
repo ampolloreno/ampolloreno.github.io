@@ -291,13 +291,18 @@ h1, h2, h4, h5, h6 {
              <h1>The Impact of Noise on Recurrent Neural Networks</h1>
     <div class="paragraph">
 <p> In this section, we are going to consider the simulation of the Echo State Networks discussed in the last post.
-    Simulating multiple reservoirs at the same time speeds up the total evaluation time, but doesn't increase the per-instance
-    simulation time, which is convenient to decrease for exploratory work when tweaking network parameters.
-    We will explore this in the appendix.
+    This is an oddly constrained problem, and there are actually a few design decisions. Dealing with the variable
+    training length is annoying. I messed around with this for a while (we will explore this in the appendix),
+    but discovered that a much better thing to do is simulate an ensemble of reservoirs. In principle, each size
+    (and each reservoir in each ensemble for each size) should have a different training length, so we don't over- or
+    under-fit. We still see an improvement with reservoir size if we ignore this, so we do for now. Simulating an
+    ensemble now gives us a clear dimension to parallelize over. To do this, we now need to chunk the time data,
+    because loading the entire sequence onto the GPU takes up space that can otherwise be used for simulation and
+    storing neural activations.
 
 </p>
     </div>
-    <iframe src="Webpost1.html" style="height:7600px; width:100%; border:none;" ></iframe>
+    <iframe src="Webpost2.html" style="height:7600px; width:100%; border:none;" ></iframe>
             <div class="paragraph">
 
 
