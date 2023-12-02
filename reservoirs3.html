@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMP</title>
-    <style>
+    <title>Reservoir Computing</title>
+     <style>
 
      body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,10 @@
         .content {
             padding: 20px;
         }
-
+         .content {
+            padding: 20px;
+            background-color: #ffffff; /* this is the color white */
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -202,8 +205,64 @@
     width: 40%;
     height: auto;
 }
-</style>
+h1, h2, h4, h5, h6 {
+    text-align: center;
+}
 
+        .image-background .esnimg {
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+            margin: auto;
+        }
+
+        .image-background .esnimg {
+        max-width: 50%;
+        height: auto;
+        }
+
+     /* Add styles for the .content paragraph */
+        .content p {
+            max-width: 800px;
+            margin: auto;
+            padding: 15px;
+            background-color: rgba(0,0,0,5%);
+            border-radius: 3px;
+        }
+
+        .content article {
+            max-width: 900px;
+            margin: auto;
+        }
+        /* Add this code */
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content p {
+    background-color: #f2f2f2; /* Pale gray */
+    padding: 15px;
+    border-radius: 5px;
+}
+.content .paragraph {
+  background-color: #f2f2f2; /* Pale gray */
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px; /* gives some space between paragraphs */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content .paragraph p {
+  margin: 0;
+}
+
+</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -214,7 +273,7 @@
     </div>
 
     <div class="nav">
-      <a href="index.html">Home</a> |
+       <a href="index.html">Home</a> |
         <a href="research.html">Research</a> |
         <a href="engineering.html"> Engineering </a> |
         <a href="https://twitter.com/ampolloreno">Twitter</a> |
@@ -226,50 +285,29 @@
         <a href="reservoirs2.html">Reservoir Computing II</a>|
         <a href="reservoirs3.html">Reservoir Computing III</a>
     </div>
-<body>
-    <div class="section">
-        <img class="img1"  src="machine_learning.jpg" alt="Machine Learning Image">
-        <div>
-            <h3>Machine Learning</h3>
-            <ol>
-                <li>Studied the effects of noise on the performance of reservoir computing, a non-linear recurrent neural network. Presented findings on how noise influences the capacity of the system to learn a function. <a href="http://arxiv.org/abs/2302.10862v1" target="_blank">Find Details Here.</a></li>
-                <li>Explored the possibility of utilising a quantum circuit as a kernel in quantum machine learning. This probe into the dynamics of n qubits offers a non-linear mapping for better understanding quantum machine learning. <a href="http://arxiv.org/abs/1806.08321v2" target="_blank">Find Details Here.</a></li>
-                <li>Worked on optimizing a parameterized quantum circuit using a classical computer in the context of quantum machine learning. Devised strategies to make optimal use of the available sample space. <a href="http://arxiv.org/abs/2205.06845v5" target="_blank">Find Details Here.</a></li>
-                <li>Demonstrated that physical, noisy analog reservoir computers have limited capabilities in computing deterministic functions, but indicated these can learn functions with outputs as random variables. <a href="http://arxiv.org/abs/2307.14474v1" target="_blank">Find Details Here.</a></li>
-            </ol>
-        </div>
+
+    <div class="content" id="blogPost">
+
+        <article>
+             <h1>The Impact of Noise on Recurrent Neural Networks II</h1>
+    <div class="paragraph">
+        <p> We are finally set to analyze the impacts of noise on our particular model of recurrent computation - reservoir computing
+            with Echo State Networks. In the previous post, we implemented an extremely simple noise model by simply adding Gaussian
+            noise to each element of the output signal from the reservoir. In principle, the dynamics of a system will have more
+            complicated noise based on the details of the computation being done, but in our case using such a simple model will
+            let us explore intuitively why we should expect a substantial degradation in performance in the first place. Let's dive in!
+        </p>
+    </div>
+    <iframe src="Webpost3.html" style="height:9900px; width:100%; border:none;" ></iframe>
+            <div class="paragraph">
+<section style="text-align: center;">
+    <h3>Acknowledgements</h3>
+    <p>A special thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a> and <a href="https://chromotopy.org/">Eric Peterson</a> for feedback on this post!</p>
+</section>
+        </article>
+
     </div>
 
-     <div class="section">
-        <img class="img4" src="asymptotic_characterization.jpg" alt="Asymptotic Characterization Image">
-        <div>
-            <h3>Asymptotic Characterization</h3>
-            <ol>
-                <li>Delineates a "no free lunch" theorem for sensor performance across various frequencies, with the help of entanglement. <a href="http://arxiv.org/abs/2203.05520v2" target="_blank">Find Details Here.</a></li>
-            </ol>
-        </div>
-    </div>
 
-    <div class="section">
-        <img class="img2" src="control_and_optimization.jpg" alt="Control and Optimization Image">
-        <div>
-            <h3>Control, Numerical Methods and Optimization</h3>
-            <ol>
-              <li>Explored using convex optimization to design controls for a quantum computer with randomized errors, shifting from systematic errors. Demonstrated possibilities of using the objective function towards favoring sparsity and error maps conducive to Monte Carlo simulation. <a href="http://arxiv.org/abs/2001.02779v2" target="_blank">Find Details Here.</a></li>
-              <li>Analyzed the feasibility of deformable mirrors in addressing single ions using analytical models and numerical solvers. This adds to the understanding of quantum computers' scaling problem. <a href="http://arxiv.org/abs/2203.05196v2" target="_blank">Find Details Here.</a></li>
-            </ol>
-        </div>
-    </div>
-
-    <div class="section">
-        <img class="img3"  src="randomization_and_stats_analysis.jpg" alt="Randomization and Stats Analysis Image">
-        <div>
-            <h3>Randomization and Statistical Analysis</h3>
-            <ol>
-                <li>Developed a characterization technique for quantum computers, extending randomized benchmarking, which was a significant part of my Ph.D. thesis. <a href="http://arxiv.org/abs/2302.13853v1" target="_blank">Find Details Here.</a></li>
-                <li>Further extended these results to estimate errors under a Markovian error model using non-Hermitian perturbation theory. <a href="thesis.pdf">Find Details Here.</a></li>
-            </ol>
-        </div>
-    </div>
 </body>
 </html>
