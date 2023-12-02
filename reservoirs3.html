@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMP</title>
-    <style>
+    <title>Reservoir Computing</title>
+     <style>
 
      body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,10 @@
         .content {
             padding: 20px;
         }
-
+         .content {
+            padding: 20px;
+            background-color: #ffffff; /* this is the color white */
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -75,8 +78,8 @@
         }
 
         .section .img1 {
-            width: 400px;
-            height: 350px;
+            width: 100px;
+            height: 150px;
         }
 
         .section .img2 {
@@ -89,8 +92,8 @@
             height: 300px;
         }
         .section .img4 {
-            width: 400px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
         }
           .section div {
             margin-left: 40px;
@@ -148,8 +151,8 @@
             width: 100%;
         }
 
-        .section .img1, .section .img2, .section .img3 {
-            width: 300px;
+        .section .img1, .section .img2, .section .img3, .section .img4 {
+            width: 100px;
             height: auto;
         }
 
@@ -182,7 +185,7 @@
         }
 
         .section .img1, .section .img2, .section .img3 {
-            width: 300px;
+            width: 100px;
             height: auto;
         }
 
@@ -202,28 +205,64 @@
     width: 40%;
     height: auto;
 }
+h1, h2, h4, h5, h6 {
+    text-align: center;
+}
 
-        /* New styles for the second nav bar with added gap and smaller text */
-        .second-nav {
-            text-align: center;
-            background-color: #555; /* Darker gray for contrast */
-            padding: 10px;
-            margin-top: 10px; /* Added gap between the main nav and second nav */
+        .image-background .esnimg {
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+            margin: auto;
         }
 
-        .second-nav a {
-            color: #ddd; /* Lighter text for contrast */
-            text-decoration: none;
-            padding: 0 10px;
-            font-size: 0.9em; /* Smaller text size for the second nav */
+        .image-background .esnimg {
+        max-width: 50%;
+        height: auto;
         }
 
-        .second-nav a:hover {
-            text-decoration: underline;
+     /* Add styles for the .content paragraph */
+        .content p {
+            max-width: 800px;
+            margin: auto;
+            padding: 15px;
+            background-color: rgba(0,0,0,5%);
+            border-radius: 3px;
         }
+
+        .content article {
+            max-width: 900px;
+            margin: auto;
+        }
+        /* Add this code */
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content p {
+    background-color: #f2f2f2; /* Pale gray */
+    padding: 15px;
+    border-radius: 5px;
+}
+.content .paragraph {
+  background-color: #f2f2f2; /* Pale gray */
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px; /* gives some space between paragraphs */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content .paragraph p {
+  margin: 0;
+}
 
 </style>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -234,21 +273,17 @@
     </div>
 
     <div class="nav">
-      <a href="index.html">Home</a> |
+       <a href="index.html">Home</a> |
         <a href="research.html">Research</a> |
         <a href="engineering.html"> Engineering </a> |
         <a href="https://twitter.com/ampolloreno">Twitter</a> |
         <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
         <a href="https://github.com/ampolloreno">GitHub</a> |
         <a href="papers.html">Papers</a> |
-        <a href="resume.pdf">Resume</a>
-            <!-- New second navigation bar for "Reservoir Computing" topics -->
-    <div class="second-nav">
+        <a href="resume.pdf">Resume</a>|
         <a href="reservoirs.html">Reservoir Computing I</a> |
-        <a href="reservoirs2.html">Reservoir Computing II</a> |
+        <a href="reservoirs2.html">Reservoir Computing II</a>|
         <a href="reservoirs3.html">Reservoir Computing III</a>
-    </div>
-
     </div>
 
     <div class="content" id="blogPost">
