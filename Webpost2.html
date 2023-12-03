@@ -7493,7 +7493,12 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>From Chebyshev [1] we know that for a random variable with variance $\sigma^2$ $\Pr(|X-\mu |\geq k )\leq {\frac {\sigma^2}{k^{2}}}$. For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has variance $\sigma^2 = \sigma_0^2/N$ so that $\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$. Whereas before we might expect $\Pr(|X-\mu|\geq \sigma_0) \leq 68\%$ if $X$ were Gaussian distributed, we now have, for $k \sim 1$ and $N\sim 500$, a bound of $.02\%$. That's much tighter! This depends on the actual shape of the distribution and its actual moment, but we expect such an improvement to be sufficient... and we will empirically observe that it is!</p>
+<p>To start this notebook, we note that from Chebyshev's Inequality [1] we know that for a random variable with variance $\sigma_0^2$,</p>
+<p>$\Pr(|X-\mu |\geq  k\sigma_0 )\leq {\frac {1}{k^{2}}}$.</p>
+<p>For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has a variance $\sigma^2 \approx \sigma_0^2/N$ and mean $\mu$ by the central limit theorem, so that</p>
+<p>$\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$.</p>
+<p>We don't know aproiri what the distribution of $X$ is, but we can reason about it a bit. If it were Gaussian, we know from the standard result that $\Pr(|X-\mu|\geq \sigma_0) \leq 68\%$.</p>
+<p>We also know empirically that $\sigma_0 \lesssim 1$, so that $k \sim .5$ and $N\sim 500$, a bound of $\sim 1\%$. This is a very coarse bound on the deviation from the mean, but it is with very high probability, and we will see that in practice it works much better than these numbers suggest.</p>
 <p>[1] <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">https://en.wikipedia.org/wiki/Chebyshev%27s_inequality</a></p>
 </div>
 </div>
@@ -7505,18 +7510,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Third, because there is noise, we need to sample the reservoir many times to get the correct estimate of the weights. This in principle can also be trivially parallelized over, but we've chosen the different copies of reservoirs to parallelize over because we expect the number of reservoirs needed to be larger than the number of samples needed, and because multiple samples is a special case of the different reservoirs, where the different reservoirs are identical.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=70c7d4a1-76c3-4888-a66d-cffd99ae59f8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Fourth, we are talking about the power set, which is exponentially large. It would be nice to see the exponential improvement over a few decades of reservoir sizes, but we can't manage to solve the least squares problem for even moderately large reservoirs if we consider the full power set.</p>
+<p>Because there is noise, we need to sample the reservoir many times to get the correct estimate of the weights. This in principle can also be trivially parallelized over, but we've chosen the different copies of reservoirs to parallelize over because we expect the number of reservoirs needed to be larger than the number of samples needed, and because multiple samples is a special case of the different reservoirs, where the different reservoirs are identical.</p>
 </div>
 </div>
 </div>
@@ -7527,8 +7521,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>With these points in mind, we turn to actually demonstrating the results of the paper [2]. We implement an efficient GPU simulator for multiple stacked reservoirs. After averaging over an ensemble, we only have a few free parameters. To start, we note that the problem is extremely overparameterized, and so ridge regression is necessary. We can sweep this parameter, which leaves the reservoir size and the amount of noise. For each point on this two-d grid, we get an NRMSE value.
-[2] Anthony M. Polloreno: “Limits to Reservoir Learning”, 2023; [<a href="http://arxiv.org/abs/2307.14474">http://arxiv.org/abs/2307.14474</a> arXiv:2307.14474].</p>
+<p>With these points in mind, we turn to actually demonstrating the results of the paper [2]. We implement an efficient GPU simulator for multiple stacked reservoirs. After averaging over an ensemble, we only have a few free parameters. To start, we note that the problem is extremely overparameterized, and so ridge regression is necessary. We can sweep this parameter, which leaves the reservoir size and the amount of noise. For each point on this two-d grid, we get an NRMSE value.</p>
+<p>[2] Anthony M. Polloreno: “Limits to Reservoir Learning”, 2023; [<a href="http://arxiv.org/abs/2307.14474">http://arxiv.org/abs/2307.14474</a> arXiv:2307.14474].</p>
 </div>
 </div>
 </div>
@@ -7614,13 +7608,19 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The first new detail is that our simulations have noise, which modifies the least squares solution. The details can be found in [3], the form is</p>
+<p>The first new detail is that our simulations have noise, which modifies the least squares solution. We recall from the last notebook that the function form of the least squares solution without noise is</p>
+<p>$$
+\begin{align}
+W_{out} = (X^TX)^{-1}X^TY = X^+Y
+\end{align}
+$$
+where $+$ denotes the pseudo-inverse. Generalizing to the noisy setting the form becomes</p>
 <p>$$
 \begin{align}
 W_{out} = \langle \overline{XX^T}\rangle^+ \langle \overline{XY^T} \rangle,
 \end{align}
-$$
-where $+$ denotes the pseudo-inverse. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
+$$</p>
+<p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [3]. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
 <p>[3] Anthony M. Polloreno, Reuben R. W. Wang, Nikolas A. Tezak: “A Note on Noisy Reservoir Computation”, 2023; [<a href="http://arxiv.org/abs/2302.10862">http://arxiv.org/abs/2302.10862</a> arXiv:2302.10862].</p>
 </div>
 </div>
