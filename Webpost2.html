@@ -7497,7 +7497,7 @@ a.anchor-link {
 <p>$\Pr(|X-\mu |\geq  k\sigma_0 )\leq {\frac {1}{k^{2}}}$.</p>
 <p>For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has a variance $\sigma^2 \approx \sigma_0^2/N$ and mean $\mu$ by the central limit theorem, so that</p>
 <p>$\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$.</p>
-<p>We don't know aproiri what the distribution of $X$ is, but we can reason about it a bit. If it were Gaussian, we know from the standard result that $\Pr(|X-\mu|\geq \sigma_0) \leq 68\%$.</p>
+<p>We don't know aproiri what the distribution of $X$ is, but we can reason about it a bit. If it were Gaussian, we know from the standard result that $\Pr(|X-\mu|\geq \sigma_0) \lesssim 68\%$.</p>
 <p>We also know empirically that $\sigma_0 \lesssim 1$ (since the NRMSE itself is less than 1), so that $k \sim .5$ and $N\sim 500$, a bound of $\sim 1\%$. This is a very coarse bound on the deviation from the mean, but it is with very high probability, and we will see that in practice it works much better than these numbers suggest.</p>
 <p>[1] <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">https://en.wikipedia.org/wiki/Chebyshev%27s_inequality</a></p>
 </div>
@@ -7620,7 +7620,7 @@ where $+$ denotes the pseudo-inverse. Generalizing to the noisy setting the form
 W_{out} = \langle \overline{XX^T}\rangle^+ \langle \overline{XY^T} \rangle,
 \end{align}
 $$</p>
-<p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [3]. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
+<p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [3], and for this note we suffice to comment that the solution now depends on the covariances between the reservoir data $X$ and itself, and between the target functions $Y$ and the reservoir data. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
 <p>[3] Anthony M. Polloreno, Reuben R. W. Wang, Nikolas A. Tezak: “A Note on Noisy Reservoir Computation”, 2023; [<a href="http://arxiv.org/abs/2302.10862">http://arxiv.org/abs/2302.10862</a> arXiv:2302.10862].</p>
 </div>
 </div>
@@ -7744,7 +7744,8 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>And finally, we execute the code and analyze the results! In the next notebook. :)</p>
+<p>For this simulation, we have added Gaussian noise to each output from the reservoir. This is a simple noise model, and as we will see in the next notebook, it makes reasoning about the impact of the noise on the performance of the reservoir simple enough for a blog post.
+And finally, we execute the code and analyze the results! In the next notebook. :)</p>
 </div>
 </div>
 </div>
