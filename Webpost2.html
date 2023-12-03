@@ -7755,7 +7755,7 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Appendix:-Alternate-Timewise-Parallelization-Scheme">Appendix: Alternate Timewise Parallelization Scheme<a class="anchor-link" href="#Appendix:-Alternate-Timewise-Parallelization-Scheme">¶</a></h1><p>GPUs are notoriously good at parallel execution. For us, we can take advantage of this by parallellizing the reservoir simulation. This isn't obvious, so let's check it out. We can validate on the test set (or train on the training set!) $n-$ times as fast if we break it into $n$ pieces. From the last notebook, we can plot our performance on NARMA10:</p>
+<h1 id="Appendix:-Alternate-Timewise-Parallelization-Scheme">Appendix: Alternate Timewise Parallelization Scheme<a class="anchor-link" href="#Appendix:-Alternate-Timewise-Parallelization-Scheme">¶</a></h1><p>Alternatively we can take advantage of GPU parallelism by parallellizing the reservoir simulation in the time dimension. This isn't obvious, so let's check it out. We can validate on the test set (or train on the training set!) $n-$ times as fast if we break it into $n$ pieces. From the last notebook, we can plot our performance on NARMA10:</p>
 </div>
 </div>
 </div>
