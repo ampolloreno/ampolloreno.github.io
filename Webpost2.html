@@ -7493,7 +7493,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>To start this notebook, we note that from Chebyshev's Inequality [1] we know that for a random variable with variance $\sigma_0^2$,</p>
+<p>To start this notebook, we recall the setting we are interested in. We want to understand the impact of noise (for instance, observation error, or any form of statistical uncertainty) on the performance of a particular kind of RNN (echo state networks, and more generally reservoir computers).</p>
+<p>We note that from Chebyshev's Inequality [1] we know that for a random variable with variance $\sigma_0^2$,</p>
 <p>$\Pr(|X-\mu |\geq  k\sigma_0 )\leq {\frac {1}{k^{2}}}$.</p>
 <p>For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has a variance $\sigma^2 \approx \sigma_0^2/N$ and mean $\mu$ by the central limit theorem, so that</p>
 <p>$\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$.</p>
@@ -7521,8 +7522,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>With these points in mind, we turn to actually demonstrating the results of the paper [2]. We implement an efficient GPU simulator for multiple stacked reservoirs. After averaging over an ensemble, we only have a few free parameters. To start, we note that the problem is extremely overparameterized, and so ridge regression is necessary. We can sweep this parameter, which leaves the reservoir size and the amount of noise. For each point on this two-d grid, we get an NRMSE value.</p>
-<p>[2] Anthony M. Polloreno: “Limits to Reservoir Learning”, 2023; [<a href="http://arxiv.org/abs/2307.14474">http://arxiv.org/abs/2307.14474</a> arXiv:2307.14474].</p>
+<p>With these points in mind, we turn to actually generating some results! We implement an efficient GPU simulator for multiple stacked reservoirs. After averaging over an ensemble, we only have a few free parameters. To start, we note that the problem is extremely overparameterized, and so ridge regression is necessary. We can sweep this parameter, which leaves the reservoir size and the amount of noise. For each point on this two-d grid, we get an NRMSE value.</p>
 </div>
 </div>
 </div>
