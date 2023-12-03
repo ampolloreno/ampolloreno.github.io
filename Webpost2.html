@@ -7726,7 +7726,7 @@ $$</p>
     <span class="n">NRMSEs_lstsq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">expand_test</span><span class="o">-</span><span class="n">Yhat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">torch</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">expand_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">rtn</span> <span class="o">=</span> <span class="p">[]</span>
     
-    <span class="c1"># remove outliars</span>
+    <span class="c1"># remove outliers</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">NRMSEs_lstsq</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">rtn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
