@@ -308,12 +308,12 @@ h1, h2, h4, h5, h6 {
              of useful signals, and establish that with noise the expected number of signals should scale polynomially, rather than exponentially.
          </p>
          <p>
-             Once we have established that the expected number of signals in this simple model approximately a monomial,
-             rather than exponential, we will plot how we expect the exponent of the monomial to vary with noise. To think about
+             Once we have established that the expected number of signals in this simple model is approximately a monomial in the system size,
+             rather than exponential, we will plot how we expect the degree of the monomial to vary with noise. To think about
              the limits of this plot - when the noise becomes very large, the echo state network will be unable to learn, and hence
-             its performance will be independent of the number of signals, giving an exponent of zero. When the noise goes to zero,
+             their performance will be independent of the number of signals, giving a degree of zero. When the noise goes to zero,
              then we can expect the reservoir will be able to make use of the exponentially-many signals, and the approximation
-             of a monomial dependence becomes invalid. Let's give the code a look.
+             of a monomial dependence becomes invalid (the monomial degree becomes arbitrarily large). Let's give the code a look.
         </p>
     </div>
     <iframe src="Webpost3.html" style="height:7900px; width:100%; border:none;" ></iframe>
