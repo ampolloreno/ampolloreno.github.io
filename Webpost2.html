@@ -7494,13 +7494,6 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>To start this notebook, we recall the setting we are interested in. We want to understand the impact of noise (for instance, observation error, or any form of statistical uncertainty) on the performance of a particular kind of RNN (echo state networks, and more generally reservoir computers).</p>
-<p>We note that from Chebyshev's Inequality [1] we know that for a random variable with variance $\sigma_0^2$,</p>
-<p>$\Pr(|X-\mu |\geq  k\sigma_0 )\leq {\frac {1}{k^{2}}}$.</p>
-<p>For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has a variance $\sigma^2 \approx \sigma_0^2/N$ and mean $\mu$ by the central limit theorem, so that</p>
-<p>$\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$.</p>
-<p>We don't know a priori what the distribution of $X$ is, but we can reason about it a bit. If it were Gaussian, we know from the standard result that $\Pr(|X-\mu|\geq \sigma_0) \lesssim 68\%$.</p>
-<p>We also know empirically that $\sigma_0 \lesssim 1$ (since the NRMSE itself is less than 1), so that $k \sim .5$ and $N\sim 500$, a bound of $\sim 1\%$. This is a very coarse bound on the deviation from the mean, but it is with very high probability, and we will see that in practice it works much better than these numbers suggest.</p>
-<p>[1] <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">https://en.wikipedia.org/wiki/Chebyshev%27s_inequality</a></p>
 </div>
 </div>
 </div>
@@ -7695,6 +7688,7 @@ $$</p>
 
     <span class="c1"># Initialize reservoir networks</span>
     <span class="n">Wins</span><span class="p">,</span> <span class="n">Ws</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">num_reservoirs</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1"># hard coded, for now.</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_reservoirs</span><span class="p">):</span>
         <span class="n">Win</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">ESN_init</span><span class="p">(</span><span class="n">inSize</span><span class="p">,</span> <span class="n">outSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">)</span>
         <span class="n">Wins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Win</span><span class="p">)</span>
@@ -7745,7 +7739,24 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>For this simulation, we have added Gaussian noise to each output from the reservoir. This is a simple noise model, and as we will see in the next notebook, it makes reasoning about the impact of the noise on the performance of the reservoir simple enough for a blog post.
-And finally, we execute the code and analyze the results! In the next notebook. :)</p>
+And finally, we execute the code and analyze the results in the next notebook. But first, a note about choosing the number of reservoirs, and an appendix.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c4893e69-43bb-4d4e-8ee6-d27be55aec1c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>We note that from Chebyshev's Inequality [1] we know that for a random variable with variance $\sigma_0^2$,</p>
+<p>$\Pr(|X-\mu |\geq  k\sigma_0 )\leq {\frac {1}{k^{2}}}$.</p>
+<p>For an ensemble average over $N$ reservoirs, if the ensemble has variance $\sigma_0^2$ then the random variable $X_N = \frac{1}{N} \sum_{i=1}^N X_i$ has a variance $\sigma^2 \approx \sigma_0^2/N$ and mean $\mu$ by the central limit theorem, so that</p>
+<p>$\Pr(|X_N-\mu|\geq k\sigma_0 ) \leq {\frac {1}{Nk^{2}}}$.</p>
+<p>We don't know a priori what the distribution of $X$ is, but we can reason about it a bit. If it were Gaussian, we know from the standard result that $\Pr(|X-\mu|\geq \sigma_0) \lesssim 68\%$.</p>
+<p>We also know empirically that $\sigma_0 \lesssim 1$ (since the NRMSE itself is less than 1), so that $k \sim .5$ and $N\sim 500$, a bound of $\sim 1\%$. This is a very coarse bound on the deviation from the mean, but it is with very high probability, and we will see that in practice it works much better than these numbers suggest.</p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">https://en.wikipedia.org/wiki/Chebyshev%27s_inequality</a></p>
 </div>
 </div>
 </div>
