@@ -315,8 +315,9 @@ h1, h2, h4, h5, h6 {
 </p>
         <p>
             While this is not the focus of this notebook, we note in passing that this is often the setting in reinforcement learning
-            contexts in settings such as the REINFORCE algorithm where the data being gathered about the world is used to statistically
-            evaluate something like a gradient, which is also a continuous, rather than discrete, value. The REINFORCE algorithm
+            contexts in settings such as the REINFORCE algorithm (Williams, Ronald J. "Simple statistical gradient-following algorithms for
+            connectionist reinforcement learning." Machine learning 8 (1992): 229-256.) where the data being gathered about the world is used
+            to statistically evaluate a gradient, which is also a continuous, rather than discrete, value. The REINFORCE algorithm
             specifically is a policy gradient method used in reinforcement learning for training policy networks. Given a parameterized
             policy, the algorithm approximates the gradient by sampling from the policy policy and using the sampled returns for the
             estimation of the gradient. This form of sampling-based estimation allows REINFORCE to update policy parameters in the
