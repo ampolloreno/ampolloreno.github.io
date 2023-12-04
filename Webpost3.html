@@ -7506,7 +7506,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>A simple model is to assume that each sample is corrupted with noise with some probability $p$. This degradation can then be quantified by considering combinations of signals that remain unaffected by noise. Using simple combinatorial logic, there are $n \choose k$ signals we can form from subsets of $k$ signals via multiplication, and the probability that they remain noise-free is $(1-p)^k$. When the binomial coefficients are sharply peaked around a signal value of $k$, the expected number of signals due to noise will consequently scale nearly monomially. We can see this peaking behavior below, where we plot the values of the terms ${n \choose k}(1-p)^k $, normalized by the largest value.</p>
+<p>A simple model is to assume that each sample is corrupted with noise with some probability $p$. This degradation can then be quantified by considering combinations of signals that remain unaffected by noise. Using simple combinatorial logic, there are $n \choose k$ signals we can form from subsets of $k$ signals via multiplication, and the probability that they remain noise-free is $(1-p)^k$. That is, the expected number of uncorrupted signals $s(n)$ is given roughly as:</p>
+<p>$s(n) = \sum_{k=1}^n {n\choose k} (1-p)^k$</p>
+<p>When these summands are sharply peaked around a signal value of $k$, the expected number of signals due to noise will consequently scale polynomially in $n$ since ${n\choose k} = n\cdot(n-1)\dots(n-k)$. Of course, if $k$ is proportional to $n$ then this is in fact exponential - this depends on how large $p$ is, and we discuss this below. Intutively, there is a trade off between the growth of the binomial coeffcient, and the decay due to the exponentiated probability. This results in a peaking behavior in the summands, and we plot this below, where we plot the values of the terms ${n \choose k}(1-p)^k $, normalized by the largest value.</p>
 </div>
 </div>
 </div>
