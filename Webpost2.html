@@ -7331,7 +7331,7 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.0/mermaid.esm.min.mjs")).default;
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -7539,7 +7539,7 @@ a.anchor-link {
             <span class="k">return</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">history</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="n">history</span><span class="p">:])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">continue</span>
-            
+
 <span class="k">def</span> <span class="nf">ESN_init</span><span class="p">(</span><span class="n">inSize</span><span class="p">,</span> <span class="n">outSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sparsity</span><span class="p">):</span>
     <span class="n">Win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">inSize</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">resSize</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
     <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">resSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
@@ -7570,7 +7570,7 @@ a.anchor-link {
             <span class="n">R_copies</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">R_copies</span> <span class="o">+</span>\
             <span class="n">alpha</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,ijk-&gt;ik'</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span><span class="n">Win_copies</span><span class="p">)</span> <span class="o">+</span>\
                       <span class="n">torch</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">'ij,ijk-&gt;ik'</span><span class="p">,</span> <span class="n">R_copies</span><span class="p">,</span> <span class="n">W_copies</span><span class="p">))</span> 
-            
+
             <span class="c1"># copy, time, signal</span>
             <span class="n">dm</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">ones</span><span class="p">,</span> <span class="n">R_copies</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">rtn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
@@ -7591,19 +7591,17 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>The first new detail is that our simulations have noise, which modifies the least squares solution. We recall from the last notebook that the function form of the least squares solution without noise is</p>
-<p>$$
+$$
 \begin{align}
 W_{out} = (X^TX)^{-1}X^TY = X^+Y
 \end{align}
+$$<p>where $+$ denotes the pseudo-inverse. Generalizing to the noisy setting the form becomes</p>
 $$
-where $+$ denotes the pseudo-inverse. Generalizing to the noisy setting the form becomes</p>
-<p>$$
 \begin{align}
 W_{out} = \langle \overline{XX^T}\rangle^+ \langle \overline{XY^T} \rangle,
 \end{align}
-$$</p>
-<p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [1], and for this note we suffice to comment that the solution now depends on the covariances between the reservoir data $X$ and itself, and between the target functions $Y$ and the reservoir data. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
-<p>[1] Anthony M. Polloreno, Reuben R. W. Wang, Nikolas A. Tezak: “A Note on Noisy Reservoir Computation”, 2023; [<a href="https://www.arxiv.org/abs/2302.10862">http://arxiv.org/abs/2302.10862</a> arXiv:2302.10862].</p>
+$$<p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [1], and for this note we suffice to comment that the solution now depends on the covariances between the reservoir data $X$ and itself, and between the target functions $Y$ and the reservoir data. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
+<p>[1] <a href="https://arxiv.org/abs/2302.10862">https://arxiv.org/abs/2302.10862</a></p>
 </div>
 </div>
 </div>
@@ -7615,7 +7613,7 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gpu_job</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">res_size</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">ridge</span><span class="p">):</span>
-    
+
     <span class="c1"># Utilities.</span>
     <span class="k">def</span> <span class="nf">compute_wout</span><span class="p">():</span>
         <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1</span>
@@ -7645,7 +7643,7 @@ $$</p>
         <span class="n">ridge_mat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
         <span class="n">Wout</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">ridge</span><span class="o">*</span><span class="n">ridge_mat</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Wout</span>
-    
+
     <span class="k">def</span> <span class="nf">compute_powerset</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="n">to_reduce</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">generate_powerset</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]))[</span><span class="mi">1</span><span class="p">:]]</span>
         <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">to_reduce</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -7654,13 +7652,13 @@ $$</p>
             <span class="n">rtn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="n">ones</span><span class="p">))</span>
             <span class="n">rtn</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="p">((</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">[</span><span class="n">r</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="n">ones</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">rtn</span>
-    
+
     <span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
             <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>            
-    
+
     <span class="k">def</span> <span class="nf">generate_powerset</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
             <span class="n">power_set</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="c1"># Generate all subsets</span>
@@ -7668,7 +7666,7 @@ $$</p>
                 <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">subset_size</span><span class="p">):</span>
                     <span class="n">power_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">subset</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">power_set</span>
-        
+
     <span class="n">set_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">inSize</span><span class="p">,</span> <span class="n">outSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sparsity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res_size</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">fetchData</span><span class="p">(</span><span class="n">train_cycles</span> <span class="o">+</span> <span class="n">test_cycles</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>
@@ -7693,8 +7691,8 @@ $$</p>
         <span class="n">dm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">rtn</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">dms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dm</span><span class="p">)</span>
     <span class="n">dms</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">dms</span><span class="p">)</span>
-    
-    
+
+
     <span class="n">test</span> <span class="o">=</span> <span class="n">res</span><span class="p">(</span><span class="n">data_test</span><span class="p">,</span> <span class="n">Ws</span><span class="p">,</span> <span class="n">Wins</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>    
     <span class="n">rtn</span> <span class="o">=</span> <span class="n">compute_powerset</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
     <span class="n">test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">rtn</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -7708,7 +7706,7 @@ $$</p>
     <span class="n">expand_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">Y_test</span><span class="p">[</span><span class="mi">50</span><span class="p">:])[:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
     <span class="n">NRMSEs_lstsq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">expand_test</span><span class="o">-</span><span class="n">Yhat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">torch</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">expand_test</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">rtn</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="c1"># remove outliers</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">NRMSEs_lstsq</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span><span class="mi">2</span><span class="p">:</span>
@@ -7845,7 +7843,7 @@ And finally, we execute the code and analyze the results in the next notebook. B
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Test Performance"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">.2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    
+
 <span class="c1"># Plot for second half of data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y_test</span><span class="p">[</span><span class="n">index</span><span class="p">:],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Target Value'</span><span class="p">)</span>
@@ -7887,7 +7885,7 @@ And finally, we execute the code and analyze the results in the next notebook. B
 <span class="k">def</span> <span class="nf">reservoir</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Win</span><span class="p">,</span> <span class="n">Wres</span><span class="p">,</span> <span class="n">inSize</span><span class="p">,</span> <span class="n">resSize</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">batch_number</span><span class="p">,</span> <span class="n">power_set</span><span class="p">):</span>
     <span class="c1"># Apple "metal performance shaders".</span>
     <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"mps"</span><span class="p">)</span>
-    
+
     <span class="c1"># Convert Wres, Win, and data to tensor and assign device</span>
     <span class="n">Wres</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">Wres</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="n">Win</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">Win</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -7897,14 +7895,14 @@ And finally, we execute the code and analyze the results in the next notebook. B
     <span class="c1"># We'll trim some of the data for simplicity, we can fix this later.</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="n">batch_number</span><span class="o">*</span><span class="n">batch_size</span><span class="p">]</span>
     <span class="n">new_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">batch_number</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-    
+
     <span class="c1"># Replicate Wres, Win for batch_number times</span>
     <span class="n">Wres_copies</span> <span class="o">=</span> <span class="n">Wres</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_number</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">Win_copies</span> <span class="o">=</span> <span class="n">Win</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">batch_number</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    
+
     <span class="n">R_copies</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">batch_number</span><span class="p">,</span> <span class="n">resSize</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="n">dm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">batch_number</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">-</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">inSize</span> <span class="o">+</span> <span class="n">resSize</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-    
+
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
         <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">),</span> <span class="n">u</span><span class="p">))</span>
@@ -7917,7 +7915,7 @@ And finally, we execute the code and analyze the results in the next notebook. B
     <span class="n">new_data</span> <span class="o">=</span> <span class="n">new_data</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
     <span class="n">chosen_subsets</span> <span class="o">=</span> <span class="p">[]</span>
-    
+
     <span class="k">if</span> <span class="n">power_set</span><span class="p">:</span>
         <span class="c1"># Generate all subsets</span>
         <span class="n">ones</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">new_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -7928,7 +7926,7 @@ And finally, we execute the code and analyze the results in the next notebook. B
         <span class="n">power_signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">pw</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">power_signals</span><span class="p">)]</span>
         <span class="n">power_signals</span> <span class="o">=</span> <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">T</span><span class="p">)]</span> <span class="o">+</span> <span class="n">power_signals</span>
-        
+
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">power_signals</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">new_data</span>
 </pre></div>
 </div>
