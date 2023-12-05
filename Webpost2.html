@@ -7603,7 +7603,7 @@ W_{out} = \langle \overline{XX^T}\rangle^+ \langle \overline{XY^T} \rangle,
 \end{align}
 $$</p>
 <p>where $\langle \cdot \rangle$ is an average over the noise, and $\overline{\cdot}$ is an average over the input randomness (we have been using the uniform measure). The derivation can be found in [1], and for this note we suffice to comment that the solution now depends on the covariances between the reservoir data $X$ and itself, and between the target functions $Y$ and the reservoir data. We compute this first, wrapped in a function so that we can parallelize over gpus. We additionally chunk all computations to prevent the GPU memory from running out.</p>
-<p>[1] Anthony M. Polloreno, Reuben R. W. Wang, Nikolas A. Tezak: “A Note on Noisy Reservoir Computation”, 2023; [<a href="http://arxiv.org/abs/2302.10862">http://arxiv.org/abs/2302.10862</a> arXiv:2302.10862].</p>
+<p>[1] Anthony M. Polloreno, Reuben R. W. Wang, Nikolas A. Tezak: “A Note on Noisy Reservoir Computation”, 2023; [<a href="http://www.arxiv.org/abs/2302.10862">http://arxiv.org/abs/2302.10862</a> arXiv:2302.10862].</p>
 </div>
 </div>
 </div>
