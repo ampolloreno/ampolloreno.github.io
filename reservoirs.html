@@ -1,341 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservoir Computing</title>
-     <style>
-
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
-
-        .header h1 {
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .header p {
-            margin-top: 0;
-        }
-
-        .nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        .content {
-            padding: 20px;
-        }
-         .content {
-            padding: 20px;
-            background-color: #ffffff; /* this is the color white */
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: 30px auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section .img1 {
-            width: 100px;
-            height: 150px;
-        }
-
-        .section .img2 {
-            width: 450px;
-            height: 200px;
-        }
-
-        .section .img3 {
-            width: 500px;
-            height: 300px;
-        }
-        .section .img4 {
-            width: 100px;
-            height: 100px;
-        }
-          .section div {
-            margin-left: 40px;
-            width: 70%;
-        }
-
-        .section:nth-child(odd) div {
-            margin-right: 40px;
-            margin-left: 0;
-        }
-
-        .section:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-        .intro {
-                display: flex;
-                /*align-items: center;*/
-                /*justify-content: center;*/
-                margin: 30px auto;
-                padding: 30px;
-                background-color: #333;
-                color: #fff;
-                border-radius: 5px;
-                width: 90%;
-                max-width: 1200px;
-                /*text-align: center;*/
-            }
-
-           .intro a {
-    color: #FFD700; /* Change the color of links */
-    text-decoration: none; /* Remove the underline */
-    padding: 0px; /* Add some space around the links */
-}
-
-.intro a:hover {
-    color: #fff; /* Change the color when hovered */
-    text-decoration: underline; /* Underline when hovered */
-}
-.intro a:first-child {
-    padding-left: 0;
-    padding-right: 0;
-}
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3, .section .img4 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-    .section .img1, .section .img2, .section .img3, .section .img4 {
-    width: 40%;
-    height: auto;
-}
-h1, h2, h4, h5, h6 {
-    text-align: center;
-}
-
-        .image-background .esnimg {
-        background-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-            margin: auto;
-        }
-
-        .image-background .esnimg {
-        max-width: 50%;
-        height: auto;
-        }
-
-     /* Add styles for the .content paragraph */
-        .content p {
-            max-width: 800px;
-            margin: auto;
-            padding: 15px;
-            background-color: rgba(0,0,0,5%);
-            border-radius: 3px;
-        }
-
-        .content article {
-            max-width: 900px;
-            margin: auto;
-        }
-        /* Add this code */
-.content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.content p {
-    background-color: #f2f2f2; /* Pale gray */
-    padding: 15px;
-    border-radius: 5px;
-}
-.content .paragraph {
-  background-color: #f2f2f2; /* Pale gray */
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px; /* gives some space between paragraphs */
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.content .paragraph p {
-  margin: 0;
-}
-
-</style>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing I</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="header">
-        <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno, Ph.D.</h1>
-        <h2>Research Engineer</h2>
-    </div>
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
 
-    <div class="nav">
-      <a href="index.html">Home</a> |
-        <a href="research.html">Research</a> |
-        <a href="engineering.html"> Engineering </a> |
-        <a href="https://twitter.com/ampolloreno">Twitter</a> |
-        <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
-        <a href="https://github.com/ampolloreno">GitHub</a> |
-        <a href="papers.html">Papers</a> |
-        <a href="resume.pdf">Resume</a>|
-        <a href="reservoirs.html">Reservoir Computing I</a> |
-        <a href="reservoirs2.html">Reservoir Computing II</a>|
-        <a href="reservoirs3.html">Reservoir Computing III</a>
-    </div>
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
 
-    <div class="content" id="blogPost">
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks I</h1>
 
-        <article>
-             <h1>The Impact of Noise on Recurrent Neural Networks I</h1>
-    <div class="paragraph">
-<p> In this post, we are going to study reservoir computing, a subset of recurrent neural networks that are used for
-    complex temporal processing tasks. We will consider the setting where our computational reservoir is subject to noise
-    and errors. A classic example of reservoir computing is in prediction of dynamics of physical systems,
-    however by using typical encodings as in transformer-based methods they can also be used to predict language
-    patterns for human-like conversation based on previous inputs.
-</p>
-<p>
-    For this post, there are at least two motivations behind considering reservoir computers as opposed to something like a transformer.
-    The first is academic. Many simply have not heard of reservoir computers. Second, reservoir computing is simple, which makes
-    it an excellent pedagogical tool. The training, as we will see, involves a simple linear layer, and the recurrent structure
-    is given by a random matrix. This simplicity lends itself to intepretability.
-</p>
-<p>
-    The specific kind of reservoir computer we are going to consider are echo state networks (ESNs). They are a very simple
-    network with a few tunable parameters: the network sparsity, the bleedthrough between time steps, an encoding map, a decoding map,
-    an internal transition map, and the size of the reservoir. An interesting property of ESNs is that by randomly
-    initializing the weights in the encoding map and internal transition map, it is possible to learn to predict time series
-    by simply training the decoding map, which can be taken to be linear, and is hence computable via a standard least squares estimator.
-    For the purposes of this tutorial, we will fix the sparsity and bleedthrough.
-</p>
-<p>
-    The goal of this tutorial is to begin to understand how noise affects the performance of reservoir computers as a function of
-    their size. Our analysis is more generally applicable to analog systems where the state of the system is a continuous
-    value, such as the neural activations of our reservoir. What we aim to demonstrate is that in this scenario,
-    noise tends to substantially impair the kinds of computations a system is able to perform.  We start with a simple
-    notebook that introduces the model (echo state networks), and the computational task (NARMA10).
+      <div class="paragraph">
+        <p>In this post, we study reservoir computing—a subset of recurrent neural networks (RNNs) used for complex temporal processing tasks. We'll examine what happens when noise is introduced into these systems.</p>
+        <p>Reservoir computing is especially interesting for dynamics prediction in physical systems, though it can also be adapted to tasks like language modeling. Compared to transformer-based methods, it’s academically underexplored and pedagogically simple—ideal for learning. Training involves just a linear layer, with the recurrent structure derived from a random matrix, making ESNs easy to interpret.</p>
+        <p>We’ll focus on echo state networks (ESNs), which include a few tunable parameters: sparsity, time-step bleedthrough, an encoding map, a decoding map, a transition matrix, and reservoir size. Interestingly, even with random initialization of the encoding and transition maps, ESNs can effectively predict sequences using a simple linear decoding layer—solvable with least squares.</p>
+        <p>The goal of this tutorial is to understand how noise impacts the computational power of reservoir systems, especially as a function of size. The analysis extends to many analog systems with continuous-valued internal states. We'll show how noise significantly degrades computational capability, and kick things off with a notebook introducing the model (ESNs) and the task (NARMA10).</p>
+      </div>
 
+      <iframe src="Webpost1.html" style="height:7650px; width:100%; border:none;"></iframe>
 
-</p>
-    </div>
-    <iframe src="Webpost1.html" style="height:7650px; width:100%; border:none;" ></iframe>
-            <div class="paragraph">
-<p>Check out the next notebook <a href="http://ampolloreno.com/reservoirs2.html">here</a>!</p>
+      <div class="paragraph">
+        <p>Check out the next notebook <a href="reservoirs2.html">here</a>!</p>
+      </div>
 
-<section style="text-align: center;">
-    <h3>Acknowledgements</h3>
-    <p>A special thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a> and <a href="https://chromotopy.org/">Eric Peterson</a> for feedback on this post!</p>
-</section>
+      <div class="paragraph" style="text-align: center;">
+        <h3>Acknowledgements</h3>
+        <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their thoughtful feedback on this post.</p>
+      </div>
+    </article>
+  </div>
 
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
 
-
-        </article>
-
-    </div>
-
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
 
 </body>
 </html>

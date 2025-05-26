@@ -1,345 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservoir Computing</title>
-     <style>
-
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
-
-        .header h1 {
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .header p {
-            margin-top: 0;
-        }
-
-        .nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        .content {
-            padding: 20px;
-        }
-         .content {
-            padding: 20px;
-            background-color: #ffffff; /* this is the color white */
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: 30px auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section .img1 {
-            width: 100px;
-            height: 150px;
-        }
-
-        .section .img2 {
-            width: 450px;
-            height: 200px;
-        }
-
-        .section .img3 {
-            width: 500px;
-            height: 300px;
-        }
-        .section .img4 {
-            width: 100px;
-            height: 100px;
-        }
-          .section div {
-            margin-left: 40px;
-            width: 70%;
-        }
-
-        .section:nth-child(odd) div {
-            margin-right: 40px;
-            margin-left: 0;
-        }
-
-        .section:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-        .intro {
-                display: flex;
-                /*align-items: center;*/
-                /*justify-content: center;*/
-                margin: 30px auto;
-                padding: 30px;
-                background-color: #333;
-                color: #fff;
-                border-radius: 5px;
-                width: 90%;
-                max-width: 1200px;
-                /*text-align: center;*/
-            }
-
-           .intro a {
-    color: #FFD700; /* Change the color of links */
-    text-decoration: none; /* Remove the underline */
-    padding: 0px; /* Add some space around the links */
-}
-
-.intro a:hover {
-    color: #fff; /* Change the color when hovered */
-    text-decoration: underline; /* Underline when hovered */
-}
-.intro a:first-child {
-    padding-left: 0;
-    padding-right: 0;
-}
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3, .section .img4 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-    .section .img1, .section .img2, .section .img3, .section .img4 {
-    width: 40%;
-    height: auto;
-}
-h1, h2, h4, h5, h6 {
-    text-align: center;
-}
-
-        .image-background .esnimg {
-        background-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-            margin: auto;
-        }
-
-        .image-background .esnimg {
-        max-width: 50%;
-        height: auto;
-        }
-
-     /* Add styles for the .content paragraph */
-        .content p {
-            max-width: 800px;
-            margin: auto;
-            padding: 15px;
-            background-color: rgba(0,0,0,5%);
-            border-radius: 3px;
-        }
-
-        .content article {
-            max-width: 900px;
-            margin: auto;
-        }
-        /* Add this code */
-.content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.content p {
-    background-color: #f2f2f2; /* Pale gray */
-    padding: 15px;
-    border-radius: 5px;
-}
-.content .paragraph {
-  background-color: #f2f2f2; /* Pale gray */
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px; /* gives some space between paragraphs */
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.content .paragraph p {
-  margin: 0;
-}
-
-</style>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservoir Computing II</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="header">
-        <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno, Ph.D.</h1>
-        <h2>Research Engineer</h2>
-    </div>
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
 
-    <div class="nav">
-       <a href="index.html">Home</a> |
-        <a href="research.html">Research</a> |
-        <a href="engineering.html"> Engineering </a> |
-        <a href="https://twitter.com/ampolloreno">Twitter</a> |
-        <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
-        <a href="https://github.com/ampolloreno">GitHub</a> |
-        <a href="papers.html">Papers</a> |
-        <a href="resume.pdf">Resume</a>|
-        <a href="reservoirs.html">Reservoir Computing I</a> |
-        <a href="reservoirs2.html">Reservoir Computing II</a>|
-        <a href="reservoirs3.html">Reservoir Computing III</a>
-    </div>
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
 
-    <div class="content" id="blogPost">
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks II</h1>
 
-        <article>
-             <h1>The Impact of Noise on Recurrent Neural Networks II</h1>
-    <div class="paragraph">
-<p> In this section, we are going to consider the simulation of the echo state networks discussed in the <a href="reservoirs.html">last post</a>.
-    This is an oddly constrained problem, and there are actually a few design decisions. Dealing with the variable
-    training length is annoying. I messed around with this for a while (we will explore this in the appendix),
-    but discovered that a much better thing to do is simulate an ensemble of reservoirs. In principle, each size
-    (and each reservoir in each ensemble for each size) should have a different training length, so we don't over- or
-    under-fit. We still see an improvement with reservoir size if we ignore this, so we do for now. Simulating an
-    ensemble now gives us a clear dimension to parallelize over. To do this, we now need to chunk the time data,
-    because loading the entire sequence onto the GPU takes up space that can otherwise be used for simulation and
-    storing neural activations.
-</p>
-        <p>
+      <div class="paragraph">
+        <p>In this section, we simulate the echo state networks discussed in the <a href="reservoirs.html">last post</a>. This problem has some unusual constraints, particularly around variable training lengths. After some exploration (detailed in the appendix), I found a better strategy: simulate ensembles of reservoirs.</p>
+        <p>Each reservoir (and each size) ideally requires different training lengths to avoid over- or underfitting, but even when we ignore this, size still shows performance gains. The ensemble approach also introduces a natural axis of parallelization. To support this, we chunk the input time series—loading it fully into GPU memory wastes valuable space needed for simulating activations.</p>
+      </div>
 
-    To remind ourselves of our final goal, we are interested in simulating echo state networks, and considering their performance
-    when we also have the output product signals available to us. The final twist is that we are interested in understanding
-    how noise impacts the performance of these networks. Noise is abundant, and normally protected against in digital logic
-    by error correcting codes, however if we are interested in building hardware that runs native machine learning algorithms,
-    there are several reasons why noise may become relevant. First, if the bits per float become small enough, we will see
-    rounding error - especially in recurrent settings where the errors have a chance to accumulate. If the hardware itself
-    is physical, or thermodynamic in any sense, thermal noise can cause fluctuations around the expected behavior of the circuits.
-    If the network is observing data from sources such as sensors, these sensors will often have noise from picking up
-    undesired signals. In this sense, this is an interesting problem for any real world setting that involves randomness.
-</p>
-        <p>
-            While this is not the focus of this notebook, we note in passing that this is often the setting in reinforcement learning
-            contexts in settings such as the REINFORCE algorithm (Williams, Ronald J. "Simple statistical gradient-following algorithms for
-            connectionist reinforcement learning." Machine learning 8 (1992): 229-256.) where the data being gathered about the world is used
-            to evaluate a gradient in expectation, which is also a continuous, rather than discrete, value. The REINFORCE algorithm
-            specifically is a policy gradient method used in reinforcement learning for training policy networks. Given a parameterized
-            policy, the algorithm approximates the gradient by sampling from the policy policy and using the sampled returns for the
-            estimation of the gradient. This form of sampling-based estimation allows REINFORCE to update policy parameters in the
-            direction that, on average, increases the probability of actions that lead to higher returns. That being said, any estimate
-            of the gradient is imperfect. The imperfections come from finite sample effects in the case that the environment is
-            stochastic, and come from systematic errors in the case that the policy is a poor representation of the optimal policy.
-            In this notebook we take a much simpler approach, and simply add Gaussian noise to each value output by the echo state network.
+      <div class="paragraph">
+        <p>Our main goal is to study echo state networks with output product signals and examine how noise affects their performance. Noise is ubiquitous: digital systems typically mitigate it with error correction, but native ML hardware doesn't enjoy the same luxury.</p>
+        <p>Small float precision can introduce rounding errors that accumulate, especially in recurrent systems. Thermal and sensor noise can further degrade signal fidelity. These are practical challenges in real-world systems that deal with analog or probabilistic processes.</p>
+      </div>
 
-</p>
+      <div class="paragraph">
+        <p>While this post isn't focused on reinforcement learning, it's worth noting the parallel. In REINFORCE-style algorithms (e.g., Williams, 1992), sampled data is used to estimate policy gradients in expectation. These estimates can suffer from noise due to both sample limitations and model imperfections. We use a simpler approach here: we just inject Gaussian noise into the output values of the network.</p>
+      </div>
 
-    </div>
-    <iframe src="Webpost2.html" style="height:10400px; width:100%; border:none;" ></iframe>
-            <div class="paragraph">
-                <p>Check out the next notebook <a href="http://ampolloreno.com/reservoirs3.html">here</a>!</p>
-<section style="text-align: center;">
-    <h3>Acknowledgements</h3>
-    <p>A special thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a> and <a href="https://chromotopy.org/">Eric Peterson</a> for feedback on this post!</p>
-</section>
-        </article>
+      <iframe src="Webpost2.html" style="height:10400px; width:100%; border:none;"></iframe>
 
-    </div>
+      <div class="paragraph">
+        <p>Check out the next notebook <a href="reservoirs3.html">here</a>!</p>
+      </div>
 
+      <div class="paragraph" style="text-align: center;">
+        <h3>Acknowledgements</h3>
+        <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their helpful feedback on this post.</p>
+      </div>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
 
 </body>
 </html>

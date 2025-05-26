@@ -1,331 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservoir Computing</title>
-     <style>
-
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
-
-        .header h1 {
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .header p {
-            margin-top: 0;
-        }
-
-        .nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        .content {
-            padding: 20px;
-        }
-         .content {
-            padding: 20px;
-            background-color: #ffffff; /* this is the color white */
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: 30px auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section .img1 {
-            width: 100px;
-            height: 150px;
-        }
-
-        .section .img2 {
-            width: 450px;
-            height: 200px;
-        }
-
-        .section .img3 {
-            width: 500px;
-            height: 300px;
-        }
-        .section .img4 {
-            width: 100px;
-            height: 100px;
-        }
-          .section div {
-            margin-left: 40px;
-            width: 70%;
-        }
-
-        .section:nth-child(odd) div {
-            margin-right: 40px;
-            margin-left: 0;
-        }
-
-        .section:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-        .intro {
-                display: flex;
-                /*align-items: center;*/
-                /*justify-content: center;*/
-                margin: 30px auto;
-                padding: 30px;
-                background-color: #333;
-                color: #fff;
-                border-radius: 5px;
-                width: 90%;
-                max-width: 1200px;
-                /*text-align: center;*/
-            }
-
-           .intro a {
-    color: #FFD700; /* Change the color of links */
-    text-decoration: none; /* Remove the underline */
-    padding: 0px; /* Add some space around the links */
-}
-
-.intro a:hover {
-    color: #fff; /* Change the color when hovered */
-    text-decoration: underline; /* Underline when hovered */
-}
-.intro a:first-child {
-    padding-left: 0;
-    padding-right: 0;
-}
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3, .section .img4 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3 {
-            width: 100px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-    .section .img1, .section .img2, .section .img3, .section .img4 {
-    width: 40%;
-    height: auto;
-}
-h1, h2, h4, h5, h6 {
-    text-align: center;
-}
-
-        .image-background .esnimg {
-        background-color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0px;
-            margin: auto;
-        }
-
-        .image-background .esnimg {
-        max-width: 50%;
-        height: auto;
-        }
-
-     /* Add styles for the .content paragraph */
-        .content p {
-            max-width: 800px;
-            margin: auto;
-            padding: 15px;
-            background-color: rgba(0,0,0,5%);
-            border-radius: 3px;
-        }
-
-        .content article {
-            max-width: 900px;
-            margin: auto;
-        }
-        /* Add this code */
-.content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.content p {
-    background-color: #f2f2f2; /* Pale gray */
-    padding: 15px;
-    border-radius: 5px;
-}
-.content .paragraph {
-  background-color: #f2f2f2; /* Pale gray */
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 15px; /* gives some space between paragraphs */
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.content .paragraph p {
-  margin: 0;
-}
-
-</style>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing III</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing III</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <div class="header">
-        <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno, Ph.D.</h1>
-        <h2>Research Engineer</h2>
-    </div>
 
-    <div class="nav">
-       <a href="index.html">Home</a> |
-        <a href="research.html">Research</a> |
-        <a href="engineering.html"> Engineering </a> |
-        <a href="https://twitter.com/ampolloreno">Twitter</a> |
-        <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
-        <a href="https://github.com/ampolloreno">GitHub</a> |
-        <a href="papers.html">Papers</a> |
-        <a href="resume.pdf">Resume</a>|
-        <a href="reservoirs.html">Reservoir Computing I</a> |
-        <a href="reservoirs2.html">Reservoir Computing II</a>|
-        <a href="reservoirs3.html">Reservoir Computing III</a>
-    </div>
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
 
-    <div class="content" id="blogPost">
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
 
-        <article>
-             <h1>The Impact of Noise on Recurrent Neural Networks III</h1>
-    <div class="paragraph">
-        <p> We are finally set to analyze the impacts of noise on our particular model of recurrent computation - reservoir computing
-            with echo state networks. In the <a href="reservoirs2.html">previous post</a>, we implemented a GPU simulator together with
-            an extremely simple noise model by adding Gaussian noise to each element of the output signal from the reservoir.
-            In principle, the dynamics of a system will have more complicated noise based on the details of the computation being done,
-            but in our case using such a simple model will let us explore intuitively why we should expect a substantial degradation in
-            performance in the first place. Based on our discussion in the first post, we have additionally considered all products of the
-            output signals, and are assessing the performance of the reservoir by using it for the NARMA10 task.
-        </p>
-         <p>
-             In particular, we are going to analyze the impact of the Gaussian noise by considering a simple model of how the signals
-             become corrupted. We naively expect an exponential number of product signals because the number of possible product signals
-             from a set of signals is given by the cardinality of its power set - there are an exponential number of possible combinations
-             from any set. We will group these product signals by the number of terms in each product, and compute the probability
-             that the product signal is uncorrupted from the noise. Doing this, we will be able to reason about the expected number
-             of useful signals, and establish that with noise the expected number of signals should scale polynomially, rather than exponentially.
-         </p>
-         <p>
-             Once we have established that the expected number of signals in this simple model is approximately a monomial in the system size,
-             rather than exponential, we will plot how we expect the degree of the monomial to vary with noise. To think about
-             the limits of this plot - when the noise becomes very large, the echo state network will be unable to learn, and hence
-             their performance will be independent of the number of signals, giving a degree of zero. When the noise goes to zero,
-             then we can expect the reservoir will be able to make use of the exponentially-many signals, and the approximation
-             of a monomial dependence becomes invalid (the monomial degree becomes arbitrarily large). Let's give the code a look.
-        </p>
-    </div>
-    <iframe src="Webpost3.html" style="height:8000px; width:100%; border:none;" ></iframe>
-            <div class="paragraph">
-<section style="text-align: center;">
-    <h3>Acknowledgements</h3>
-    <p>A special thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a> and <a href="https://chromotopy.org/">Eric Peterson</a> for feedback on this post!</p>
-</section>
-        </article>
 
-    </div>
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks III</h1>
 
+      <div class="paragraph">
+        <p>We're now ready to examine how noise affects our model of recurrent computation — specifically, reservoir computing using echo state networks (ESNs). In the <a href="reservoirs2.html">previous post</a>, we implemented a GPU-based simulator with a simple Gaussian noise model applied to the reservoir output.</p>
+        <p>Though more realistic systems may involve complex noise characteristics, our basic model helps build intuition. Based on earlier discussions, we’re examining not just raw outputs but also all products of the output signals. We evaluate reservoir performance using the NARMA10 task.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>To understand noise effects, we model how these signal products become corrupted. The total number of possible signal products grows exponentially — as large as the power set of output signals. We group them by how many terms they include and analyze the likelihood that any given product remains uncorrupted by noise.</p>
+        <p>This allows us to estimate the number of “useful” signals. While we’d expect an exponential number in an ideal setting, the presence of noise limits that growth to something closer to a polynomial scale.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>We then plot how the effective degree of this polynomial (i.e., how many signals survive) varies with noise. In the extreme high-noise regime, the ESN can’t learn — performance saturates, and the effective degree drops to zero. In the limit of zero noise, the ESN might access an exponential number of features, and the polynomial approximation breaks down entirely. Let’s dig into the code:</p>
+      </div>
+
+      <iframe src="Webpost3.html"></iframe>
+
+      <div class="paragraph">
+        <section style="text-align: center;">
+          <h3>Acknowledgements</h3>
+          <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their thoughtful feedback on this post.</p>
+        </section>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
 
 </body>
 </html>

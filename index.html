@@ -1,247 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMP</title>
-    <style>
-
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .header img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
-
-        .header h1 {
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        .header p {
-            margin-top: 0;
-        }
-
-        .nav {
-            text-align: center;
-            background-color: #333;
-            padding: 10px;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 10px;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        .content {
-            padding: 20px;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            margin: 30px auto;
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .section .img1 {
-            width: 400px;
-            height: 350px;
-        }
-
-        .section .img2 {
-            width: 450px;
-            height: 200px;
-        }
-
-        .section .img3 {
-            width: 500px;
-            height: 300px;
-        }
-        .section .img4 {
-            width: 400px;
-            height: 200px;
-        }
-          .section div {
-            margin-left: 40px;
-            width: 70%;
-        }
-
-        .section:nth-child(odd) div {
-            margin-right: 40px;
-            margin-left: 0;
-        }
-
-        .section:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-        .intro {
-                display: flex;
-                /*align-items: center;*/
-                /*justify-content: center;*/
-                margin: 30px auto;
-                padding: 30px;
-                background-color: #333;
-                color: #fff;
-                border-radius: 5px;
-                width: 90%;
-                max-width: 1200px;
-                /*text-align: center;*/
-            }
-
-           .intro a {
-    color: #FFD700; /* Change the color of links */
-    text-decoration: none; /* Remove the underline */
-    padding: 0px; /* Add some space around the links */
-}
-
-.intro a:hover {
-    color: #fff; /* Change the color when hovered */
-    text-decoration: underline; /* Underline when hovered */
-}
-.intro a:first-child {
-    padding-left: 0;
-    padding-right: 0;
-}
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3 {
-            width: 300px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-
-   /* CSS for Screen Width up to 600px (Mobile) */
-    @media only screen and (max-width: 600px) {
-
-        .header img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .section {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .section .img1, .section .img2, .section .img3 {
-            width: 300px;
-            height: auto;
-        }
-
-        .section div {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .intro {
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-        }
-    }
-    .section .img1, .section .img2, .section .img3, .section .img4 {
-    width: 40%;
-    height: auto;
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anthony Polloreno, Ph.D.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-    <div class="header">
-        <img src="portrait.jpg" alt="Your headshot">
-        <h1>Anthony Polloreno, Ph.D.</h1>
-        <h2>Research Engineer</h2>
-    </div>
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
 
-    <div class="nav">
-      <a href="index.html">Home</a>
-        <a href="https://twitter.com/ampolloreno">Twitter</a> |
-        <a href="https://www.linkedin.com/in/ampolloreno/">LinkedIn</a> |
-        <a href="https://github.com/ampolloreno">GitHub</a> |
-        <a href="papers.html">Papers</a> |
-        <a href="resume.pdf">Resume</a>|
-        <a href="reservoirs.html">Reservoir Computing I</a> |
-        <a href="reservoirs2.html">Reservoir Computing II</a>|
-        <a href="reservoirs3.html">Reservoir Computing III</a>
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
 
-    </div>
+  <div class="section">
+    <p>
+      I'm a mathematically-oriented engineer with over a decade of experience in software engineering, machine learning, and quantum computing.
+      My work typically explores the structure and characterization of information-processing systems.
+    </p>
+    <p>
+      I'm currently at Apple, building large-scale machine learning infrastructure. Prior to that, I was at Essential AI,
+      where I trained, optimized, and deployed large language models (<a href="https://www.angellist.com/fin" target="_blank">we co-developed Fin</a>)!
+    </p>
+    <p>
+      Previously, I was a postdoc at JILA and CU Boulder, focusing on how noise affects learning dynamics—particularly in recurrent networks.
+      Before that, I worked with Graeme Smith at JILA and the QPL at Sandia National Laboratories during my Ph.D. at CU Boulder,
+      researching machine learning and quantum information.
+    </p>
+    <p>
+      Earlier in my career, I was a software engineer at Rigetti Computing, developing quantum control systems and working with Sandia
+      on benchmarking quantum computers. I have a triple major in computer science, mathematics, and physics from UC Berkeley, and did research
+      at both LBNL (reflection zone plates) and Sandia (quantum control theory).
+    </p>
+    <hr>
+    <p>I also write papers:</p>
+    <ul>
+      <li><a href="http://arxiv.org/abs/2505.02222v4" target="_blank">Practical Efficiency of Muon for Pretraining</a></li>
+      <li><a href="http://arxiv.org/abs/2504.04022v1" target="_blank">Rethinking Reflection in Pre-Training</a></li>
+      <li><a href="http://arxiv.org/abs/2307.14474v4" target="_blank">Limits to Analog Reservoir Learning</a></li>
+      <li><a href="http://arxiv.org/abs/2302.13853v1" target="_blank">A Theory of Direct Randomized Benchmarking</a></li>
+      <li><a href="http://arxiv.org/abs/2302.10862v1" target="_blank">A Note on Noisy Reservoir Computation</a></li>
+      <li><a href="http://arxiv.org/abs/2205.06845v6" target="_blank">The QAOA with Few Measurements</a></li>
+      <li><a href="http://arxiv.org/abs/2203.05520v2" target="_blank">Opportunities and Limitations in Broadband Sensing</a></li>
+      <li><a href="http://arxiv.org/abs/2203.05196v2" target="_blank">Individual Qubit Addressing of Rotating Ion Crystals</a></li>
+      <li><a href="http://arxiv.org/abs/2108.02079v1" target="_blank">Toward Demonstrating Fault Tolerance with Bacon-Shor</a></li>
+      <li><a href="http://arxiv.org/abs/2001.02779v2" target="_blank">Robustly Decorrelating Errors with Mixed Gates</a></li>
+      <li><a href="http://arxiv.org/abs/1901.08035v3" target="_blank">Parametrically-Activated Gate Protected from Flux Noise</a></li>
+      <li><a href="http://arxiv.org/abs/1806.08321v2" target="_blank">Quantum Kitchen Sinks</a></li>
+      <li><a href="http://arxiv.org/abs/1706.06570v3" target="_blank">Universal Parametric Entangling Gates</a></li>
+      <li><a href="http://arxiv.org/abs/1706.06562v2" target="_blank">Parametrically Activated Entangling Gates with Transmons</a></li>
+    </ul>
+  </div>
 
-        <div class="section">
-            I am a mathematically-oriented engineer, with over a decade of expertise in software engineering,
-            machine learning and quantum computation. Generally, I work on projects involving the characterization
-            of information processing systems. I currently am at Apple, building their machine learning infrastructure.
-            Previously, I worked at Essential AI, serving, training, optimizing, pre-training and post-training large
-            language models. <a href="https://www.angellist.com/fin" target="_blank" rel="noopener noreferrer">
-            See a version of our collaboration with AngelList</a>. Before that, I was a post-doc at JILA and CU Boulder,
-            doing machine learning research. My focus was on understanding how noise impacts learning, with an emphasis
-            on recurrent networks. Prior to my post-doc I was a graduate student at CU Boulder working with Graeme Smith
-            at JILA and with the QPL at Sandia National Laboratories, where I focused on machine learning and quantum information.
-            Previous to graduate school I worked at Rigetti Quantum Computing as a software engineer, focusing
-            primarily on the control software for operating quantum computers, and collaborating with Sandia National
-            Laboratories to perform statistically rigorous characterization of Rigetti's devices. Before that, I graduated
-            with a triple major from U.C. Berkeley in computer science, mathematics and physics, and was a researcher at
-            both Lawrence Berkeley National Laboratory working on beamline optics (reflection zone plates) and Sandia
-            National Laboratories on robust control of quantum systems.
-        </div>
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    // Load stored theme on page load
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
+
 </body>
 </html>
