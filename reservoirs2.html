@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservoir Computing II</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
+
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks II</h1>
+
+      <div class="paragraph">
+        <p>In this section, we simulate the echo state networks discussed in the <a href="reservoirs.html">last post</a>. This problem has some unusual constraints, particularly around variable training lengths. After some exploration (detailed in the appendix), I found a better strategy: simulate ensembles of reservoirs.</p>
+        <p>Each reservoir (and each size) ideally requires different training lengths to avoid over- or underfitting, but even when we ignore this, size still shows performance gains. The ensemble approach also introduces a natural axis of parallelization. To support this, we chunk the input time series—loading it fully into GPU memory wastes valuable space needed for simulating activations.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>Our main goal is to study echo state networks with output product signals and examine how noise affects their performance. Noise is ubiquitous: digital systems typically mitigate it with error correction, but native ML hardware doesn't enjoy the same luxury.</p>
+        <p>Small float precision can introduce rounding errors that accumulate, especially in recurrent systems. Thermal and sensor noise can further degrade signal fidelity. These are practical challenges in real-world systems that deal with analog or probabilistic processes.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>While this post isn't focused on reinforcement learning, it's worth noting the parallel. In REINFORCE-style algorithms (e.g., Williams, 1992), sampled data is used to estimate policy gradients in expectation. These estimates can suffer from noise due to both sample limitations and model imperfections. We use a simpler approach here: we just inject Gaussian noise into the output values of the network.</p>
+      </div>
+
+      <iframe src="Webpost2.html" style="height:10400px; width:100%; border:none;"></iframe>
+
+      <div class="paragraph">
+        <p>Check out the next notebook <a href="reservoirs3.html">here</a>!</p>
+      </div>
+
+      <div class="paragraph" style="text-align: center;">
+        <h3>Acknowledgements</h3>
+        <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their helpful feedback on this post.</p>
+      </div>
+
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
+
+</body>
+</html>

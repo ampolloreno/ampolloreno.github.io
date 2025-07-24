@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing I</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
+
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks I</h1>
+
+      <div class="paragraph">
+        <p>In this post, we study reservoir computing—a subset of recurrent neural networks (RNNs) used for complex temporal processing tasks. We'll examine what happens when noise is introduced into these systems.</p>
+        <p>Reservoir computing is especially interesting for dynamics prediction in physical systems, though it can also be adapted to tasks like language modeling. Compared to transformer-based methods, it’s academically underexplored and pedagogically simple—ideal for learning. Training involves just a linear layer, with the recurrent structure derived from a random matrix, making ESNs easy to interpret.</p>
+        <p>We’ll focus on echo state networks (ESNs), which include a few tunable parameters: sparsity, time-step bleedthrough, an encoding map, a decoding map, a transition matrix, and reservoir size. Interestingly, even with random initialization of the encoding and transition maps, ESNs can effectively predict sequences using a simple linear decoding layer—solvable with least squares.</p>
+        <p>The goal of this tutorial is to understand how noise impacts the computational power of reservoir systems, especially as a function of size. The analysis extends to many analog systems with continuous-valued internal states. We'll show how noise significantly degrades computational capability, and kick things off with a notebook introducing the model (ESNs) and the task (NARMA10).</p>
+      </div>
+
+      <iframe src="Webpost1.html" style="height:7650px; width:100%; border:none;"></iframe>
+
+      <div class="paragraph">
+        <p>Check out the next notebook <a href="reservoirs2.html">here</a>!</p>
+      </div>
+
+      <div class="paragraph" style="text-align: center;">
+        <h3>Acknowledgements</h3>
+        <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their thoughtful feedback on this post.</p>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
+
+</body>
+</html>

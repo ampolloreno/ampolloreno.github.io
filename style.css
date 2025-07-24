@@ -1,0 +1,170 @@
+:root {
+  --bg: #f0f0f0;
+  --fg: #333;
+  --card-bg: #fff;
+  --accent: #0077cc;
+  --nav-bg: #333;
+  --nav-fg: #fff;
+  --link-hover: #005fa3;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --fg: #eee;
+  --card-bg: #1e1e1e;
+  --accent: #4aa8ff;
+  --nav-bg: #222;
+  --nav-fg: #ccc;
+  --link-hover: #fff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  padding: 30px 20px 10px;
+  background: var(--card-bg);
+  position: relative;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.header h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: var(--fg);
+}
+
+.header h2 a {
+  margin-left: 10px;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.header h2 a:hover {
+  color: var(--accent);
+}
+
+.header h3 {
+  font-weight: normal;
+  margin: 5px 0;
+  color: var(--fg);
+}
+
+.apple {
+  display: inline-block;
+  font-size: 1.2em;
+  margin-left: 10px;
+  color: var(--fg);
+}
+
+.toggle-theme {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: 1px solid var(--fg);
+  color: var(--fg);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav {
+  background-color: var(--nav-bg);
+  text-align: center;
+  padding: 10px 0;
+}
+
+.nav a {
+  color: var(--nav-fg);
+  text-decoration: none;
+  padding: 0 15px;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.content,
+.section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.content h1,
+.content h3,
+.section h1,
+.section h3 {
+  text-align: center;
+}
+
+.paragraph {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.paragraph p {
+  margin: 0 0 1em;
+}
+
+.section a,
+.content a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.section a:hover,
+.content a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.section ul {
+  padding-left: 20px;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: 8000px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .nav a {
+    display: block;
+    padding: 8px 0;
+  }
+
+  .content,
+  .section {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+  }
+
+  .toggle-theme {
+    top: 10px;
+    right: 10px;
+    font-size: 0.9em;
+  }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing III</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservoir Computing III</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="reservoirs.html">Reservoir Computing I</a> |
+    <a href="reservoirs2.html">Reservoir Computing II</a> |
+    <a href="reservoirs3.html">Reservoir Computing III</a>
+  </div>
+
+
+  <div class="content" id="blogPost">
+    <article>
+      <h1>The Impact of Noise on Recurrent Neural Networks III</h1>
+
+      <div class="paragraph">
+        <p>We're now ready to examine how noise affects our model of recurrent computation — specifically, reservoir computing using echo state networks (ESNs). In the <a href="reservoirs2.html">previous post</a>, we implemented a GPU-based simulator with a simple Gaussian noise model applied to the reservoir output.</p>
+        <p>Though more realistic systems may involve complex noise characteristics, our basic model helps build intuition. Based on earlier discussions, we’re examining not just raw outputs but also all products of the output signals. We evaluate reservoir performance using the NARMA10 task.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>To understand noise effects, we model how these signal products become corrupted. The total number of possible signal products grows exponentially — as large as the power set of output signals. We group them by how many terms they include and analyze the likelihood that any given product remains uncorrupted by noise.</p>
+        <p>This allows us to estimate the number of “useful” signals. While we’d expect an exponential number in an ideal setting, the presence of noise limits that growth to something closer to a polynomial scale.</p>
+      </div>
+
+      <div class="paragraph">
+        <p>We then plot how the effective degree of this polynomial (i.e., how many signals survive) varies with noise. In the extreme high-noise regime, the ESN can’t learn — performance saturates, and the effective degree drops to zero. In the limit of zero noise, the ESN might access an exponential number of features, and the polynomial approximation breaks down entirely. Let’s dig into the code:</p>
+      </div>
+
+      <iframe src="Webpost3.html"></iframe>
+
+      <div class="paragraph">
+        <section style="text-align: center;">
+          <h3>Acknowledgements</h3>
+          <p>Thanks to <a href="https://ohaithe.re/">Alex Meiburg</a>, <a href="https://andremelo.org/">André Melo</a>, and <a href="https://chromotopy.org/">Eric Peterson</a> for their thoughtful feedback on this post.</p>
+        </section>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    }
+  </script>
+
+</body>
+</html>
