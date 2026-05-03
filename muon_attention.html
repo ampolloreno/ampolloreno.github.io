@@ -340,24 +340,6 @@ forgot to impose.</p>
 <p>Equivalently, QK norm is the missing Muon derivation for attention,
 moved into the forward pass.</p>
 <hr />
-<h2 id="where-mhc-fits-and-where-it-does-not">Where mHC fits, and where
-it does not</h2>
-<p>DeepSeek-V4 also uses manifold-constrained hyper-connections, or mHC.
-That is a different stabilization story.</p>
-<p>mHC expands the residual stream and learns pre-, post-, and residual
-mixing maps, but constrains the residual mixing matrix to be doubly
-stochastic. The point is that doubly stochastic residual maps are
-non-expansive and closed under composition, so repeated residual mixing
-does not blow up or vanish across depth. <a href="#references">[Xie et
-al., 2026]</a></p>
-<p>That is a macro-architecture constraint on residual signal
-propagation.</p>
-<p>QK norm is a micro-architecture constraint on attention-logit
-geometry.</p>
-<p>They are complementary. mHC controls residual routing, while QK norm
-controls attention logits.</p>
-<p>Neither one is a generic substitute for the other.</p>
-<hr />
 <h2
 id="what-this-says-about-adamw-muon-and-second-order-optimization">What
 this says about AdamW, Muon, and second-order optimization</h2>
@@ -624,9 +606,6 @@ href="https://arxiv.org/abs/2507.13338">https://arxiv.org/abs/2507.13338</a></li
 <li>Shah et al. <strong>Practical Efficiency of Muon for
 Pretraining.</strong> arXiv:2505.02222, 2025. <a
 href="https://arxiv.org/abs/2505.02222">https://arxiv.org/abs/2505.02222</a></li>
-<li>Xie et al. <strong>mHC: Manifold-Constrained
-Hyper-Connections.</strong> arXiv:2512.24880, 2026. <a
-href="https://arxiv.org/abs/2512.24880">https://arxiv.org/abs/2512.24880</a></li>
 </ul>
     </article>
   </div>
