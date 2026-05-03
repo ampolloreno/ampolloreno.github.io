@@ -33,9 +33,8 @@
     <article class="essay-content">
 <h1 id="thoughts-on-muon-and-second-order-optimization">Thoughts on
 Muon and Second Order Optimization</h1>
-<p>Muon has a clean derivation for linear layers, but attention changes
-the constrained object.</p>
-<p>For a linear layer <span class="math inline">\(y = xW\)</span>, the
+<p>Muon has a clean derivation for linear layers. For a linear layer
+<span class="math inline">\(y = xW\)</span>, the
 steepest first-order update under a spectral-norm constraint is the
 polar factor of the gradient. If <span class="math inline">\(G =
 \nabla_W L\)</span>, then</p>
@@ -44,30 +43,29 @@ polar factor of the gradient. If <span class="math inline">\(G =
 \qquad G = U\Sigma V^\top.
 \]</span></p>
 <p>Muon approximates this polar factor with Newton–Schulz iterations.
-That derivation is fine for linear maps. It is not yet the right
-derivation for attention.</p>
-<p>For one attention head, <span class="math inline">\(Q = XW_Q\)</span>,
+That derivation is
+fine for linear maps, but attention changes the constrained object. For
+one attention head, <span class="math inline">\(Q = XW_Q\)</span>,
 <span class="math inline">\(K = XW_K\)</span>, and <span
 class="math inline">\(V = XW_V\)</span>. The attention logits are <span
 class="math inline">\(S = \frac{QK^\top}{\sqrt d}
   = \frac{XW_QW_K^\top X^\top}{\sqrt d}\)</span>.</p>
-<p>So the object that directly controls attention is not <span
+<p>The object that directly controls attention is not <span
 class="math inline">\(W_Q\)</span> or <span
 class="math inline">\(W_K\)</span> separately. It is the bilinear
-product <span class="math inline">\(W_QW_K^\top\)</span>.</p>
-<p>If one orthogonalizes the updates to <span
+product <span class="math inline">\(W_QW_K^\top\)</span>. If one
+orthogonalizes the updates to <span
 class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently, one is still applying
 the linear-layer derivation. Attention does not use <span
 class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently. It uses their
-product.</p>
-<p>For attention, the relevant constraint belongs on the induced change
-in <span class="math inline">\(QK^\top\)</span>.</p>
+product. For attention, the relevant constraint belongs on the induced
+change in <span class="math inline">\(QK^\top\)</span>.</p>
 <hr />
 <h2 id="the-empirical-clue">Empirical picture</h2>
-<p>Large-scale Muon training already shows this mismatch.</p>
-<p>Moonshot’s Muon scaling report identifies two crucial fixes for
+<p>Large-scale Muon training already shows this mismatch. Moonshot’s
+Muon scaling report identifies two crucial fixes for
 scaling Muon, weight decay and per-matrix update-RMS rescaling. It also
 notes that Muon’s update RMS depends on matrix shape, which can become
 problematic for small attention matrices such as per-head KV matrices in
@@ -79,13 +77,13 @@ gradient norm remain stable. <a href="#references">[Liu et al.,
 ingredient is <strong>QK-Clip</strong>. The paper says QK-Clip rescales
 query and key projection weights after the optimizer step to explicitly
 constrain attention logits. Muon alone is not enough for attention.
-<a href="#references">[Kimi Team, 2025]</a></p>
-<p>DeepSeek-V4 takes the architectural route. It uses Muon for most
+<a href="#references">[Kimi Team, 2025]</a> DeepSeek-V4 takes the
+architectural route. It uses Muon for most
 matrix parameters, but applies RMSNorm to attention queries and
 compressed KV entries immediately before core attention. The paper
 attributes that normalization to logit stability and does not use
-QK-Clip. <a href="#references">[DeepSeek-AI, 2026]</a></p>
-<p>Across these reports, Muon is used for matrix parameters and
+QK-Clip. <a href="#references">[DeepSeek-AI, 2026]</a> Across these
+reports, Muon is used for matrix parameters and
 attention receives extra QK/logit control. That is the expected outcome
 when the linear-layer derivation is applied to a bilinear operator.</p>
 <hr />
@@ -143,37 +141,37 @@ separately.</p>
 implementation</h2>
 <p>Muon is cheap because it is local to one matrix. You take a
 matrix-shaped momentum buffer, run a few Newton–Schulz iterations,
-rescale the update, and apply it.</p>
-<p>The attention-aware update is not local to one matrix. It depends on
+rescale the update, and apply it. The attention-aware update is not
+local to one matrix. It depends on
 the current activations <span class="math inline">\(X\)</span>, the
 current queries <span class="math inline">\(Q\)</span>, the current
 keys <span class="math inline">\(K\)</span>, the attention mask, the
 head structure, the sequence length, the softmax geometry, and in
 modern models compressed, sparse, latent, grouped, or multi-query
-attention layouts.</p>
-<p>Even before considering the softmax, the natural object is the logit
+attention layouts. Even before considering the softmax, the natural
+object is the logit
 matrix <span class="math inline">\(S\)</span>, which is
 sequence-by-sequence. In dense attention this is <span
 class="math inline">\(T \times T\)</span> per head. In sparse or
 compressed attention, it becomes architecture-specific. In MLA-style or
 compressed-KV attention, the key may not even be materialized in the
-same way at training and inference.</p>
-<p>The exact optimizer-side solution is expensive. The architecture is
-the cheaper place to impose the same geometry.</p>
+same way at training and inference. The exact optimizer-side solution
+is expensive. The architecture is the cheaper place to impose the same
+geometry.</p>
 <hr />
 <h2
 id="qk-normalization-is-the-architectural-version-of-the-missing-optimizer">QK
 normalization</h2>
 <p>The scalar attention logit is <span class="math inline">\(\ell(q,k)
-= \frac{q^\top k}{\sqrt d}\)</span>.</p>
-<p>The dangerous degrees of freedom are the radial norms of <span
+= \frac{q^\top k}{\sqrt d}\)</span>. The dangerous degrees of freedom
+are the radial norms of <span
 class="math inline">\(q\)</span> and <span
 class="math inline">\(k\)</span>. If Muon updates <span
 class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently, the product <span
 class="math inline">\(QK^\top\)</span> can grow even when the individual
-matrix updates look reasonable.</p>
-<p>A direct architectural fix is to set <span
+matrix updates look reasonable. A direct architectural fix is to set
+<span
 class="math inline">\(\hat q = R_q \frac{q}{\|q\|_2 + \epsilon}\)</span>
 and <span class="math inline">\(\hat k = R_k \frac{k}{\|k\|_2 +
 \epsilon}\)</span>, and then compute <span
@@ -200,8 +198,8 @@ class="math inline">\(\nabla_{\hat k}\ell = \frac{\hat q}{\sqrt
 d}\)</span>, so <span class="math inline">\(\|\nabla_{\hat q}\ell\|_2 =
 \frac{R_k}{\sqrt d}\)</span> and <span
 class="math inline">\(\|\nabla_{\hat k}\ell\|_2 = \frac{R_q}{\sqrt
-d}\)</span>.</p>
-<p>This matches the operator control Muon gives a linear map.</p>
+d}\)</span>. This matches the operator control Muon gives a linear
+map.</p>
 <hr />
 <h2 id="the-jacobian-view">The Jacobian view</h2>
 <p>Take exact L2 normalization, <span class="math inline">\(\hat q =
@@ -217,28 +215,27 @@ D\hat q
 projection onto the tangent space of the sphere. QK norm
 removes the radial direction. An update that merely increases <span
 class="math inline">\(\|q\|\)</span> does not change the attention
-logits.</p>
-<p>Under normalization, the optimizer no longer has to learn not to
+logits. Under normalization, the optimizer no longer has to learn not to
 spend update budget on radial Q/K growth. The forward map removes that
 direction directly.</p>
 <p>Attention-aware trust regions and QK normalization address the same
 instability at different levels. One constrains the update in logit
 space. The other changes the parameterization so the unstable radial
-direction is mostly absent.</p>
-<p>This is also the role of DeepSeek-V4’s pre-attention normalization.
+direction is mostly absent. This is also the role of DeepSeek-V4’s
+pre-attention normalization.
 Muon remains matrix-local, and the model removes the unstable radial
 Q/K direction before attention.</p>
 <hr />
 <h2 id="which-normalization-should-this-predict">Choice of norm</h2>
 <p>The Muon derivation points to <strong>per-head L2/RMS normalization
-on Q and K</strong>.</p>
-<p>Muon’s motivating geometry is spectral norm. Spectral norm is the
+on Q and K</strong>. Muon’s motivating geometry is spectral norm.
+Spectral norm is the
 operator norm induced by Euclidean vector norms, namely <span
 class="math inline">\(\|W\|_2 =
 \sup_{\|x\|_2=1}\|Wx\|_2\)</span>.</p>
 <p>The vector geometry paired with this is <span
-class="math inline">\(\ell_2\)</span>.</p>
-<p>Equivalently, to bound the dot product, Holder’s inequality gives
+class="math inline">\(\ell_2\)</span>. Equivalently, to bound the dot
+product, Holder’s inequality gives
 <span class="math inline">\(|q^\top k| \le \|q\|_p\|k\|_{p^*}\)</span>
 with <span class="math inline">\(\frac1p + \frac1{p^*}=1\)</span>. The
 only symmetric self-dual choice is <span
@@ -247,8 +244,8 @@ class="math inline">\(p=2\)</span>.</p>
 Muon’s polar update is built from SVD/orthogonal geometry. An <span
 class="math inline">\(\ell_1\)</span> or <span
 class="math inline">\(\ell_\infty\)</span> constraint picks out
-coordinate axes. It is not the same geometry.</p>
-<p>This points to per-head RMS/L2 normalization on Q and K before the
+coordinate axes. It is not the same geometry. This points to per-head
+RMS/L2 normalization on Q and K before the
 dot product. RMSNorm is just L2 normalization written in the usual
 transformer scale, since <span
 class="math inline">\(\operatorname{RMS}(q)=\frac{\|q\|_2}{\sqrt
@@ -258,10 +255,9 @@ d}\)</span>.</p>
 <p>A scalar cap such as <span class="math inline">\(\ell \mapsto
 \tau\tanh(\ell/\tau)\)</span> or <span
 class="math inline">\(\ell \mapsto \tau\arctan(\ell/\tau)\)</span>
-bounds the logit value after the dot product.</p>
-<p>That bounds values after the dot product. It does not bound the
-operator generating them.</p>
-<p>If <span class="math inline">\(c(\ell)\)</span> is the scalar cap,
+bounds the logit value after the dot product. That bounds values after
+the dot product. It does not bound the operator generating them. If
+<span class="math inline">\(c(\ell)\)</span> is the scalar cap,
 then <span class="math inline">\(\nabla_q c(\ell)
 =
 c&#39;(\ell)\frac{k}{\sqrt d}\)</span>.</p>
@@ -269,8 +265,8 @@ c&#39;(\ell)\frac{k}{\sqrt d}\)</span>.</p>
 <span class="math inline">\(c&#39;(0)\approx 1\)</span>. Therefore, if
 <span class="math inline">\(k\)</span> has huge norm but happens to be
 nearly orthogonal to <span class="math inline">\(q\)</span>, the scalar
-logit is small while the local sensitivity can still be huge.</p>
-<p>A softcap controls values. QK norm controls the operator.</p>
+logit is small while the local sensitivity can still be huge. A softcap
+controls values. QK norm controls the operator.</p>
 <p>Under the Muon/operator-norm story, QK RMSNorm is the architectural
 match. A scalar cap can still serve as a guardrail, but it does not fix
 the missing QK geometry.</p>
@@ -289,22 +285,21 @@ id="what-this-says-about-adamw-muon-and-second-order-optimization">Muon
 and optimizer geometry</h2>
 <p>Muon is not a cheap Hessian inverse. It is a structured matrix
 update. Adam-style methods use diagonal gradient statistics. Muon uses
-matrix geometry and a controlled spectral profile.</p>
-<p>This is the setting where maximal-update arguments apply. Shah et
+matrix geometry and a controlled spectral profile. This is the setting
+where maximal-update arguments apply. Shah et
 al. study Muon together with maximal update parameterization and find
 that Muon expands the compute-time Pareto frontier over AdamW while
 retaining data efficiency at large batch sizes. <a
 href="#references">[Shah et al., 2025]</a></p>
-<p>Moonshot’s Muon report reports a similar empirical result. After
+<p>Moonshot’s Muon report gives a similar empirical result. After
 adding weight decay and correcting update RMS, their scaling-law
 experiments show roughly a 2x compute-efficiency improvement over AdamW
 under their compute-optimal setup. <a
-href="#references">[Liu et al., 2025]</a></p>
-<p>But the attention story says that matrix-level maximal updates are
+href="#references">[Liu et al., 2025]</a> But the attention story says
+that matrix-level maximal updates are
 not enough. For MLP matrices, the matrix is the operator. For attention
-Q/K, the operator is the product.</p>
-<p>Use Muon where the parameter is the operator. Add QK geometry where
-the operator is bilinear.</p>
+Q/K, the operator is the product. Use Muon where the parameter is the
+operator. Add QK geometry where the operator is bilinear.</p>
 <hr />
 <h2
 id="does-a-second-order-optimizer-change-the-critical-batch-size-story">Batch-size
@@ -318,8 +313,8 @@ diminishing-returns form</p>
 \frac{\Delta L_{\max}}{1+B_{\mathrm{noise}}/B}.
 \]</span></p>
 <p>The noise scale predicts the point where increasing batch size gives
-diminishing returns.</p>
-<p>If we add a fixed deterministic preconditioner <span
+diminishing returns. If we add a fixed deterministic preconditioner
+<span
 class="math inline">\(P\)</span>, the same calculation gives a modified
 critical batch size</p>
 <p><span class="math display">\[
@@ -336,12 +331,12 @@ B_N
 \]</span></p>
 <p>So even before stochastic curvature estimation, preconditioning
 changes the noise metric. The relevant gradient noise is now whitened by
-curvature.</p>
-<p>If the curvature itself is estimated stochastically, there is a
+curvature. If the curvature itself is estimated stochastically, there is
+a
 second statistical problem. The update is no longer just <span
 class="math inline">\(H^{-1}\hat g\)</span>. It is <span
-class="math inline">\(\hat H^{-1}\hat g\)</span>.</p>
-<p>That creates two noise scales. One is a gradient-side scale and the
+class="math inline">\(\hat H^{-1}\hat g\)</span>. That creates two noise
+scales. One is a gradient-side scale and the
 other is a curvature-side scale. In the notation of my note,</p>
 <p><span class="math display">\[
 B_g
@@ -385,9 +380,8 @@ class="math inline">\(\beta=0.99\)</span>, <span
 class="math inline">\(M_\beta \approx 199\)</span>.</p>
 <p>Matrix-whitening optimizers can therefore behave more second-order
 without requiring a huge separate curvature batch. They combine
-structure and averaging.</p>
-<p>Second-order-ish optimizers change the statistical estimation
-problem.</p>
+structure and averaging. Second-order-ish optimizers change the
+statistical estimation problem.</p>
 <p>For full curvature, the curvature-side batch can be enormous. For
 structured or factorized curvature, it can be much smaller. In the
 critical-curvature note, full outer-product curvature has <span
@@ -409,12 +403,12 @@ normalization.</p>
 <hr />
 <h2 id="a-small-eigenvaluespectral-norm-sanity-check">Spectral-norm
 sanity check</h2>
-<p>There is also a simple stability reason to like Muon.</p>
-<p>For a linear layer, if the Muon update is exactly polar-normalized,
+<p>There is also a simple stability reason to like Muon. For a linear
+layer, if the Muon update is exactly polar-normalized,
 then <span class="math inline">\(\|\operatorname{Polar}(G)\|_2 =
 1\)</span>. So the operator norm of the raw update is controlled, with
-<span class="math inline">\(\|\Delta W\|_2 \le \eta\rho\)</span>.</p>
-<p>This does not prove that training is globally stable. But it does say
+<span class="math inline">\(\|\Delta W\|_2 \le \eta\rho\)</span>. This
+does not prove that training is globally stable. But it does say
 that the per-step perturbation of the layer as an operator is bounded in
 the geometry that the layer actually uses.</p>
 <p>For attention, the analogous bound would be on <span
@@ -430,12 +424,11 @@ and <span class="math inline">\(\Delta W_K\)</span> do not directly
 bound the product in the same clean way unless we also control the norms
 of <span class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> or normalize the resulting queries
-and keys.</p>
-<p>Again, QK norm is exactly the architecture-side fix. If <span
+and keys. Again, QK norm is exactly the architecture-side fix. If <span
 class="math inline">\(q,k \mapsto \hat q,\hat k\)</span>, then <span
 class="math inline">\(|\hat q^\top\hat k| \le
-\|\hat q\|_2\|\hat k\|_2\)</span>.</p>
-<p>The spectral story and the attention story match.</p>
+\|\hat q\|_2\|\hat k\|_2\)</span>. The spectral story and the attention
+story match.</p>
 <hr />
 <h2 id="the-practical-recipe">Practical implications</h2>
 <p>A Muon transformer should treat these pieces separately. Use Muon on
