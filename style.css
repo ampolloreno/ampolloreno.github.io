@@ -212,6 +212,10 @@ iframe {
   font-weight: 600;
 }
 
+.paper-section + .paper-section {
+  margin-top: 2.5rem;
+}
+
 .paper-meta {
   display: block;
   margin-top: 0.35rem;

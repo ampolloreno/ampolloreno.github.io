@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Posts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="header">
+    <button class="toggle-theme" onclick="toggleTheme()">🌗</button>
+    <h1>Anthony Polloreno, Ph.D.</h1>
+    <h2>
+      @ampolloreno
+      <a href="https://github.com/ampolloreno" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/ampolloreno" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="mailto:ampolloreno@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/ampolloreno/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </h2>
+    <h3>Engineer <span class="apple"><i class="fab fa-apple"></i></span></h3>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="papers.html">Papers</a>
+    <a href="posts.html">Posts</a>
+  </div>
+
+  <div class="content">
+    <article class="essay-content">
+      <h1>Posts</h1>
+      <p>I write longer posts here. The reservoir series and the Muon note are below.</p>
+      <ul class="paper-list">
+        <li class="paper-item">
+          <a href="reservoirs.html">The Impact of Noise on Recurrent Neural Networks I</a>
+        </li>
+        <li class="paper-item">
+          <a href="reservoirs2.html">The Impact of Noise on Recurrent Neural Networks II</a>
+        </li>
+        <li class="paper-item">
+          <a href="reservoirs3.html">The Impact of Noise on Recurrent Neural Networks III</a>
+        </li>
+        <li class="paper-item">
+          <a href="muon_attention.html">Thoughts on Muon and Second Order Optimization</a>
+        </li>
+      </ul>
+    </article>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", saved);
+    };
+  </script>
+
+</body>
+</html>
