@@ -50,6 +50,11 @@ one attention head, <span class="math inline">\(Q = XW_Q\)</span>,
 class="math inline">\(V = XW_V\)</span>. The attention logits are <span
 class="math inline">\(S = \frac{QK^\top}{\sqrt d}
   = \frac{XW_QW_K^\top X^\top}{\sqrt d}\)</span>.</p>
+<p>That scope is not accidental. Bernstein’s derivation is explicit
+that Muon is defined for linear layers, and traces the underlying
+RMS-to-RMS operator norm back to Appendix E of <em>A Spectral Condition
+for Feature Learning</em>. <a href="#references">[Bernstein, 2025; Yang
+et al., 2024]</a></p>
 <p>The object that directly controls attention is not <span
 class="math inline">\(W_Q\)</span> or <span
 class="math inline">\(W_K\)</span> separately. It is the bilinear
@@ -286,7 +291,10 @@ and optimizer geometry</h2>
 <p>Muon is not a cheap Hessian inverse. It is a structured matrix
 update. Adam-style methods use diagonal gradient statistics. Muon uses
 matrix geometry and a controlled spectral profile. This is the setting
-where maximal-update arguments apply. Shah et
+where maximal-update arguments apply. Bernstein’s derivation makes the
+hyperparameter-transfer point explicit. In the RMS-to-RMS geometry, the
+update scale transfers across width rather than being retuned layer by
+layer. <a href="#references">[Bernstein, 2025]</a> Shah et
 al. study Muon together with maximal update parameterization and find
 that Muon expands the compute-time Pareto frontier over AdamW while
 retaining data efficiency at large batch sizes. <a
@@ -448,6 +456,8 @@ missing geometry in the model.</p>
 <hr />
 <h2 id="references">References</h2>
 <ul>
+<li>Bernstein, Jeremy. <strong>Deriving Muon.</strong> 2025. <a
+href="https://jeremybernste.in/writing/deriving-muon">https://jeremybernste.in/writing/deriving-muon</a></li>
 <li>DeepSeek-AI. <strong>DeepSeek-V4: Towards Highly Efficient
 Million-Token Context Intelligence.</strong> 2026. <a
 href="https://huggingface.co/collections/deepseek-ai/deepseek-v4">https://huggingface.co/collections/deepseek-ai/deepseek-v4</a></li>
@@ -463,6 +473,10 @@ href="https://arxiv.org/abs/2507.13338">https://arxiv.org/abs/2507.13338</a></li
 <li>Shah et al. <strong>Practical Efficiency of Muon for
 Pretraining.</strong> arXiv:2505.02222, 2025. <a
 href="https://arxiv.org/abs/2505.02222">https://arxiv.org/abs/2505.02222</a></li>
+<li>Yang, Greg, James B. Simon, and Jeremy Bernstein. <strong>A
+Spectral Condition for Feature Learning.</strong> arXiv:2310.17813,
+2024. <a
+href="https://arxiv.org/abs/2310.17813">https://arxiv.org/abs/2310.17813</a></li>
 </ul>
     </article>
   </div>
