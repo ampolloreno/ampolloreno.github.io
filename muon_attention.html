@@ -25,6 +25,7 @@
 
   <div class="nav">
     <a href="index.html">Home</a>
+    <a href="papers.html">Papers</a>
     <a href="reservoirs.html">Reservoir Computing I</a>
     <a href="reservoirs2.html">Reservoir Computing II</a>
     <a href="reservoirs3.html">Reservoir Computing III</a>
@@ -36,7 +37,11 @@
 <h1
 id="muon-was-derived-for-linear-layers.-transformers-have-attention.">Muon
 Was Derived for Linear Layers. Transformers Have Attention.</h1>
-<p>Muon has a very clean story.</p>
+<p>In this note, I want to make one point precise. Muon has a clean
+matrix-level derivation for linear layers, but transformers are not
+composed of linear layers alone. Their core attention operator is
+bilinear in the query and key projections, and that changes the
+geometry of the relevant update.</p>
 <p>For a linear layer</p>
 <p><span class="math display">\[
 y = xW,
@@ -54,13 +59,14 @@ the polar factor of the gradient:</p>
 \qquad G = U\Sigma V^\top.
 \]</span></p>
 <p>Muon approximates this polar factor with Newton–Schulz iterations.
-This is why Muon feels satisfying: it is not merely AdamW with a
-different set of constants. It is a different geometric answer to the
-question, “what is the right-sized update for a matrix?”</p>
-<p>A lot of recent writing about Muon explains this linear-layer
-derivation and then shows hyperparameter transfer, update-norm behavior,
-or better compute-time tradeoffs. That story is basically right. But the
-question that kept bothering me was:</p>
+The appealing part of the construction is that it does not simply
+rescale an Adam-like update. It answers a different optimization
+question: what update gives the largest first-order decrease in loss
+under an operator-norm budget?</p>
+<p>That derivation is correct as far as it goes. The problem is that
+attention is not controlled by a single matrix, and so the linear-layer
+argument does not yet identify the right constrained object for a
+transformer.</p>
 <p><strong>Transformers are not just linear layers. They are linear
 layers plus attention.</strong></p>
 <p>And attention is not a single linear map.</p>
@@ -73,25 +79,28 @@ Q = XW_Q, \qquad K = XW_K, \qquad V = XW_V,
 S = \frac{QK^\top}{\sqrt d}
   = \frac{XW_QW_K^\top X^\top}{\sqrt d}.
 \]</span></p>
-<p>So the object that actually controls attention is not <span
+<p>So the object that directly controls attention is not <span
 class="math inline">\(W_Q\)</span> or <span
 class="math inline">\(W_K\)</span> separately. It is the bilinear
 product</p>
 <p><span class="math display">\[
 W_QW_K^\top.
 \]</span></p>
-<p>Naive Muon orthogonalizes the updates to <span
+<p>If one orthogonalizes the updates to <span
 class="math inline">\(W_Q\)</span> and <span
-class="math inline">\(W_K\)</span> independently. That is the right kind
-of update for a linear layer. But attention does not use <span
+class="math inline">\(W_K\)</span> independently, one is still applying
+the linear-layer derivation. But attention does not use <span
 class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently. It multiplies
 them.</p>
-<p>That is the missing derivation.</p>
+<p>For attention, the relevant constraint should therefore be placed on
+the induced change in <span class="math inline">\(QK^\top\)</span>. The
+rest of this note works through that point and explains why recent
+large-scale Muon deployments add explicit QK/logit stabilization.</p>
 <hr />
 <h2 id="the-empirical-clue">The empirical clue</h2>
-<p>This is not just theoretical nitpicking. The large-scale papers are
-already telling us that something extra has to happen around
+<p>This distinction is not merely formal. Recent large-scale reports
+already indicate that some additional control is needed around
 attention.</p>
 <p>Moonshot’s Muon scaling report identifies two crucial fixes for
 scaling Muon: weight decay and per-matrix update-RMS rescaling. It also
@@ -401,7 +410,8 @@ but it is not the same thing as fixing the missing QK geometry.</p>
 <h2
 id="qk-clip-attention-aware-muon-and-qk-norm-are-the-same-idea-in-three-places">QK-Clip,
 attention-aware Muon, and QK norm are the same idea in three places</h2>
-<p>This is the hierarchy I find most useful:</p>
+<p>These mechanisms can be understood as the same constraint imposed at
+three different points in the stack:</p>
 <p><span class="math display">\[
 \textbf{QK-Clip:}
 \quad
@@ -426,10 +436,10 @@ class="math inline">\(\Delta(QK^\top)\)</span>.</p>
 <p>DeepSeek-V4 uses the third route. It directly normalizes queries and
 compressed KV entries before attention, and therefore does not need
 QK-Clip. <a href="#references">[DeepSeek-AI, 2026]</a></p>
-<p>This makes QK norm look much less like a hack. It is the
+<p>This makes QK norm look much less like an ad hoc fix. It is the
 architectural form of the norm constraint that the optimizer derivation
 forgot to impose.</p>
-<p>Or more bluntly:</p>
+<p>Equivalently:</p>
 <p><span class="math display">\[
 \boxed{\text{QK norm is the missing Muon derivation for attention, moved
 into the forward pass.}}
@@ -462,8 +472,8 @@ geometry.</p>
 id="what-this-says-about-adamw-muon-and-second-order-optimization">What
 this says about AdamW, Muon, and second-order optimization</h2>
 <p>A separate question is: when should you use Muon at all?</p>
-<p>The unsatisfying practical answer is: try it and see. But there is a
-more principled answer.</p>
+<p>In practice this still has to be checked empirically, but there is a
+useful organizing principle.</p>
 <p>AdamW became standard because it combines a few things that are easy
 to want:</p>
 <ol type="1">
@@ -712,27 +722,18 @@ training batch. The second-order or matrix-whitening side is controlled
 by structure, momentum, and update-scale choices.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
-<p>Muon is not just another optimizer trick. It is a principled matrix
-update rule, and the recent empirical results make it hard to
-ignore.</p>
-<p>But the derivation people usually present is a derivation for linear
-layers.</p>
-<p>Transformers contain attention, and attention is bilinear in <span
-class="math inline">\(Q\)</span> and <span
-class="math inline">\(K\)</span>.</p>
-<p>So if you apply Muon independently to every attention matrix, you
-should expect one missing constraint: the optimizer has not controlled
-the geometry of the <span class="math inline">\(QK^\top\)</span> logit
-operator.</p>
-<p>Recent large-scale systems show exactly this:</p>
-<ul>
-<li>Moonshot scales Muon with weight decay and update-RMS fixes, while
-observing attention-logit growth.</li>
-<li>Kimi K2 uses MuonClip/QK-Clip to explicitly constrain attention
-logits.</li>
-<li>DeepSeek-V4 uses QK/KV-entry RMSNorm and therefore does not need
-QK-Clip.</li>
-</ul>
+<p>Muon is a principled matrix update rule, but the standard derivation
+is a derivation for linear operators.</p>
+<p>In transformers, attention depends on the bilinear logit operator
+<span class="math inline">\(QK^\top\)</span>. If Muon is applied
+independently to <span class="math inline">\(W_Q\)</span> and <span
+class="math inline">\(W_K\)</span>, then the matrix-level constraint
+does not by itself control the object that attention actually uses.</p>
+<p>This is consistent with what recent systems report in practice.
+Moonshot observes attention-logit growth and corrects Muon’s scaling
+behavior. Kimi K2 adds QK-Clip. DeepSeek-V4 normalizes queries and
+compressed KV entries before attention and therefore avoids
+QK-Clip.</p>
 <p>The clean interpretation is:</p>
 <p><span class="math display">\[
 \boxed{\text{QK norm is not a hack. It is the missing attention-aware
@@ -744,21 +745,11 @@ theory says that changing geometry changes the noise scale, and
 stochastic curvature introduces a second noise scale. But practical
 matrix optimizers avoid huge curvature batches by using structure and
 temporal averaging.</p>
-<p>So the principled answer to “should I use Muon?” is not merely “try
-it.” It is:</p>
-<ol type="1">
-<li>Use Muon when matrix/operator geometry matters and the
-implementation is efficient.</li>
-<li>Keep the update RMS and weight decay under control.</li>
-<li>Remember that attention is not a linear layer.</li>
-<li>Add the missing QK geometry, preferably as per-head RMS/L2
-normalization in the architecture.</li>
-<li>Re-estimate the critical batch behavior for the
-optimizer/architecture pair you actually train.</li>
-</ol>
-<p>That makes Muon feel less like a bag of tricks and more like a nearly
-complete optimizer story.</p>
-<p>The last missing piece was attention.</p>
+<p>The practical prescription is straightforward: use Muon where the
+parameter itself is the operator, keep update RMS and weight decay under
+control, and treat attention separately by imposing QK geometry
+explicitly, ideally through per-head RMS/L2 normalization. That is the
+point at which the Muon story becomes substantially more complete.</p>
 <hr />
 <h2 id="references">References</h2>
 <ul>

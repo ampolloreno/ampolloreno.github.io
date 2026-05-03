@@ -191,6 +191,42 @@ iframe {
   word-break: break-word;
 }
 
+.paper-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.paper-item {
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.paper-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.paper-item a {
+  display: inline-block;
+  font-weight: 600;
+}
+
+.paper-meta {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(0, 0, 0, 0.62);
+  font-size: 0.95rem;
+}
+
+[data-theme="dark"] .paper-item {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .paper-meta {
+  color: rgba(255, 255, 255, 0.68);
+}
+
 /* Responsive styles */
 @media (max-width: 600px) {
   .nav {
@@ -206,6 +242,10 @@ iframe {
 
   .essay-content {
     line-height: 1.65;
+  }
+
+  .paper-meta {
+    font-size: 0.9rem;
   }
 
   .header h1 {
