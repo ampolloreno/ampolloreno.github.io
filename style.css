@@ -81,14 +81,17 @@ body {
 
 .nav {
   background-color: var(--nav-bg);
-  text-align: center;
-  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  padding: 10px 18px;
 }
 
 .nav a {
   color: var(--nav-fg);
   text-decoration: none;
-  padding: 0 15px;
+  padding: 0;
 }
 
 .nav a:hover {
@@ -145,17 +148,64 @@ iframe {
   height: 8000px;
 }
 
+.essay-content {
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.essay-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.essay-content h2 {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.essay-content p,
+.essay-content ul,
+.essay-content ol {
+  margin: 1rem 0;
+}
+
+.essay-content ul,
+.essay-content ol {
+  padding-left: 1.5rem;
+}
+
+.essay-content hr {
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 2rem 0;
+}
+
+.essay-content .math.display {
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+
+.essay-content a[href^="http"] {
+  word-break: break-word;
+}
+
 /* Responsive styles */
 @media (max-width: 600px) {
-  .nav a {
-    display: block;
-    padding: 8px 0;
+  .nav {
+    gap: 8px 14px;
+    padding: 10px 14px;
   }
 
   .content,
   .section {
     padding: 15px;
     margin: 20px;
+  }
+
+  .essay-content {
+    line-height: 1.65;
   }
 
   .header h1 {
