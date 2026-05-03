@@ -67,8 +67,6 @@ class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently. It uses their
 product. For attention, the relevant constraint belongs on the induced
 change in <span class="math inline">\(QK^\top\)</span>.</p>
-<hr />
-<h2 id="the-empirical-clue">Empirical picture</h2>
 <p>Large-scale Muon training already shows this mismatch. Moonshot’s
 Muon scaling report identifies two crucial fixes for
 scaling Muon, weight decay and per-matrix update-RMS rescaling. It also
@@ -91,9 +89,6 @@ QK-Clip. <a href="#references">[DeepSeek-AI, 2026]</a> Across these
 reports, Muon is used for matrix parameters and
 attention receives extra QK/logit control. That is the expected outcome
 when the linear-layer derivation is applied to a bilinear operator.</p>
-<hr />
-<h2 id="do-the-muon-derivation-again-but-for-attention">Attention-space
-derivation</h2>
 <p>For a linear layer, the idealized Muon problem is</p>
 <p><span class="math display">\[
 \min_{\Delta W}\; \langle G, \Delta W \rangle
@@ -141,9 +136,6 @@ natural-gradient/Gauss–Newton form</p>
 them. The step should be judged by the induced change in <span
 class="math inline">\(QK^\top\)</span>, not by the two matrices
 separately.</p>
-<hr />
-<h2 id="why-not-just-do-this-in-the-optimizer">Optimizer-side
-implementation</h2>
 <p>Muon is cheap because it is local to one matrix. You take a
 matrix-shaped momentum buffer, run a few Newton–Schulz iterations,
 rescale the update, and apply it. The attention-aware update is not
@@ -163,10 +155,6 @@ compressed-KV attention, the key may not even be materialized in the
 same way at training and inference. The exact optimizer-side solution
 is expensive. The architecture is the cheaper place to impose the same
 geometry.</p>
-<hr />
-<h2
-id="qk-normalization-is-the-architectural-version-of-the-missing-optimizer">QK
-normalization</h2>
 <p>The scalar attention logit is <span class="math inline">\(\ell(q,k)
 = \frac{q^\top k}{\sqrt d}\)</span>. The dangerous degrees of freedom
 are the radial norms of <span
@@ -205,8 +193,6 @@ d}\)</span>, so <span class="math inline">\(\|\nabla_{\hat q}\ell\|_2 =
 class="math inline">\(\|\nabla_{\hat k}\ell\|_2 = \frac{R_q}{\sqrt
 d}\)</span>. This matches the operator control Muon gives a linear
 map.</p>
-<hr />
-<h2 id="the-jacobian-view">The Jacobian view</h2>
 <p>Take exact L2 normalization, <span class="math inline">\(\hat q =
 R\frac{q}{\|q\|_2}\)</span>, and write <span
 class="math inline">\(u = \frac{q}{\|q\|_2}\)</span>. Then</p>
@@ -230,8 +216,6 @@ direction is mostly absent. This is also the role of DeepSeek-V4’s
 pre-attention normalization.
 Muon remains matrix-local, and the model removes the unstable radial
 Q/K direction before attention.</p>
-<hr />
-<h2 id="which-normalization-should-this-predict">Choice of norm</h2>
 <p>The Muon derivation points to <strong>per-head L2/RMS normalization
 on Q and K</strong>. Muon’s motivating geometry is spectral norm.
 Spectral norm is the
@@ -255,8 +239,6 @@ dot product. RMSNorm is just L2 normalization written in the usual
 transformer scale, since <span
 class="math inline">\(\operatorname{RMS}(q)=\frac{\|q\|_2}{\sqrt
 d}\)</span>.</p>
-<hr />
-<h2 id="why-scalar-logit-softcaps-are-different">Scalar softcaps</h2>
 <p>A scalar cap such as <span class="math inline">\(\ell \mapsto
 \tau\tanh(\ell/\tau)\)</span> or <span
 class="math inline">\(\ell \mapsto \tau\arctan(\ell/\tau)\)</span>
@@ -275,19 +257,11 @@ controls values. QK norm controls the operator.</p>
 <p>Under the Muon/operator-norm story, QK RMSNorm is the architectural
 match. A scalar cap can still serve as a guardrail, but it does not fix
 the missing QK geometry.</p>
-<hr />
-<h2
-id="qk-clip-attention-aware-muon-and-qk-norm-are-the-same-idea-in-three-places">Three
-placements of the same constraint</h2>
 <p>Kimi K2 applies the constraint after the optimizer step through
 QK-Clip. An attention-aware Muon would impose it in the update itself.
 DeepSeek-V4 moves it into the forward pass with QK normalization. The
 underlying object is the same in each case: control the change in <span
 class="math inline">\(QK^\top\)</span>.</p>
-<hr />
-<h2
-id="what-this-says-about-adamw-muon-and-second-order-optimization">Muon
-and optimizer geometry</h2>
 <p>Muon is not a cheap Hessian inverse. It is a structured matrix
 update. Adam-style methods use diagonal gradient statistics. Muon uses
 matrix geometry and a controlled spectral profile. This is the setting
@@ -308,10 +282,6 @@ that matrix-level maximal updates are
 not enough. For MLP matrices, the matrix is the operator. For attention
 Q/K, the operator is the product. Use Muon where the parameter is the
 operator. Add QK geometry where the operator is bilinear.</p>
-<hr />
-<h2
-id="does-a-second-order-optimizer-change-the-critical-batch-size-story">Batch-size
-implications</h2>
 <p>Preconditioning changes the usual critical-batch calculation. In the
 first-order setting, the expected progress has the familiar
 diminishing-returns form</p>
@@ -408,9 +378,6 @@ training batches are still largely governed by the gradient-side
 critical batch and hardware utilization. The second-order side can be
 kept under control by structure, momentum, and update-scale
 normalization.</p>
-<hr />
-<h2 id="a-small-eigenvaluespectral-norm-sanity-check">Spectral-norm
-sanity check</h2>
 <p>There is also a simple stability reason to like Muon. For a linear
 layer, if the Muon update is exactly polar-normalized,
 then <span class="math inline">\(\|\operatorname{Polar}(G)\|_2 =
@@ -437,8 +404,6 @@ class="math inline">\(q,k \mapsto \hat q,\hat k\)</span>, then <span
 class="math inline">\(|\hat q^\top\hat k| \le
 \|\hat q\|_2\|\hat k\|_2\)</span>. The spectral story and the attention
 story match.</p>
-<hr />
-<h2 id="the-practical-recipe">Practical implications</h2>
 <p>A Muon transformer should treat these pieces separately. Use Muon on
 parameters whose forward role is linear, such as MLP matrices, expert
 matrices, dense projections, routers, and possibly value/output
@@ -453,9 +418,7 @@ Attention depends on the bilinear operator <span
 class="math inline">\(QK^\top\)</span>, so the same derivation does not
 apply unchanged. QK normalization is the simplest way to restore that
 missing geometry in the model.</p>
-<hr />
-<h2 id="references">References</h2>
-<ul>
+<ul id="references">
 <li>Bernstein, Jeremy. <strong>Deriving Muon.</strong> 2025. <a
 href="https://jeremybernste.in/writing/deriving-muon">https://jeremybernste.in/writing/deriving-muon</a></li>
 <li>DeepSeek-AI. <strong>DeepSeek-V4: Towards Highly Efficient
