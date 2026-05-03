@@ -44,7 +44,7 @@ gradient. If <span class="math inline">\(G = \nabla_W L\)</span>, then</p>
 \]</span></p>
 <p>Muon approximates this polar factor with Newton–Schulz iterations,
 and in that sense the standard derivation is genuinely a derivation for
-linear maps; once attention enters, however, the constrained object
+linear maps. Once attention enters, however, the constrained object
 changes, because for one attention head <span class="math inline">\(Q =
 XW_Q\)</span>, <span class="math inline">\(K = XW_K\)</span>, and <span
 class="math inline">\(V = XW_V\)</span>, while the attention logits are
@@ -54,7 +54,7 @@ class="math inline">\(V = XW_V\)</span>, while the attention logits are
 explicit that Muon is defined for linear layers and traces the
 underlying RMS-to-RMS operator norm back to Appendix E of <em>A
 Spectral Condition for Feature Learning</em>. <a
-href="#references">[Bernstein, 2025; Yang et al., 2024]</a> The object
+href="#references">[Bernstein, 2025, and Yang et al., 2024]</a> The object
 that directly controls attention is therefore not <span
 class="math inline">\(W_Q\)</span> or <span
 class="math inline">\(W_K\)</span> separately but the bilinear product
@@ -70,7 +70,7 @@ Muon scaling report identifies two crucial fixes for scaling Muon,
 namely weight decay and per-matrix update-RMS rescaling, while also
 noting that Muon’s update RMS depends on matrix shape in a way that can
 become problematic for small attention matrices such as per-head KV
-matrices in GQA/MLA-style attention; in their training dynamics, the
+matrices in GQA/MLA-style attention. In their training dynamics, the
 maximum attention logit can rise above 100 in some layers even when loss
 and gradient norm remain stable. <a
 href="#references">[Liu et al., 2025]</a></p>
@@ -82,7 +82,7 @@ already a strong indication that Muon alone is not enough for
 attention. <a href="#references">[Kimi Team, 2025]</a> DeepSeek-V4
 takes the architectural route instead, using Muon for most matrix
 parameters while applying RMSNorm to attention queries and compressed KV
-entries immediately before core attention; the paper attributes that
+entries immediately before core attention, and the paper attributes that
 normalization to logit stability and does not use QK-Clip. <a
 href="#references">[DeepSeek-AI, 2026]</a> Across these reports, Muon
 is used for matrix parameters whereas attention receives extra QK/logit
@@ -137,7 +137,7 @@ so the step should be judged by the induced change in <span
 class="math inline">\(QK^\top\)</span> rather than by the two matrices
 separately. Muon is cheap precisely because it is local to one matrix,
 so one takes a matrix-shaped momentum buffer, runs a few
-Newton–Schulz iterations, rescales the update, and applies it; the
+Newton–Schulz iterations, rescales the update, and applies it. The
 attention-aware update is not local in that sense, because it depends on
 the current activations <span class="math inline">\(X\)</span>, the
 current queries <span class="math inline">\(Q\)</span>, the current keys
@@ -148,7 +148,7 @@ layouts. Even before considering the softmax, the natural object is the
 sequence-by-sequence logit matrix <span class="math inline">\(S\)</span>,
 which in dense attention is <span class="math inline">\(T \times
 T\)</span> per head, while in sparse or compressed attention it becomes
-architecture-specific; in MLA-style or compressed-KV attention, the key
+architecture-specific. In MLA-style or compressed-KV attention, the key
 may not even be materialized in the same way at training and inference.
 The exact optimizer-side solution is therefore expensive, which is why
 the architecture is the cheaper place to impose the same geometry.</p>
@@ -156,7 +156,7 @@ the architecture is the cheaper place to impose the same geometry.</p>
 = \frac{q^\top k}{\sqrt d}\)</span>, and the dangerous degrees of
 freedom are the radial norms of <span
 class="math inline">\(q\)</span> and <span
-class="math inline">\(k\)</span>; if Muon updates <span
+class="math inline">\(k\)</span>. If Muon updates <span
 class="math inline">\(W_Q\)</span> and <span
 class="math inline">\(W_K\)</span> independently, the product <span
 class="math inline">\(QK^\top\)</span> can grow even when the individual
@@ -165,7 +165,7 @@ matrix updates look reasonable. A direct architectural fix is to set
 \epsilon}\)</span> and <span class="math inline">\(\hat k = R_k
 \frac{k}{\|k\|_2 + \epsilon}\)</span>, and then compute <span
 class="math inline">\(\ell(q,k)=\frac{\hat q^\top \hat k}{\sqrt
-d}\)</span>; in transformer notation this becomes <span
+d}\)</span>. In transformer notation this becomes <span
 class="math inline">\(\hat Q_h = \operatorname{RMSNorm}(Q_h)\)</span>
 and <span class="math inline">\(\hat K_h =
 \operatorname{RMSNorm}(K_h)\)</span>, followed by <span
@@ -250,7 +250,7 @@ without actually fixing the missing QK geometry. The same constraint can
 then appear in three places, since Kimi K2 applies it after the
 optimizer step through QK-Clip, an attention-aware Muon would impose it
 in the update itself, and DeepSeek-V4 moves it into the forward pass
-with QK normalization; in each case the underlying object is the same,
+with QK normalization. In each case the underlying object is the same,
 namely control of the change in <span
 class="math inline">\(QK^\top\)</span>.</p>
 <p>Muon is not a cheap Hessian inverse, but rather a structured matrix
@@ -354,7 +354,7 @@ structure and averaging, and second-order-ish optimizers change the
 statistical estimation problem rather than merely rescaling the old
 first-order one. For full curvature, the curvature-side batch can be
 enormous, whereas for structured or factorized curvature it can be much
-smaller; in the critical-curvature note, full outer-product curvature
+smaller. In the critical-curvature note, full outer-product curvature
 has <span class="math inline">\(B_h=d+1\)</span> in a whitened Gaussian
 block, while a K-FAC block of shape <span class="math inline">\(n\times
 m\)</span> has</p>
@@ -403,8 +403,8 @@ RMS/L2 normalization before the dot product. QK-Clip is best viewed as
 a guardrail for settings in which the architecture makes direct
 normalization awkward, and the quantities worth logging are the ones
 that correspond to this geometry, such as max logit, RMS logit,
-large-logit ratio, query/key RMS, and update RMS by matrix shape;
-likewise, critical batch size should be estimated at small scale for the
+large-logit ratio, query/key RMS, and update RMS by matrix shape.
+Likewise, critical batch size should be estimated at small scale for the
 actual optimizer rather than imported from an SGD schedule.</p>
 <p>In short, Muon gives a principled matrix update for linear
 operators, but attention depends on the bilinear operator <span
