@@ -219,12 +219,31 @@ iframe {
   font-size: 0.95rem;
 }
 
+.series-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 16px;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.series-nav span {
+  font-weight: 600;
+}
+
 [data-theme="dark"] .paper-item {
   border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] .paper-meta {
   color: rgba(255, 255, 255, 0.68);
+}
+
+[data-theme="dark"] .series-nav {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Responsive styles */
@@ -246,6 +265,10 @@ iframe {
 
   .paper-meta {
     font-size: 0.9rem;
+  }
+
+  .series-nav {
+    padding: 0.8rem;
   }
 
   .header h1 {
