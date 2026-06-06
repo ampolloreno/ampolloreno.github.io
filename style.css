@@ -6,6 +6,7 @@
   --nav-bg: #333;
   --nav-fg: #fff;
   --link-hover: #005fa3;
+  --muted: rgba(0, 0, 0, 0.62);
 }
 
 [data-theme="dark"] {
@@ -16,6 +17,7 @@
   --nav-bg: #222;
   --nav-fg: #ccc;
   --link-hover: #fff;
+  --muted: rgba(255, 255, 255, 0.68);
 }
 
 body {
@@ -158,6 +160,14 @@ iframe {
   margin-bottom: 1.5rem;
 }
 
+.post-date {
+  display: block;
+  margin: -0.85rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .essay-content h2 {
   margin-top: 2.5rem;
   text-align: left;
@@ -219,7 +229,7 @@ iframe {
 .paper-meta {
   display: block;
   margin-top: 0.35rem;
-  color: rgba(0, 0, 0, 0.62);
+  color: var(--muted);
   font-size: 0.95rem;
 }
 
